@@ -1,6 +1,14 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import portrait from "@/assets/portrait-placeholder.jpg";
+import portrait from "@/assets/portrait.jpg";
+import snapTreeLighting from "@/assets/snap-tree-lighting.jpg";
+import snapButler from "@/assets/snap-butler.jpg";
+import snapBeach from "@/assets/snap-beach.jpg";
+import snapSnow from "@/assets/snap-snow.jpg";
+import snapSkyline from "@/assets/snap-skyline.jpg";
+import snapMet from "@/assets/snap-met.jpg";
+import snapSunset from "@/assets/snap-sunset.jpg";
+import snapDance from "@/assets/snap-dance.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -47,39 +55,28 @@ const Section = ({
   </motion.section>
 );
 
-const Work = ({
-  title,
-  org,
-  when,
-  children,
-  href,
+const Snap = ({
+  src,
+  caption,
+  className = "",
 }: {
-  title: string;
-  org: string;
-  when: string;
-  href?: string;
-  children?: React.ReactNode;
+  src: string;
+  caption: string;
+  className?: string;
 }) => (
-  <div className="group py-5 first:pt-0">
-    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-      <h3 className="font-serif-display text-xl text-foreground md:text-2xl">
-        {href ? (
-          <a href={href} target="_blank" rel="noreferrer noopener" className="link-underline">
-            {title}
-          </a>
-        ) : (
-          title
-        )}
-        <span className="font-serif-italic text-muted-foreground"> — {org}</span>
-      </h3>
-      <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
-        {when}
-      </span>
+  <figure className={`group ${className}`}>
+    <div className="overflow-hidden rounded-sm bg-muted">
+      <img
+        src={src}
+        alt={caption}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+      />
     </div>
-    {children && (
-      <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{children}</p>
-    )}
-  </div>
+    <figcaption className="mt-2 font-serif-italic text-xs text-muted-foreground">
+      {caption}
+    </figcaption>
+  </figure>
 );
 
 const Index = () => {
@@ -93,7 +90,7 @@ const Index = () => {
         <nav className="flex items-center gap-6 text-sm lowercase text-muted-foreground">
           <a href="#about" className="link-underline">about</a>
           <a href="#research" className="link-underline">research</a>
-          <a href="#work" className="link-underline">work</a>
+          <a href="#life" className="link-underline">life</a>
           <a href="#contact" className="link-underline">contact</a>
         </nav>
       </header>
@@ -114,9 +111,11 @@ const Index = () => {
               Selin <span className="font-serif-italic font-light">Karaca</span>
             </h1>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-              CS undergrad at <span className="text-foreground">Columbia</span>, researching{" "}
-              <span className="font-serif-italic text-foreground">mechanistic
-              interpretability</span> of large language models. Istanbul → New York.
+              I'm a CS undergrad at <span className="text-foreground">Columbia</span>,
+              trying to figure out what large language models actually
+              <span className="font-serif-italic text-foreground"> understand</span>.
+              Born by the Aegean in <span className="text-foreground">Izmir</span>,
+              currently writing this from a fifth-floor walk-up in Morningside Heights.
             </p>
           </div>
 
@@ -126,7 +125,7 @@ const Index = () => {
               alt="Portrait of Selin Karaca"
               width={160}
               height={200}
-              className="h-[200px] w-[160px] rounded-sm object-cover grayscale-[20%]"
+              className="h-[200px] w-[160px] rounded-sm object-cover"
             />
           </div>
         </motion.section>
@@ -135,16 +134,24 @@ const Index = () => {
         <Section id="about" label="about">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
             <p>
-              I'm a Named Scholar at Columbia Engineering studying computer science
-              with minors in applied math and entrepreneurship. I care about making the
-              internals of modern AI systems <span className="font-serif-italic">legible</span> —
-              not just as black boxes that work, but as objects we can understand.
+              I grew up in <span className="font-serif-italic">Izmir</span> — a city
+              that pretends to be casual about the sea but absolutely isn't. Long
+              dinners, opinionated grandmothers, and the kind of summer light that
+              ruins you for any other place. I think it's where I learned that the
+              interesting question is usually <span className="font-serif-italic">why</span>,
+              not <span className="font-serif-italic">what</span>.
             </p>
             <p>
-              Before Columbia I grew up in Istanbul, where I spent summers in research
-              labs working on autism diagnosis with deep learning, AR/VR systems, and
-              semi-supervised methods on small datasets. The throughline has always been:
-              what does the model actually <span className="font-serif-italic">know</span>?
+              These days I study computer science at Columbia (with applied math and
+              entrepreneurship on the side), and I spend a lot of time wondering
+              whether the models we're building actually <em className="font-serif-italic">know</em> anything,
+              or whether we've just gotten very good at pattern-matching dressed in
+              a tuxedo. I find that question genuinely thrilling.
+            </p>
+            <p>
+              Off the screen: I dance, I get attached to museums (the Met has my
+              whole heart), I take far too many sunset photos, and I'm slowly
+              learning that New York winters are not, in fact, a personal attack.
             </p>
           </div>
         </Section>
@@ -153,19 +160,32 @@ const Index = () => {
         <Section id="research" label="now / research">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
             <p>
-              I'm an undergraduate research assistant at the{" "}
+              I'm a research assistant at the{" "}
               <ExtLink href="https://cris.engineering.columbia.edu/">
                 Complex Resilient Intelligent Systems (CRIS) Lab
               </ExtLink>{" "}
-              at Columbia, working on mechanistic interpretability of transformer LLMs
-              with <span className="font-serif-italic">sparse autoencoders</span> and
-              probing methods.
+              at Columbia, working on a computational study of how large language
+              models develop <span className="font-serif-italic">semantic
+              understanding</span> as they scale.
             </p>
             <p>
-              I'm building an end-to-end SAE training and analysis pipeline to study how
-              interpretable features scale across model sizes — and where “phase-change”
-              behavior emerges across layers. Currently reproducing baselines and pushing
-              experiments onto larger models on GPU clusters.
+              Concretely: I built a corpus of 500 books across genres and analyze the
+              embedding representations produced by model families —{" "}
+              <span className="font-serif-italic">Pythia, Cerebras-GPT, Qwen2.5,</span>{" "}
+              and OpenAI — at varying parameter counts. The thing I'm hunting for is{" "}
+              <span className="font-serif-italic">emergence</span>: the moment a model's
+              internal representations get rich enough to actually tell one book apart
+              from another.
+            </p>
+            <p>
+              Using cosine similarity of chunk embeddings within and across books, I
+              found a sharp capability threshold in the Pythia family between{" "}
+              <span className="text-foreground">160M and 410M parameters</span>, where
+              the model's ability to encode book identity jumps nearly{" "}
+              <span className="text-foreground">28× in a single scale step</span>. I'm
+              complementing this with topic-discovery experiments using BERTopic —
+              tracing, for example, how the thematic structure of romance novels
+              evolves as models grow.
             </p>
             <p className="text-muted-foreground">
               Also: CAIAC Technical AI Safety Fellow. TA for{" "}
@@ -174,65 +194,77 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* Selected work */}
-        <Section id="work" label="selected work">
-          <div className="divide-y divide-border/70">
-            <Work
-              title="CRIS Lab"
-              org="Columbia University"
-              when="2026 —"
-            >
-              Mechanistic interpretability research on transformer LLMs using sparse
-              autoencoders and probing. Scaling experiments on GPU clusters.
-            </Work>
-            <Work
-              title="Women's Ignite Trading Week"
-              org="Citadel Securities"
-              when="Jan 2026"
-            >
-              Simulation-based trade analysis under uncertainty — hypotheses, sizing,
-              downside controls. Post-mortems with trader mentors.
-            </Work>
-            <Work
-              title="Coding for Data, w/ Intel"
-              org="Global Career Accelerator"
-              when="Summer 2025"
-            >
-              Sustainability analytics project with Intel — environmental KPIs and
-              corporate responsibility, in SQL.
-            </Work>
-            <Work
-              title="Software & Product Design Intern"
-              org="Cool Digital"
-              when="Summer 2025"
-            >
-              Built cookie-banner UIs and frontend features in Vue and React for the
-              Efilli startup. Figma prototyping; auth/routing debugging.
-            </Work>
-            <Work
-              title="Augmented Summer Research"
-              org="Koç University"
-              when="2023"
-            >
-              AR/VR, sensors and signal processing, image processing, object detection
-              — Python and Unity.
-            </Work>
-            <Work
-              title="DL for Autism Diagnosis"
-              org="Istanbul University Cerrahpaşa"
-              when="2022 — 2023"
-            >
-              R&amp;D on facial-imaging algorithms for early autism detection in Turkey,
-              integrating deep learning with ADOS and SPSS analysis.
-            </Work>
+        {/* Life — photo grid */}
+        <Section id="life" label="life, lately">
+          <div className="space-y-6">
+            <p className="text-[16px] leading-relaxed text-foreground/90">
+              A few frames from the last little while — the city, the people, the
+              light. Mostly proof that I do, in fact, leave the lab.
+            </p>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <Snap src={snapSunset} caption="hudson, golden hour" className="row-span-2" />
+              <Snap src={snapButler} caption="butler library, on fire" />
+              <Snap src={snapTreeLighting} caption="tree lighting, college walk" />
+              <Snap src={snapDance} caption="on stage, in red" />
+              <Snap src={snapBeach} caption="home, the aegean" />
+              <Snap src={snapSnow} caption="first real snow" />
+              <Snap src={snapMet} caption="met, greek & roman wing" />
+              <Snap src={snapSkyline} caption="midtown, from above" />
+            </div>
+          </div>
+        </Section>
+
+        {/* Past lives */}
+        <Section id="past" label="past lives">
+          <div className="space-y-5 text-[16px] leading-relaxed text-foreground/90">
+            <p>
+              Before CRIS, I spent a few summers chasing the same question through
+              different doors.
+            </p>
+            <ul className="space-y-4">
+              <li>
+                <span className="font-serif-display text-lg">Citadel Securities</span>{" "}
+                <span className="font-serif-italic text-muted-foreground">
+                  — Women's Ignite Trading Week, Jan 2026.
+                </span>
+                <span className="text-muted-foreground">
+                  {" "}A week of simulated trading, real post-mortems, and learning to
+                  size your conviction honestly.
+                </span>
+              </li>
+              <li>
+                <span className="font-serif-display text-lg">Koç University</span>{" "}
+                <span className="font-serif-italic text-muted-foreground">
+                  — Augmented Summer Research, 2023.
+                </span>
+                <span className="text-muted-foreground">
+                  {" "}AR/VR, signal processing, object detection — the summer I fell
+                  for Python and stopped sleeping.
+                </span>
+              </li>
+              <li>
+                <span className="font-serif-display text-lg">
+                  Istanbul University Cerrahpaşa
+                </span>{" "}
+                <span className="font-serif-italic text-muted-foreground">
+                  — DL for autism diagnosis, 2022–23.
+                </span>
+                <span className="text-muted-foreground">
+                  {" "}R&amp;D on facial-imaging models for early autism detection in
+                  Turkey, alongside ADOS clinicians. My first taste of research that
+                  actually mattered to someone.
+                </span>
+              </li>
+            </ul>
           </div>
         </Section>
 
         {/* Elsewhere */}
-        <Section id="contact" label="elsewhere">
+        <Section id="contact" label="say hi">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
             <p>
-              The best way to reach me is{" "}
+              I love a good email. Tell me what you're working on, what you're
+              reading, or where to get the best simit in New York —{" "}
               <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>.
             </p>
             <ul className="space-y-2 text-[16px]">
@@ -248,7 +280,7 @@ const Index = () => {
 
         <footer className="mt-16 flex items-center justify-between border-t border-border/70 pt-6 text-xs lowercase tracking-wider text-muted-foreground">
           <span>© {new Date().getFullYear()} selin karaca</span>
-          <span className="font-serif-italic">new york</span>
+          <span className="font-serif-italic">izmir · new york</span>
         </footer>
       </div>
     </main>
