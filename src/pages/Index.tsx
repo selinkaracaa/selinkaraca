@@ -90,17 +90,27 @@ const Index = () => {
         <img
           src={snapSunset}
           alt=""
-          className="plate-soft duotone-warm absolute -right-24 top-[18%] hidden w-[34rem] rotate-[3deg] opacity-[0.22] md:block"
+          className="plate-soft duotone-warm absolute -right-32 top-[14%] hidden w-[36rem] rotate-[3deg] opacity-60 md:block"
         />
         <img
           src={snapSkyline}
           alt=""
-          className="plate-soft duotone-warm absolute -left-32 top-[55%] hidden w-[30rem] -rotate-[4deg] opacity-[0.18] md:block"
+          className="plate-soft duotone-warm absolute -left-40 top-[48%] hidden w-[34rem] -rotate-[4deg] opacity-50 md:block"
+        />
+        <img
+          src={snapDance}
+          alt=""
+          className="plate-soft absolute -right-24 top-[78%] hidden w-[26rem] rotate-[2deg] opacity-45 mix-blend-multiply md:block"
+        />
+        <img
+          src={snapMet}
+          alt=""
+          className="plate-soft duotone-warm absolute -left-24 top-[110%] hidden w-[28rem] -rotate-[2deg] opacity-50 md:block"
         />
         <img
           src={snapBeach}
           alt=""
-          className="plate-soft duotone-warm absolute -right-20 bottom-[6%] hidden w-[28rem] rotate-[2deg] opacity-[0.18] md:block"
+          className="plate-soft duotone-warm absolute -right-28 top-[150%] hidden w-[30rem] rotate-[3deg] opacity-50 md:block"
         />
       </div>
 
