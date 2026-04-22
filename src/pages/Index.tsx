@@ -55,28 +55,40 @@ const Section = ({
   </motion.section>
 );
 
-const Snap = ({
+/** A small editorial photo with italic caption — sits inline in the prose. */
+const Plate = ({
   src,
   caption,
+  alt,
   className = "",
+  rotate = "0deg",
 }: {
   src: string;
   caption: string;
+  alt?: string;
   className?: string;
+  rotate?: string;
 }) => (
-  <figure className={`group ${className}`}>
-    <div className="overflow-hidden rounded-sm bg-muted">
+  <motion.figure
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    style={{ transform: `rotate(${rotate})` }}
+    className={`group ${className}`}
+  >
+    <div className="overflow-hidden rounded-sm bg-muted shadow-[0_20px_40px_-24px_hsl(var(--foreground)/0.25)]">
       <img
         src={src}
-        alt={caption}
+        alt={alt ?? caption}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
       />
     </div>
     <figcaption className="mt-2 font-serif-italic text-xs text-muted-foreground">
       {caption}
     </figcaption>
-  </figure>
+  </motion.figure>
 );
 
 const Index = () => {
@@ -90,18 +102,18 @@ const Index = () => {
         <nav className="flex items-center gap-6 text-sm lowercase text-muted-foreground">
           <a href="#about" className="link-underline">about</a>
           <a href="#research" className="link-underline">research</a>
-          <a href="#life" className="link-underline">life</a>
+          <a href="#past" className="link-underline">past</a>
           <a href="#contact" className="link-underline">contact</a>
         </nav>
       </header>
 
       <div id="top" className="mx-auto max-w-3xl px-6 pb-24 pt-16 md:pt-24">
-        {/* Hero */}
+        {/* Hero — portrait + text + a tiny offset snap */}
         <motion.section
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_10rem]"
+          className="grid grid-cols-1 items-end gap-10 md:grid-cols-[1fr_11rem]"
         >
           <div>
             <p className="font-serif-italic text-sm text-muted-foreground">
@@ -119,20 +131,48 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="hidden md:block">
+          <div className="relative hidden md:block">
             <img
               src={portrait}
               alt="Portrait of Selin Karaca"
-              width={160}
-              height={200}
-              className="h-[200px] w-[160px] rounded-sm object-cover"
+              width={176}
+              height={224}
+              className="h-[224px] w-[176px] rounded-sm object-cover shadow-[0_24px_50px_-28px_hsl(var(--foreground)/0.35)]"
             />
+            <div className="absolute -bottom-10 -left-12 w-24 rotate-[-6deg]">
+              <Plate
+                src={snapBeach}
+                caption="home"
+                alt="The Aegean coast at sunset"
+                className="w-24"
+              />
+            </div>
           </div>
         </motion.section>
 
-        {/* About */}
+        {/* Mobile portrait */}
+        <div className="mt-10 flex items-end gap-4 md:hidden">
+          <img
+            src={portrait}
+            alt="Portrait of Selin Karaca"
+            className="h-40 w-32 rounded-sm object-cover shadow-[0_20px_40px_-24px_hsl(var(--foreground)/0.35)]"
+          />
+          <img
+            src={snapBeach}
+            alt="The Aegean coast"
+            className="h-28 w-24 rotate-[-4deg] rounded-sm object-cover shadow-[0_16px_30px_-20px_hsl(var(--foreground)/0.3)]"
+          />
+        </div>
+
+        {/* About — text wraps a floated snap */}
         <Section id="about" label="about">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
+            <Plate
+              src={snapSunset}
+              caption="hudson, golden hour"
+              className="float-right ml-6 mb-3 w-40 md:w-52"
+              rotate="1.5deg"
+            />
             <p>
               I grew up in <span className="font-serif-italic">Izmir</span> — a city
               that pretends to be casual about the sea but absolutely isn't. Long
@@ -154,11 +194,24 @@ const Index = () => {
               learning that New York winters are not, in fact, a personal attack.
             </p>
           </div>
+
+          {/* a small pair under the about prose */}
+          <div className="mt-10 grid grid-cols-2 gap-4">
+            <Plate src={snapDance} caption="on stage, in red" rotate="-1deg" />
+            <Plate src={snapMet} caption="met, greek & roman wing" rotate="1deg" />
+          </div>
         </Section>
 
         {/* Research */}
         <Section id="research" label="now / research">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
+            <Plate
+              src={snapButler}
+              caption="butler, on fire"
+              alt="Butler Library at sunset"
+              className="float-left mr-6 mb-3 w-44 md:w-56"
+              rotate="-1.5deg"
+            />
             <p>
               I'm a research assistant at the{" "}
               <ExtLink href="https://cris.engineering.columbia.edu/">
@@ -169,23 +222,23 @@ const Index = () => {
               understanding</span> as they scale.
             </p>
             <p>
-              Concretely: I built a corpus of 500 books across genres and analyze the
-              embedding representations produced by model families —{" "}
+              Concretely: I built a corpus of 500 books across genres and analyze
+              the embedding representations produced by model families —{" "}
               <span className="font-serif-italic">Pythia, Cerebras-GPT, Qwen2.5,</span>{" "}
               and OpenAI — at varying parameter counts. The thing I'm hunting for is{" "}
-              <span className="font-serif-italic">emergence</span>: the moment a model's
-              internal representations get rich enough to actually tell one book apart
-              from another.
+              <span className="font-serif-italic">emergence</span>: the moment a
+              model's internal representations get rich enough to actually tell one
+              book apart from another.
             </p>
             <p>
               Using cosine similarity of chunk embeddings within and across books, I
               found a sharp capability threshold in the Pythia family between{" "}
-              <span className="text-foreground">160M and 410M parameters</span>, where
-              the model's ability to encode book identity jumps nearly{" "}
-              <span className="text-foreground">28× in a single scale step</span>. I'm
-              complementing this with topic-discovery experiments using BERTopic —
-              tracing, for example, how the thematic structure of romance novels
-              evolves as models grow.
+              <span className="text-foreground">160M and 410M parameters</span>,
+              where the model's ability to encode book identity jumps nearly{" "}
+              <span className="text-foreground">28× in a single scale step</span>.
+              I'm complementing this with topic-discovery experiments using
+              BERTopic — tracing, for example, how the thematic structure of
+              romance novels evolves as models grow.
             </p>
             <p className="text-muted-foreground">
               Also: CAIAC Technical AI Safety Fellow. TA for{" "}
@@ -194,29 +247,44 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* Life — photo grid */}
-        <Section id="life" label="life, lately">
-          <div className="space-y-6">
-            <p className="text-[16px] leading-relaxed text-foreground/90">
-              A few frames from the last little while — the city, the people, the
-              light. Mostly proof that I do, in fact, leave the lab.
-            </p>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              <Snap src={snapSunset} caption="hudson, golden hour" className="row-span-2" />
-              <Snap src={snapButler} caption="butler library, on fire" />
-              <Snap src={snapTreeLighting} caption="tree lighting, college walk" />
-              <Snap src={snapDance} caption="on stage, in red" />
-              <Snap src={snapBeach} caption="home, the aegean" />
-              <Snap src={snapSnow} caption="first real snow" />
-              <Snap src={snapMet} caption="met, greek & roman wing" />
-              <Snap src={snapSkyline} caption="midtown, from above" />
-            </div>
-          </div>
-        </Section>
+        {/* A wide editorial break — full-bleed-ish skyline */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="my-4 grid grid-cols-1 gap-3 md:grid-cols-[2fr_1fr]"
+        >
+          <figure className="overflow-hidden rounded-sm">
+            <img
+              src={snapSkyline}
+              alt="Midtown Manhattan from above"
+              loading="lazy"
+              className="h-64 w-full object-cover md:h-80"
+            />
+          </figure>
+          <figure className="overflow-hidden rounded-sm">
+            <img
+              src={snapTreeLighting}
+              alt="Tree lighting on College Walk"
+              loading="lazy"
+              className="h-64 w-full object-cover md:h-80"
+            />
+          </figure>
+          <figcaption className="font-serif-italic text-xs text-muted-foreground md:col-span-2">
+            new york, on its better days.
+          </figcaption>
+        </motion.div>
 
         {/* Past lives */}
         <Section id="past" label="past lives">
           <div className="space-y-5 text-[16px] leading-relaxed text-foreground/90">
+            <Plate
+              src={snapSnow}
+              caption="first real snow"
+              className="float-right ml-6 mb-3 w-40 md:w-48"
+              rotate="2deg"
+            />
             <p>
               Before CRIS, I spent a few summers chasing the same question through
               different doors.
@@ -259,7 +327,7 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* Elsewhere */}
+        {/* Contact */}
         <Section id="contact" label="say hi">
           <div className="space-y-4 text-[16px] leading-relaxed text-foreground/90">
             <p>
