@@ -294,7 +294,7 @@ const Index = () => {
 
           <footer className="mt-16 flex items-center justify-between border-t border-border/60 pt-6 text-xs lowercase tracking-wider text-muted-foreground">
             <span>© {new Date().getFullYear()} selin karaca</span>
-            <span className="font-serif-italic">izmir · new york</span>
+            <span className="font-serif-italic">new york</span>
           </footer>
         </div>
       </div>
