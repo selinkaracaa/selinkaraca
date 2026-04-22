@@ -337,13 +337,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Hidden imports kept so unused images stay bundled when re-introduced */}
-      <div className="hidden">
-        <img src={snapTreeLighting} alt="" />
-        <img src={snapButler} alt="" />
-        <img src={snapSnow} alt="" />
-        <img src={snapMet} alt="" />
-        <img src={snapDance} alt="" />
       </div>
     </main>
   );
