@@ -90,27 +90,32 @@ const Index = () => {
         <img
           src={snapSunset}
           alt=""
-          className="plate-soft duotone-warm absolute -right-32 top-[14%] hidden w-[36rem] rotate-[3deg] opacity-60 md:block"
+          className="plate-soft duotone-warm absolute -right-20 top-[12%] w-[26rem] rotate-[3deg] opacity-70 sm:w-[34rem] md:-right-32 md:w-[40rem]"
         />
         <img
           src={snapSkyline}
           alt=""
-          className="plate-soft duotone-warm absolute -left-40 top-[48%] hidden w-[34rem] -rotate-[4deg] opacity-50 md:block"
+          className="plate-soft duotone-warm absolute -left-24 top-[42%] w-[24rem] -rotate-[4deg] opacity-60 sm:w-[30rem] md:-left-40 md:w-[36rem]"
         />
         <img
           src={snapDance}
           alt=""
-          className="plate-soft absolute -right-24 top-[78%] hidden w-[26rem] rotate-[2deg] opacity-45 mix-blend-multiply md:block"
+          className="plate-soft absolute -right-16 top-[68%] w-[22rem] rotate-[2deg] opacity-55 mix-blend-multiply sm:w-[26rem] md:-right-24 md:w-[30rem]"
         />
         <img
           src={snapMet}
           alt=""
-          className="plate-soft duotone-warm absolute -left-24 top-[110%] hidden w-[28rem] -rotate-[2deg] opacity-50 md:block"
+          className="plate-soft duotone-warm absolute -left-16 top-[92%] w-[22rem] -rotate-[2deg] opacity-55 sm:w-[26rem] md:-left-24 md:w-[30rem]"
         />
         <img
           src={snapBeach}
           alt=""
-          className="plate-soft duotone-warm absolute -right-28 top-[150%] hidden w-[30rem] rotate-[3deg] opacity-50 md:block"
+          className="plate-soft duotone-warm absolute -right-20 top-[125%] w-[24rem] rotate-[3deg] opacity-55 sm:w-[28rem] md:-right-28 md:w-[32rem]"
+        />
+        <img
+          src={snapSnow}
+          alt=""
+          className="plate-soft duotone-warm absolute -left-16 top-[155%] w-[22rem] -rotate-[3deg] opacity-50 sm:w-[26rem] md:-left-20 md:w-[28rem]"
         />
       </div>
 
