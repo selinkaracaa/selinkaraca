@@ -90,17 +90,27 @@ const Index = () => {
         <img
           src={snapSunset}
           alt=""
-          className="plate-soft duotone-warm absolute -right-24 top-[18%] hidden w-[34rem] rotate-[3deg] opacity-[0.22] md:block"
+          className="plate-soft duotone-warm absolute -right-32 top-[14%] hidden w-[36rem] rotate-[3deg] opacity-60 md:block"
         />
         <img
           src={snapSkyline}
           alt=""
-          className="plate-soft duotone-warm absolute -left-32 top-[55%] hidden w-[30rem] -rotate-[4deg] opacity-[0.18] md:block"
+          className="plate-soft duotone-warm absolute -left-40 top-[48%] hidden w-[34rem] -rotate-[4deg] opacity-50 md:block"
+        />
+        <img
+          src={snapDance}
+          alt=""
+          className="plate-soft absolute -right-24 top-[78%] hidden w-[26rem] rotate-[2deg] opacity-45 mix-blend-multiply md:block"
+        />
+        <img
+          src={snapMet}
+          alt=""
+          className="plate-soft duotone-warm absolute -left-24 top-[110%] hidden w-[28rem] -rotate-[2deg] opacity-50 md:block"
         />
         <img
           src={snapBeach}
           alt=""
-          className="plate-soft duotone-warm absolute -right-20 bottom-[6%] hidden w-[28rem] rotate-[2deg] opacity-[0.18] md:block"
+          className="plate-soft duotone-warm absolute -right-28 top-[150%] hidden w-[30rem] rotate-[3deg] opacity-50 md:block"
         />
       </div>
 
@@ -134,11 +144,11 @@ const Index = () => {
                 Selin <span className="font-serif-italic font-light">Karaca</span>
               </h1>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/80">
-                nineteen, in new york. studying computer science at{" "}
-                <span className="text-foreground">Columbia</span> and researching how
-                large language models come to{" "}
+                undergrad at <span className="text-foreground">Columbia</span>{" "}
+                researching how language models come to{" "}
                 <span className="font-serif-italic text-foreground">understand</span>{" "}
-                anything at all. originally from <span className="text-foreground">Izmir</span>.
+                anything at all — and, in the spaces between, dancing, taking
+                photos, and chasing every good question I can find.
               </p>
             </div>
 
@@ -166,11 +176,10 @@ const Index = () => {
           <Section id="about" label="about">
             <div className="space-y-5 text-[16px] leading-relaxed text-foreground/85">
               <p>
-                I grew up in <span className="font-serif-italic">Izmir</span>, on the
-                edge of the Aegean. I think it's where I learned that the
-                interesting question is usually{" "}
+                I think the interesting question is usually{" "}
                 <span className="font-serif-italic">why</span>, not{" "}
-                <span className="font-serif-italic">what</span>.
+                <span className="font-serif-italic">what</span> — which is probably
+                why I keep ending up in research.
               </p>
               <p>
                 I'm pursuing a B.S. in Computer Science at Columbia, with minors in
@@ -285,7 +294,7 @@ const Index = () => {
 
           <footer className="mt-16 flex items-center justify-between border-t border-border/60 pt-6 text-xs lowercase tracking-wider text-muted-foreground">
             <span>© {new Date().getFullYear()} selin karaca</span>
-            <span className="font-serif-italic">izmir · new york</span>
+            <span className="font-serif-italic">new york</span>
           </footer>
         </div>
       </div>
