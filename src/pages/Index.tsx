@@ -196,14 +196,40 @@ const Index = () => {
 
             <div className="mt-10">
               <h2 className="font-serif-italic text-sm text-muted-foreground">
-                questions i've been asking — why
+                what's been on my mind
               </h2>
-              <ul className="mt-4 space-y-3 font-serif-display text-xl leading-snug text-foreground md:text-2xl">
-                <li>do larger models suddenly <span className="font-serif-italic">understand</span>?</li>
-                <li>can we read a model's mind through its embeddings?</li>
-                <li>what makes a representation feel <span className="font-serif-italic">semantic</span>?</li>
-                <li>where does pattern-matching end and meaning begin?</li>
-              </ul>
+              <ol className="mt-5 space-y-5 font-serif-display text-xl leading-snug text-foreground md:text-2xl">
+                <li className="flex gap-5">
+                  <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground pt-2">01</span>
+                  <span>
+                    where does pattern-matching end and{" "}
+                    <span className="font-serif-italic">understanding</span> begin in
+                    large language models
+                  </span>
+                </li>
+                <li className="flex gap-5">
+                  <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground pt-2">02</span>
+                  <span>
+                    which labs and companies are pushing the frontier of AI in an{" "}
+                    <span className="font-serif-italic">ethical, safe, and impact-driven</span> way
+                  </span>
+                </li>
+                <li className="flex gap-5">
+                  <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground pt-2">03</span>
+                  <span>
+                    how to find people who love building things — products,
+                    communities, art — as much as I do
+                  </span>
+                </li>
+                <li className="flex gap-5">
+                  <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground pt-2">04</span>
+                  <span>
+                    how to make a real dent in this world through{" "}
+                    <span className="font-serif-italic">mission-driven</span> research,
+                    startups, and investment
+                  </span>
+                </li>
+              </ol>
             </div>
           </Section>
 
@@ -233,47 +259,54 @@ const Index = () => {
             </div>
           </Section>
 
-          {/* Experience */}
-          <Section id="experience" label="experience">
-            <ul className="space-y-6 text-[16px] leading-relaxed text-foreground/85">
+          {/* Things I've done */}
+          <Section id="experience" label="things i've done">
+            <ul className="space-y-8 text-[16px] leading-relaxed text-foreground/85">
               <li>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <span className="font-serif-display text-xl">
-                    Citadel Securities
+                    Traded markets I'd never touched before
                   </span>
                   <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    Jan 2026
+                    Citadel Securities · 2026
                   </span>
                 </div>
-                <p className="mt-1 font-serif-italic text-muted-foreground">
-                  Women's Ignite Trading Week — simulated trading and post-mortems
-                  with quantitative trader mentors.
-                </p>
-              </li>
-              <li>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                  <span className="font-serif-display text-xl">Koç University</span>
-                  <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    2023
-                  </span>
-                </div>
-                <p className="mt-1 font-serif-italic text-muted-foreground">
-                  Augmented Summer Research — AR/VR, signal processing, and computer
-                  vision in Python and Unity.
+                <p className="mt-2 text-muted-foreground">
+                  Spent a week inside Citadel Securities' Women's Ignite program
+                  running live trading simulations, sizing positions under uncertainty,
+                  and breaking down every decision afterward with quant traders. Came
+                  out thinking very differently about probability and conviction.
                 </p>
               </li>
               <li>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                   <span className="font-serif-display text-xl">
-                    Istanbul University Cerrahpaşa
+                    Taught computers to see, in three dimensions
                   </span>
                   <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                    2022 — 2023
+                    Koç University · 2023
                   </span>
                 </div>
-                <p className="mt-1 font-serif-italic text-muted-foreground">
-                  R&amp;D on facial-imaging deep learning models for early autism
-                  detection, alongside ADOS clinicians.
+                <p className="mt-2 text-muted-foreground">
+                  Joined a summer research lab building AR/VR experiences and
+                  computer-vision pipelines — sensor fusion, signal processing, and
+                  real-time object detection in Python and Unity. My first time
+                  watching a model react to the physical world.
+                </p>
+              </li>
+              <li>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                  <span className="font-serif-display text-xl">
+                    Built deep learning tools for early autism diagnosis
+                  </span>
+                  <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                    Istanbul University Cerrahpaşa · 2022 — 2023
+                  </span>
+                </div>
+                <p className="mt-2 text-muted-foreground">
+                  Worked alongside ADOS clinicians on facial-imaging deep learning
+                  models for early autism detection — translating between research
+                  code and a clinical setting where the stakes were unmistakably real.
                 </p>
               </li>
             </ul>
