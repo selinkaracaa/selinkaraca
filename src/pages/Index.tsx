@@ -176,11 +176,10 @@ const Index = () => {
           <Section id="about" label="about">
             <div className="space-y-5 text-[16px] leading-relaxed text-foreground/85">
               <p>
-                I grew up in <span className="font-serif-italic">Izmir</span>, on the
-                edge of the Aegean. I think it's where I learned that the
-                interesting question is usually{" "}
+                I think the interesting question is usually{" "}
                 <span className="font-serif-italic">why</span>, not{" "}
-                <span className="font-serif-italic">what</span>.
+                <span className="font-serif-italic">what</span> — which is probably
+                why I keep ending up in research.
               </p>
               <p>
                 I'm pursuing a B.S. in Computer Science at Columbia, with minors in
