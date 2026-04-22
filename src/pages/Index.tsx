@@ -144,11 +144,11 @@ const Index = () => {
                 Selin <span className="font-serif-italic font-light">Karaca</span>
               </h1>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-foreground/80">
-                nineteen, in new york. studying computer science at{" "}
-                <span className="text-foreground">Columbia</span> and researching how
-                large language models come to{" "}
+                undergrad at <span className="text-foreground">Columbia</span>{" "}
+                researching how language models come to{" "}
                 <span className="font-serif-italic text-foreground">understand</span>{" "}
-                anything at all. originally from <span className="text-foreground">Izmir</span>.
+                anything at all — and, in the spaces between, dancing, taking
+                photos, and chasing every good question I can find.
               </p>
             </div>
 
