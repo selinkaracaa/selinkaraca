@@ -176,10 +176,9 @@ const Index = () => {
           </div>
         </motion.section>
 
-        {/* photos break */}
-        <div className="mt-20 grid grid-cols-2 gap-4">
-          <Photo src={snapDance} alt="Dance" className="aspect-[3/4]" />
-          <Photo src={snapMet} alt="Met museum" className="aspect-[3/4] mt-12" />
+        {/* photo break */}
+        <div className="mt-20">
+          <Photo src={snapDance} alt="Dance" className="aspect-[4/5]" />
         </div>
 
         {/* what's been on my mind */}
@@ -223,9 +222,8 @@ const Index = () => {
           </div>
         </motion.section>
 
-        {/* photos break */}
-        <div className="mt-20 grid grid-cols-2 gap-4">
-          <Photo src={snapSunset} alt="Sunset" className="aspect-[4/5] mt-10" />
+        {/* photo break */}
+        <div className="mt-20">
           <Photo src={snapSkyline} alt="NYC skyline" className="aspect-[4/5]" />
         </div>
 
@@ -273,10 +271,9 @@ const Index = () => {
           </div>
         </motion.section>
 
-        {/* photos break */}
-        <div className="mt-20 grid grid-cols-2 gap-4">
+        {/* photo break */}
+        <div className="mt-20">
           <Photo src={snapBeach} alt="Beach" className="aspect-[4/5]" />
-          <Photo src={snapSnow} alt="Snow" className="aspect-[4/5] mt-12" />
         </div>
 
         {/* what i create */}
@@ -313,10 +310,9 @@ const Index = () => {
           </div>
         </motion.section>
 
-        {/* final photos */}
-        <div className="mt-20 grid grid-cols-2 gap-4">
+        {/* final photo */}
+        <div className="mt-20">
           <Photo src={snapTreeLighting} alt="Tree lighting" className="aspect-[4/5]" />
-          <Photo src={snapButler} alt="Butler library" className="aspect-[4/5] mt-10" />
         </div>
 
         <footer className="mt-24 flex items-center justify-between border-t border-border pt-6 text-xs lowercase tracking-wider text-muted-foreground">
