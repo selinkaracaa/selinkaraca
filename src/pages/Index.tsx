@@ -5,6 +5,7 @@ import snapTreeLighting from "@/assets/snap-tree-lighting.jpg";
 import snapButler from "@/assets/snap-butler.jpg";
 import snapBeach from "@/assets/snap-beach.jpg";
 import snapSnow from "@/assets/snap-snow.jpg";
+import snapSkyline from "@/assets/snap-skyline.jpg";
 import heroBottom from "@/assets/hero-bottom.jpg";
 import snapMet from "@/assets/snap-met.jpg";
 import heroCenter from "@/assets/hero-center.jpg";
