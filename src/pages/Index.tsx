@@ -82,7 +82,7 @@ const Index = () => {
           <img
             src={heroCenter}
             alt="At the Met"
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover [object-position:center_25%]"
           />
         </div>
         <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
