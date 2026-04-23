@@ -7,6 +7,7 @@ import snapBeach from "@/assets/snap-beach.jpg";
 import snapSnow from "@/assets/snap-snow.jpg";
 import snapSkyline from "@/assets/snap-skyline.jpg";
 import snapMet from "@/assets/snap-met.jpg";
+import heroCenter from "@/assets/hero-center.jpg";
 import snapSunset from "@/assets/snap-sunset.jpg";
 import snapDance from "@/assets/snap-dance.jpg";
 
@@ -79,9 +80,9 @@ const Index = () => {
         </div>
         <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
           <img
-            src={snapMet}
+            src={heroCenter}
             alt="At the Met"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover mx-0 px-0"
           />
         </div>
         <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
