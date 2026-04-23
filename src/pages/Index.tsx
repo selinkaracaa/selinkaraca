@@ -89,7 +89,7 @@ const Index = () => {
           <img
             src={snapSkyline}
             alt="NYC skyline"
-            className="h-full w-full object-cover grayscale"
+            className="h-full w-full object-cover"
           />
         </div>
       </section>
