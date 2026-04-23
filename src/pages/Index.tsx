@@ -70,28 +70,43 @@ const Index = () => {
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
 
-      {/* HERO — three full-width horizontal strips stacked, each ~1/3 of viewport */}
+      {/* HERO — 2x2 asymmetric grid: left tall-then-short, right short-then-tall (mirrored) */}
       <section id="top" className="w-full">
-        <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
-          <img
-            src={snapDance}
-            alt="Behind the scenes"
-            className="h-full w-full object-cover grayscale"
-          />
-        </div>
-        <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
-          <img
-            src={heroCenter}
-            alt="At the Met"
-            className="h-full w-full object-cover [object-position:center_25%]"
-          />
-        </div>
-        <div className="h-[33vh] w-full overflow-hidden md:h-[33.33vh]">
-          <img
-            src={heroBottom}
-            alt="NYC skyline"
-            className="h-full w-full object-cover"
-          />
+        <div className="grid h-screen w-full grid-cols-2 gap-0">
+          {/* Left column */}
+          <div className="grid h-full grid-rows-[3fr_2fr]">
+            <div className="overflow-hidden">
+              <img
+                src={snapDance}
+                alt="Behind the scenes"
+                className="h-full w-full object-cover grayscale"
+              />
+            </div>
+            <div className="overflow-hidden">
+              <img
+                src={heroCenter}
+                alt="At the Met"
+                className="h-full w-full object-cover [object-position:center_25%]"
+              />
+            </div>
+          </div>
+          {/* Right column (mirrored) */}
+          <div className="grid h-full grid-rows-[2fr_3fr]">
+            <div className="overflow-hidden">
+              <img
+                src={snapSunset}
+                alt="Sunset"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="overflow-hidden">
+              <img
+                src={heroBottom}
+                alt="NYC skyline"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
