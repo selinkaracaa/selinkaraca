@@ -212,77 +212,6 @@ const Index = () => {
           </div>
         </motion.section>
 
-      <div className="mx-auto max-w-5xl px-6">
-
-        {/* RESEARCH — new section */}
-        <motion.section
-          id="research"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>research</SectionHeading>
-          <div className="space-y-6">
-            <p className="text-[17px] leading-relaxed text-foreground/85">
-              i think the interesting question is usually{" "}
-              <span className="font-serif-italic">why</span>, not{" "}
-              <span className="font-serif-italic">what</span> — which is why i keep
-              ending up in research.
-            </p>
-            <p className="text-[17px] leading-relaxed text-foreground/85">
-              currently at the{" "}
-              <ExtLink href="https://cris.engineering.columbia.edu/">
-                Complex Resilience Intelligence Systems Lab
-              </ExtLink>{" "}
-              at columbia, asking where pattern-matching ends and{" "}
-              <span className="font-serif-italic">understanding</span> begins in large
-              language models.
-            </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[17px] text-foreground/85">
-              <ExtLink href="#">read the report (pdf)</ExtLink>
-              <ExtLink href="https://cris.engineering.columbia.edu/">cris lab</ExtLink>
-              <ExtLink href="#">github repo</ExtLink>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* MIND */}
-        <motion.section
-          id="mind"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>what's been on my mind</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                where pattern-matching ends and{" "}
-                <span className="font-serif-italic">understanding</span> begins in large
-                language models
-              </>,
-              <>
-                which labs and companies are pushing the frontier of AI in an{" "}
-                <span className="font-serif-italic">ethical, safe, and impact-driven</span>{" "}
-                way
-              </>,
-              <>
-                how to find people who love building things — products, communities, art —
-                as much as i do
-              </>,
-              <>
-                how to make a real dent in this world through{" "}
-                <span className="font-serif-italic">mission-driven</span> research,
-                startups, and investment
-              </>,
-            ]}
-          />
-        </motion.section>
-
         {/* EXPLORED */}
         <motion.section
           id="explored"
@@ -290,7 +219,7 @@ const Index = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(220px,280px)_1fr_minmax(160px,200px)] md:gap-12"
         >
           <SectionHeading>what i've explored</SectionHeading>
           <NumberedList
@@ -319,6 +248,10 @@ const Index = () => {
               </>,
             ]}
           />
+          <div className="hidden flex-col gap-3 md:flex">
+            <img src={sideCitadel} alt="" className="aspect-square w-full object-cover" />
+            <img src={sideDanceGroup} alt="" className="aspect-square w-full object-cover" />
+          </div>
         </motion.section>
       </div>
 
