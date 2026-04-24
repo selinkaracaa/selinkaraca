@@ -1,13 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import portrait from "@/assets/portrait.jpg";
-import snapTreeLighting from "@/assets/snap-tree-lighting.jpg";
-import snapButler from "@/assets/snap-butler.jpg";
-import snapBeach from "@/assets/snap-beach.jpg";
-import snapSnow from "@/assets/snap-snow.jpg";
-import snapMet from "@/assets/snap-met.jpg";
-import snapSunset from "@/assets/snap-sunset.jpg";
-import snapDance from "@/assets/snap-dance.jpg";
 import heroTL from "@/assets/hero-tl.jpg";
 import heroTR from "@/assets/hero-tr.jpg";
 import heroBL from "@/assets/hero-bl.jpg";
