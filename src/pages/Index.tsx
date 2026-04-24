@@ -62,7 +62,7 @@ const Index = () => {
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
           <a href="#research" className="link-underline-light">research</a>
-          <a href="#mind" className="link-underline-light">mind</a>
+          <a href="#explored" className="link-underline-light">explored</a>
         </nav>
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
