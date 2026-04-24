@@ -85,14 +85,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT + TIME — two-column side-by-side */}
+      {/* ABOUT + TIME — about left, time middle, photos right */}
       <motion.section
         id="about"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-32 grid max-w-6xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-2 md:gap-16"
+        className="mx-auto mt-32 grid max-w-6xl scroll-mt-32 grid-cols-1 gap-12 px-6 pt-8 md:mt-48 md:grid-cols-[1fr_1fr_minmax(180px,220px)] md:gap-12"
       >
         {/* LEFT: about */}
         <div className="flex flex-col">
@@ -125,8 +125,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* RIGHT: things i like spending my time on */}
-        <div id="time" className="md:pt-[calc(340px*1.25+2rem)]">
+        {/* MIDDLE: things i like spending my time on */}
+        <div id="time">
           <SectionHeading>things i like spending my time on</SectionHeading>
           <div className="mt-8">
             <NumberedList
@@ -158,11 +158,59 @@ const Index = () => {
                   creating <ExtLink href="#">podcasts</ExtLink> especially around women in
                   tech
                 </>,
+                <>
+                  finding ways to make a real dent in this world through{" "}
+                  <span className="font-serif-italic">mission-driven</span> research,
+                  startups, and investment
+                </>,
               ]}
             />
           </div>
         </div>
+
+        {/* RIGHT: stacked square photos */}
+        <div className="hidden flex-col gap-3 md:flex">
+          <img src={sideDanceWhite} alt="" className="aspect-square w-full object-cover" />
+          <img src={sideDanceSolo} alt="" className="aspect-square w-full object-cover" />
+          <img src={sideLibrary} alt="" className="aspect-square w-full object-cover" />
+        </div>
       </motion.section>
+
+      <div className="mx-auto max-w-5xl px-6">
+
+        {/* RESEARCH */}
+        <motion.section
+          id="research"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+        >
+          <SectionHeading>research</SectionHeading>
+          <div className="space-y-6">
+            <p className="text-[17px] leading-relaxed text-foreground/85">
+              i think the interesting question is usually{" "}
+              <span className="font-serif-italic">why</span>, not{" "}
+              <span className="font-serif-italic">what</span> — which is why i keep
+              ending up in research.
+            </p>
+            <p className="text-[17px] leading-relaxed text-foreground/85">
+              currently at the{" "}
+              <ExtLink href="https://cris.engineering.columbia.edu/">
+                Complex Resilience Intelligence Systems Lab
+              </ExtLink>{" "}
+              at columbia, asking where pattern-matching ends and{" "}
+              <span className="font-serif-italic">understanding</span> begins in large
+              language models.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[17px] text-foreground/85">
+              <ExtLink href="#">read the report (pdf)</ExtLink>
+              <ExtLink href="https://cris.engineering.columbia.edu/">cris lab</ExtLink>
+              <ExtLink href="#">github repo</ExtLink>
+            </div>
+          </div>
+        </motion.section>
 
       <div className="mx-auto max-w-5xl px-6">
 
