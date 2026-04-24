@@ -121,7 +121,7 @@ const Index = () => {
         </div>
 
         {/* RIGHT: things i like spending my time on */}
-        <div id="time" className="md:pt-2">
+        <div id="time" className="md:pt-[calc(340px*1.25+2rem)]">
           <SectionHeading>things i like spending my time on</SectionHeading>
           <div className="mt-8">
             <NumberedList
