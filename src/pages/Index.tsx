@@ -1,13 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import portrait from "@/assets/portrait.jpg";
-import snapTreeLighting from "@/assets/snap-tree-lighting.jpg";
-import snapButler from "@/assets/snap-butler.jpg";
-import snapBeach from "@/assets/snap-beach.jpg";
-import snapSnow from "@/assets/snap-snow.jpg";
-import snapMet from "@/assets/snap-met.jpg";
-import snapSunset from "@/assets/snap-sunset.jpg";
-import snapDance from "@/assets/snap-dance.jpg";
 import heroTL from "@/assets/hero-tl.jpg";
 import heroTR from "@/assets/hero-tr.jpg";
 import heroBL from "@/assets/hero-bl.jpg";
@@ -63,10 +56,8 @@ const Index = () => {
         </a>
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
-          <a href="#time" className="link-underline-light">time</a>
           <a href="#research" className="link-underline-light">research</a>
           <a href="#mind" className="link-underline-light">mind</a>
-          <a href="#album" className="link-underline-light">album</a>
         </nav>
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
@@ -89,24 +80,23 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT — portrait left, intro right */}
+      {/* ABOUT + TIME — two-column side-by-side */}
       <motion.section
         id="about"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-32 grid max-w-5xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+        className="mx-auto mt-32 grid max-w-6xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-2 md:gap-16"
       >
-        <div>
+        {/* LEFT: about */}
+        <div className="flex flex-col">
           <img
             src={portrait}
             alt="Portrait of Selin Karaca"
-            className="aspect-[4/5] w-full object-cover"
+            className="aspect-[4/5] w-full max-w-[340px] object-cover"
           />
-        </div>
-        <div className="md:pt-4">
-          <h1 className="font-serif-display text-5xl leading-[0.95] md:text-6xl">
+          <h1 className="mt-8 font-serif-display text-5xl leading-[0.95] md:text-6xl">
             selin <span className="font-serif-italic font-light">karaca</span>
           </h1>
           <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-foreground/85">
@@ -129,51 +119,47 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* RIGHT: things i like spending my time on */}
+        <div id="time" className="md:pt-2">
+          <SectionHeading>things i like spending my time on</SectionHeading>
+          <div className="mt-8">
+            <NumberedList
+              items={[
+                <>
+                  research at the{" "}
+                  <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
+                  on how large language models develop{" "}
+                  <span className="font-serif-italic">semantic understanding</span> as they
+                  scale across model families
+                </>,
+                <>
+                  building communities at <span className="font-serif-italic">ADI</span>,{" "}
+                  <span className="font-serif-italic">Women in Computer Science</span>,{" "}
+                  <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
+                  <span className="font-serif-italic">Columbia Turkish Students Association</span>
+                </>,
+                <>
+                  TA-ing{" "}
+                  <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
+                  and serving as a CAIAC Technical AI Safety Fellow
+                </>,
+                <>
+                  dancing — latin & ballroom and choreographing for{" "}
+                  <span className="font-serif-italic">orchesis</span>, columbia's largest
+                  performance club
+                </>,
+                <>
+                  creating <ExtLink href="#">podcasts</ExtLink> especially around women in
+                  tech
+                </>,
+              ]}
+            />
+          </div>
+        </div>
       </motion.section>
 
       <div className="mx-auto max-w-5xl px-6">
-        {/* TIME — updated from mockup */}
-        <motion.section
-          id="time"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>things i like spending my time on</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                research at the{" "}
-                <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
-                on how large language models develop{" "}
-                <span className="font-serif-italic">semantic understanding</span> as they
-                scale across model families
-              </>,
-              <>
-                building communities at <span className="font-serif-italic">ADI</span>,{" "}
-                <span className="font-serif-italic">Women in Computer Science</span>,{" "}
-                <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
-                <span className="font-serif-italic">Columbia Turkish Students Association</span>
-              </>,
-              <>
-                TA-ing{" "}
-                <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
-                and serving as a CAIAC Technical AI Safety Fellow
-              </>,
-              <>
-                dancing — latin & ballroom and choreographing for{" "}
-                <span className="font-serif-italic">orchesis</span>, columbia's largest
-                performance club
-              </>,
-              <>
-                creating <ExtLink href="#">podcasts</ExtLink> especially around women in
-                tech
-              </>,
-            ]}
-          />
-        </motion.section>
 
         {/* RESEARCH — new section */}
         <motion.section
@@ -282,27 +268,6 @@ const Index = () => {
           />
         </motion.section>
       </div>
-
-      {/* ALBUM */}
-      <section id="album" className="mt-32 w-full">
-        <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
-          {[snapSunset, snapBeach, snapSnow, snapTreeLighting, snapButler, snapDance, snapMet, portrait, heroTR].map(
-            (src, i) => (
-              <motion.img
-                key={i}
-                src={src}
-                alt=""
-                loading="lazy"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, delay: (i % 3) * 0.05 }}
-                className="aspect-[4/5] w-full object-cover"
-              />
-            )
-          )}
-        </div>
-      </section>
 
       <footer className="mx-auto mt-16 flex max-w-5xl items-center justify-between border-t border-border px-6 py-6 text-xs lowercase tracking-wider text-muted-foreground">
         <span>© {new Date().getFullYear()} selin karaca</span>
