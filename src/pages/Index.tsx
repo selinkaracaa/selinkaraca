@@ -5,6 +5,11 @@ import heroTL from "@/assets/hero-tl.jpg";
 import heroTR from "@/assets/hero-tr.jpg";
 import heroBL from "@/assets/hero-bl.jpg";
 import heroBR from "@/assets/hero-br.jpg";
+import sideCitadel from "@/assets/side-citadel.jpg";
+import sideLibrary from "@/assets/side-library.jpg";
+import sideDanceSolo from "@/assets/side-dance-solo.jpg";
+import sideDanceGroup from "@/assets/side-dance-group.jpg";
+import sideDanceWhite from "@/assets/side-dance-white.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
