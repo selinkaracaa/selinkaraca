@@ -87,24 +87,23 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT — portrait left, intro right */}
+      {/* ABOUT + TIME — two-column side-by-side */}
       <motion.section
         id="about"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-32 grid max-w-5xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+        className="mx-auto mt-32 grid max-w-6xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-2 md:gap-16"
       >
-        <div>
+        {/* LEFT: about */}
+        <div className="flex flex-col">
           <img
             src={portrait}
             alt="Portrait of Selin Karaca"
-            className="aspect-[4/5] w-full object-cover"
+            className="aspect-[4/5] w-full max-w-[340px] object-cover"
           />
-        </div>
-        <div className="md:pt-4">
-          <h1 className="font-serif-display text-5xl leading-[0.95] md:text-6xl">
+          <h1 className="mt-8 font-serif-display text-5xl leading-[0.95] md:text-6xl">
             selin <span className="font-serif-italic font-light">karaca</span>
           </h1>
           <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-foreground/85">
@@ -127,51 +126,47 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* RIGHT: things i like spending my time on */}
+        <div id="time" className="md:pt-2">
+          <SectionHeading>things i like spending my time on</SectionHeading>
+          <div className="mt-8">
+            <NumberedList
+              items={[
+                <>
+                  research at the{" "}
+                  <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
+                  on how large language models develop{" "}
+                  <span className="font-serif-italic">semantic understanding</span> as they
+                  scale across model families
+                </>,
+                <>
+                  building communities at <span className="font-serif-italic">ADI</span>,{" "}
+                  <span className="font-serif-italic">Women in Computer Science</span>,{" "}
+                  <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
+                  <span className="font-serif-italic">Columbia Turkish Students Association</span>
+                </>,
+                <>
+                  TA-ing{" "}
+                  <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
+                  and serving as a CAIAC Technical AI Safety Fellow
+                </>,
+                <>
+                  dancing — latin & ballroom and choreographing for{" "}
+                  <span className="font-serif-italic">orchesis</span>, columbia's largest
+                  performance club
+                </>,
+                <>
+                  creating <ExtLink href="#">podcasts</ExtLink> especially around women in
+                  tech
+                </>,
+              ]}
+            />
+          </div>
+        </div>
       </motion.section>
 
       <div className="mx-auto max-w-5xl px-6">
-        {/* TIME — updated from mockup */}
-        <motion.section
-          id="time"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>things i like spending my time on</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                research at the{" "}
-                <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
-                on how large language models develop{" "}
-                <span className="font-serif-italic">semantic understanding</span> as they
-                scale across model families
-              </>,
-              <>
-                building communities at <span className="font-serif-italic">ADI</span>,{" "}
-                <span className="font-serif-italic">Women in Computer Science</span>,{" "}
-                <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
-                <span className="font-serif-italic">Columbia Turkish Students Association</span>
-              </>,
-              <>
-                TA-ing{" "}
-                <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
-                and serving as a CAIAC Technical AI Safety Fellow
-              </>,
-              <>
-                dancing — latin & ballroom and choreographing for{" "}
-                <span className="font-serif-italic">orchesis</span>, columbia's largest
-                performance club
-              </>,
-              <>
-                creating <ExtLink href="#">podcasts</ExtLink> especially around women in
-                tech
-              </>,
-            ]}
-          />
-        </motion.section>
 
         {/* RESEARCH — new section */}
         <motion.section
