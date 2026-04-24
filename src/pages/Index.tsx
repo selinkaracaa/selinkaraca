@@ -276,27 +276,6 @@ const Index = () => {
         </motion.section>
       </div>
 
-      {/* ALBUM */}
-      <section id="album" className="mt-32 w-full">
-        <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
-          {[snapSunset, snapBeach, snapSnow, snapTreeLighting, snapButler, snapDance, snapMet, portrait, heroTR].map(
-            (src, i) => (
-              <motion.img
-                key={i}
-                src={src}
-                alt=""
-                loading="lazy"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, delay: (i % 3) * 0.05 }}
-                className="aspect-[4/5] w-full object-cover"
-              />
-            )
-          )}
-        </div>
-      </section>
-
       <footer className="mx-auto mt-16 flex max-w-5xl items-center justify-between border-t border-border px-6 py-6 text-xs lowercase tracking-wider text-muted-foreground">
         <span>© {new Date().getFullYear()} selin karaca</span>
         <span className="font-serif-italic">new york</span>
