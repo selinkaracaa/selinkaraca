@@ -5,12 +5,13 @@ import snapTreeLighting from "@/assets/snap-tree-lighting.jpg";
 import snapButler from "@/assets/snap-butler.jpg";
 import snapBeach from "@/assets/snap-beach.jpg";
 import snapSnow from "@/assets/snap-snow.jpg";
-import snapSkyline from "@/assets/snap-skyline.jpg";
-import heroBottom from "@/assets/hero-bottom.jpg";
 import snapMet from "@/assets/snap-met.jpg";
-import heroCenter from "@/assets/hero-center.jpg";
 import snapSunset from "@/assets/snap-sunset.jpg";
 import snapDance from "@/assets/snap-dance.jpg";
+import heroTL from "@/assets/hero-tl.jpg";
+import heroTR from "@/assets/hero-tr.jpg";
+import heroBL from "@/assets/hero-bl.jpg";
+import heroBR from "@/assets/hero-br.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -55,7 +56,7 @@ const SectionHeading = ({ children, id }: { children: React.ReactNode; id?: stri
 const Index = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Fixed top bar overlaying hero strips */}
+      {/* Fixed top bar overlaying hero */}
       <header className="fixed left-0 right-0 top-0 z-50 flex items-start justify-between px-6 pt-6 mix-blend-difference">
         <a href="#top" className="font-serif-italic text-base lowercase text-white">
           selin karaca
@@ -63,49 +64,27 @@ const Index = () => {
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
           <a href="#time" className="link-underline-light">time</a>
+          <a href="#research" className="link-underline-light">research</a>
           <a href="#mind" className="link-underline-light">mind</a>
-          <a href="#explored" className="link-underline-light">explored</a>
           <a href="#album" className="link-underline-light">album</a>
         </nav>
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
 
-      {/* HERO — 2x2 asymmetric grid: left tall-then-short, right short-then-tall (mirrored) */}
+      {/* HERO — clean 2x2 grid matching the mockup */}
       <section id="top" className="w-full">
-        <div className="grid h-screen w-full grid-cols-2 gap-0">
-          {/* Left column */}
-          <div className="grid h-full grid-rows-[3fr_2fr]">
-            <div className="overflow-hidden">
-              <img
-                src={snapDance}
-                alt="Behind the scenes"
-                className="h-full w-full object-cover grayscale"
-              />
-            </div>
-            <div className="overflow-hidden">
-              <img
-                src={heroCenter}
-                alt="At the Met"
-                className="h-full w-full object-cover [object-position:center_25%]"
-              />
-            </div>
+        <div className="grid h-screen w-full grid-cols-2 grid-rows-2 gap-0">
+          <div className="overflow-hidden">
+            <img src={heroTL} alt="On the steps" className="h-full w-full object-cover" />
           </div>
-          {/* Right column (mirrored) */}
-          <div className="grid h-full grid-rows-[2fr_3fr]">
-            <div className="overflow-hidden">
-              <img
-                src={snapSunset}
-                alt="Sunset"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="overflow-hidden">
-              <img
-                src={heroBottom}
-                alt="NYC skyline"
-                className="h-full w-full object-cover"
-              />
-            </div>
+          <div className="overflow-hidden">
+            <img src={heroTR} alt="Columbia at sunset" className="h-full w-full object-cover" />
+          </div>
+          <div className="overflow-hidden">
+            <img src={heroBL} alt="Orchesis on stage" className="h-full w-full object-cover" />
+          </div>
+          <div className="overflow-hidden">
+            <img src={heroBR} alt="In the library" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -131,11 +110,11 @@ const Index = () => {
             selin <span className="font-serif-italic font-light">karaca</span>
           </h1>
           <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-foreground/85">
-            nineteen in nyc! studying computer science at columbia and researching how
-            language models come to understand anything at all. i think the interesting
-            question is usually <span className="font-serif-italic">why</span>, not{" "}
-            <span className="font-serif-italic">what</span> — which is probably why i
-            keep ending up in research.
+            hi, i'm selin! i live in nyc and study computer science at columbia with
+            minors in <span className="font-serif-italic">applied math</span> and{" "}
+            <span className="font-serif-italic">entrepreneurship & innovation</span>.
+            i'm excited to meet people who love building things — products, tech,
+            communities, art — so don't hesitate to reach out.
           </p>
           <p className="mt-6 text-[15px] text-muted-foreground">
             <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
@@ -152,8 +131,8 @@ const Index = () => {
         </div>
       </motion.section>
 
-      {/* THREE NUMBERED SECTIONS — stacked single-column, like Justine */}
       <div className="mx-auto max-w-5xl px-6">
+        {/* TIME — updated from mockup */}
         <motion.section
           id="time"
           variants={fadeUp}
@@ -162,7 +141,7 @@ const Index = () => {
           viewport={{ once: true, margin: "-80px" }}
           className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
         >
-          <SectionHeading>how i spend my time</SectionHeading>
+          <SectionHeading>things i like spending my time on</SectionHeading>
           <NumberedList
             items={[
               <>
@@ -173,13 +152,7 @@ const Index = () => {
                 scale across model families
               </>,
               <>
-                dancing — latin and{" "}
-                <span className="font-serif-italic">orchesis</span>, columbia's
-                contemporary dance company
-              </>,
-              <>
-                building communities at{" "}
-                <span className="font-serif-italic">ADI</span>,{" "}
+                building communities at <span className="font-serif-italic">ADI</span>,{" "}
                 <span className="font-serif-italic">Women in Computer Science</span>,{" "}
                 <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
                 <span className="font-serif-italic">Columbia Turkish Students Association</span>
@@ -189,10 +162,54 @@ const Index = () => {
                 <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
                 and serving as a CAIAC Technical AI Safety Fellow
               </>,
+              <>
+                dancing — latin & ballroom and choreographing for{" "}
+                <span className="font-serif-italic">orchesis</span>, columbia's largest
+                performance club
+              </>,
+              <>
+                creating <ExtLink href="#">podcasts</ExtLink> especially around women in
+                tech
+              </>,
             ]}
           />
         </motion.section>
 
+        {/* RESEARCH — new section */}
+        <motion.section
+          id="research"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+        >
+          <SectionHeading>research</SectionHeading>
+          <div className="space-y-6">
+            <p className="text-[17px] leading-relaxed text-foreground/85">
+              i think the interesting question is usually{" "}
+              <span className="font-serif-italic">why</span>, not{" "}
+              <span className="font-serif-italic">what</span> — which is why i keep
+              ending up in research.
+            </p>
+            <p className="text-[17px] leading-relaxed text-foreground/85">
+              currently at the{" "}
+              <ExtLink href="https://cris.engineering.columbia.edu/">
+                Complex Resilience Intelligence Systems Lab
+              </ExtLink>{" "}
+              at columbia, asking where pattern-matching ends and{" "}
+              <span className="font-serif-italic">understanding</span> begins in large
+              language models.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[17px] text-foreground/85">
+              <ExtLink href="#">read the report (pdf)</ExtLink>
+              <ExtLink href="https://cris.engineering.columbia.edu/">cris lab</ExtLink>
+              <ExtLink href="#">github repo</ExtLink>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* MIND */}
         <motion.section
           id="mind"
           variants={fadeUp}
@@ -227,6 +244,7 @@ const Index = () => {
           />
         </motion.section>
 
+        {/* EXPLORED */}
         <motion.section
           id="explored"
           variants={fadeUp}
@@ -263,39 +281,12 @@ const Index = () => {
             ]}
           />
         </motion.section>
-
-        <motion.section
-          id="create"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>what i like to create</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                a <ExtLink href="#">podcast</ExtLink> about the people behind the
-                research, the startups, and the ideas i can't stop thinking about
-              </>,
-              <>
-                <ExtLink href="#">dance films</ExtLink> — small documentations of
-                rehearsals, performances, and the in-between moments
-              </>,
-              <>
-                <ExtLink href="https://www.instagram.com/selinkaraca/">drawings on instagram</ExtLink>{" "}
-                — usually portraits, usually at 2am
-              </>,
-            ]}
-          />
-        </motion.section>
       </div>
 
-      {/* ALBUM — full-width image grid at the very bottom */}
+      {/* ALBUM */}
       <section id="album" className="mt-32 w-full">
         <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
-          {[snapSunset, snapBeach, snapSnow, snapTreeLighting, snapButler, snapDance, snapMet, snapSkyline, portrait].map(
+          {[snapSunset, snapBeach, snapSnow, snapTreeLighting, snapButler, snapDance, snapMet, portrait, heroTR].map(
             (src, i) => (
               <motion.img
                 key={i}
