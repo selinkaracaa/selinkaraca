@@ -5,6 +5,11 @@ import heroTL from "@/assets/hero-tl.jpg";
 import heroTR from "@/assets/hero-tr.jpg";
 import heroBL from "@/assets/hero-bl.jpg";
 import heroBR from "@/assets/hero-br.jpg";
+import sideCitadel from "@/assets/side-citadel.jpg";
+import sideLibrary from "@/assets/side-library.jpg";
+import sideDanceSolo from "@/assets/side-dance-solo.jpg";
+import sideDanceGroup from "@/assets/side-dance-group.jpg";
+import sideDanceWhite from "@/assets/side-dance-white.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -57,7 +62,7 @@ const Index = () => {
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
           <a href="#research" className="link-underline-light">research</a>
-          <a href="#mind" className="link-underline-light">mind</a>
+          <a href="#explored" className="link-underline-light">explored</a>
         </nav>
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
@@ -80,14 +85,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT + TIME — two-column side-by-side */}
+      {/* ABOUT + TIME — about left, time middle, photos right */}
       <motion.section
         id="about"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-32 grid max-w-6xl grid-cols-1 gap-12 px-6 md:mt-48 md:grid-cols-2 md:gap-16"
+        className="mx-auto mt-32 grid max-w-6xl scroll-mt-32 grid-cols-1 gap-12 px-6 pt-8 md:mt-48 md:grid-cols-[1fr_1fr_minmax(180px,220px)] md:gap-12"
       >
         {/* LEFT: about */}
         <div className="flex flex-col">
@@ -120,8 +125,8 @@ const Index = () => {
           </div>
         </div>
 
-        {/* RIGHT: things i like spending my time on */}
-        <div id="time" className="md:pt-[calc(340px*1.25+2rem)]">
+        {/* MIDDLE: things i like spending my time on */}
+        <div id="time">
           <SectionHeading>things i like spending my time on</SectionHeading>
           <div className="mt-8">
             <NumberedList
@@ -153,22 +158,34 @@ const Index = () => {
                   creating <ExtLink href="#">podcasts</ExtLink> especially around women in
                   tech
                 </>,
+                <>
+                  finding ways to make a real dent in this world through{" "}
+                  <span className="font-serif-italic">mission-driven</span> research,
+                  startups, and investment
+                </>,
               ]}
             />
           </div>
+        </div>
+
+        {/* RIGHT: stacked square photos */}
+        <div className="hidden flex-col gap-3 md:flex">
+          <img src={sideDanceWhite} alt="" className="aspect-square w-full object-cover" />
+          <img src={sideDanceSolo} alt="" className="aspect-square w-full object-cover" />
+          <img src={sideLibrary} alt="" className="aspect-square w-full object-cover" />
         </div>
       </motion.section>
 
       <div className="mx-auto max-w-5xl px-6">
 
-        {/* RESEARCH — new section */}
+        {/* RESEARCH */}
         <motion.section
           id="research"
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
         >
           <SectionHeading>research</SectionHeading>
           <div className="space-y-6">
@@ -195,41 +212,6 @@ const Index = () => {
           </div>
         </motion.section>
 
-        {/* MIND */}
-        <motion.section
-          id="mind"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>what's been on my mind</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                where pattern-matching ends and{" "}
-                <span className="font-serif-italic">understanding</span> begins in large
-                language models
-              </>,
-              <>
-                which labs and companies are pushing the frontier of AI in an{" "}
-                <span className="font-serif-italic">ethical, safe, and impact-driven</span>{" "}
-                way
-              </>,
-              <>
-                how to find people who love building things — products, communities, art —
-                as much as i do
-              </>,
-              <>
-                how to make a real dent in this world through{" "}
-                <span className="font-serif-italic">mission-driven</span> research,
-                startups, and investment
-              </>,
-            ]}
-          />
-        </motion.section>
-
         {/* EXPLORED */}
         <motion.section
           id="explored"
@@ -237,7 +219,7 @@ const Index = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(220px,280px)_1fr_minmax(160px,200px)] md:gap-12"
         >
           <SectionHeading>what i've explored</SectionHeading>
           <NumberedList
@@ -266,6 +248,10 @@ const Index = () => {
               </>,
             ]}
           />
+          <div className="hidden flex-col gap-3 md:flex">
+            <img src={sideCitadel} alt="" className="aspect-square w-full object-cover" />
+            <img src={sideDanceGroup} alt="" className="aspect-square w-full object-cover" />
+          </div>
         </motion.section>
       </div>
 
