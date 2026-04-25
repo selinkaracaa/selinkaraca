@@ -114,7 +114,7 @@ const Index = () => {
                 Selin <span className="font-serif-italic font-light">Karaca</span>
               </h1>
               <p className="mt-5 max-w-[280px] text-[16px] leading-relaxed text-foreground/85">
-                hi, i'm Selin! i live in nyc and study computer science at Columbia Engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. I'm excited to meet people who love building things: products, tech, communities, art<br />so don't hesitate to reach out!!
+                hi, i'm Selin! i live in NYC and study computer science at Columbia Engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. I'm excited to meet people who love building things: products, tech, communities, art<br />so don't hesitate to reach out!!
               </p>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
                 <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
