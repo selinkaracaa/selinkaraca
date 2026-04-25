@@ -113,7 +113,7 @@ const Index = () => {
               <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
                 selin <span className="font-serif-italic font-light">karaca</span>
               </h1>
-              <p className="mt-5 max-w-[260px] text-[14px] leading-relaxed text-foreground/85">
+              <p className="mt-5 max-w-[280px] text-[16px] leading-relaxed text-foreground/85">
                 hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
               </p>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
@@ -245,7 +245,7 @@ const Index = () => {
         </div>
 
         {/* RIGHT: one continuous photo strip from below hero to footer */}
-        <aside className="hidden auto-rows-fr grid-flow-row gap-1 md:grid">
+        <aside className="hidden auto-rows-fr grid-flow-row gap-1 pt-1 md:grid">
           <img src={sideLights} alt="" className="h-full w-full object-cover" />
           <img src={sideWillow} alt="" className="h-full w-full object-cover" />
           <img src={sideArchitecture} alt="" className="h-full w-full object-cover" />
