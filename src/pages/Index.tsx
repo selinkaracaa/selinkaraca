@@ -233,7 +233,7 @@ const Index = () => {
                 <>
                   software engineering and product management at{" "}
                   <span className="font-serif-italic">Efilli</span>, a cookie consent platform
-                  startup! (where I got to design delicious cookies besides websites on Figma)
+                  startup, where I designed websites (and delicious little cookies) on Figma
                 </>,
               ]}
             />
