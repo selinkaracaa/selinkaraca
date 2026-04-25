@@ -91,7 +91,7 @@ const Index = () => {
       </section>
 
       {/* CONTENT WRAPPER — left/middle content with one continuous right photo strip */}
-      <div className="md:grid md:grid-cols-[1fr_140px]">
+      <div className="md:grid md:grid-cols-[1fr_180px]">
         {/* LEFT/MIDDLE COLUMN — all sections stacked */}
         <div>
           {/* ABOUT + TIME */}
@@ -101,7 +101,7 @@ const Index = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            className="grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-16 md:grid-cols-2 md:gap-10 md:pt-12"
+            className="grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-16 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12 md:pt-12"
           >
             {/* LEFT: about */}
             <div className="flex flex-col md:pl-4">
@@ -113,7 +113,7 @@ const Index = () => {
               <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
                 selin <span className="font-serif-italic font-light">karaca</span>
               </h1>
-              <p className="mt-5 max-w-md text-[14px] leading-relaxed text-foreground/85">
+              <p className="mt-5 max-w-[260px] text-[14px] leading-relaxed text-foreground/85">
                 hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
               </p>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
@@ -123,7 +123,7 @@ const Index = () => {
             </div>
 
             {/* MIDDLE: things i like spending my time on */}
-            <div id="time" className="md:pl-2">
+            <div id="time">
               <SectionHeading>where my time goes</SectionHeading>
               <div className="mt-6">
                 <NumberedList
