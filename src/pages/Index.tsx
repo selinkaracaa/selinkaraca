@@ -142,9 +142,7 @@ const Index = () => {
                       <span className="font-serif-italic">Columbia Turkish Students Association</span>
                     </>,
                     <>
-                      TA-ing{" "}
-                      <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
-                      and serving as a CAIAC Technical AI Safety Fellow
+                      creating collaborative spaces for learning and teaching as a Teaching assistant for  Fundamentals of Computer Systems and CAIAC Technical AI Safety Fellow
                     </>,
                     <>
                       dancing latin & ballroom and choreographing for{" "}
