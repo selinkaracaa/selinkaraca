@@ -6,10 +6,15 @@ import heroTR from "@/assets/hero-tr.jpg";
 import heroBL from "@/assets/hero-bl.jpg";
 import heroBR from "@/assets/hero-br.jpg";
 import sideCitadel from "@/assets/side-citadel.jpg";
-import sideLibrary from "@/assets/side-library.jpg";
-import sideDanceSolo from "@/assets/side-dance-solo.jpg";
-import sideDanceGroup from "@/assets/side-dance-group.jpg";
-import sideDanceWhite from "@/assets/side-dance-white.jpg";
+import sideLights from "@/assets/side-lights.jpg";
+import sideArchitecture from "@/assets/side-architecture.jpg";
+import sidePainting from "@/assets/side-painting.jpg";
+import sideSunsetBeach from "@/assets/side-sunset-beach.jpg";
+import sideFountain from "@/assets/side-fountain.jpg";
+import sideSkyline from "@/assets/side-skyline.jpg";
+import sideMet from "@/assets/side-met.jpg";
+import sideSunsetCity from "@/assets/side-sunset-city.jpg";
+import sideWillow from "@/assets/side-willow.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -33,13 +38,13 @@ const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }
 );
 
 const NumberedList = ({ items }: { items: React.ReactNode[] }) => (
-  <ol className="space-y-8">
+  <ol className="space-y-6">
     {items.map((item, i) => (
       <li key={i} className="grid grid-cols-[2.5rem_1fr] gap-4">
-        <span className="font-serif-italic text-base text-muted-foreground pt-1">
+        <span className="font-serif-italic text-sm text-muted-foreground pt-1">
           {String(i + 1).padStart(2, "0")}
         </span>
-        <p className="text-[17px] leading-relaxed text-foreground/85">{item}</p>
+        <p className="text-[15px] leading-relaxed text-foreground/85">{item}</p>
       </li>
     ))}
   </ol>
@@ -67,7 +72,7 @@ const Index = () => {
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
 
-      {/* HERO — clean 2x2 grid matching the mockup */}
+      {/* HERO — clean 2x2 grid */}
       <section id="top" className="w-full">
         <div className="grid h-screen w-full grid-cols-2 grid-rows-2 gap-0">
           <div className="overflow-hidden">
@@ -85,50 +90,38 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT + TIME — about left, time middle, photos right */}
+      {/* ABOUT + TIME — content left/middle, full-height photo strip flush right */}
       <motion.section
         id="about"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-32 grid max-w-6xl scroll-mt-32 grid-cols-1 gap-12 px-6 pt-8 md:mt-48 md:grid-cols-[1fr_1fr_minmax(180px,220px)] md:gap-12"
+        className="relative grid scroll-mt-20 grid-cols-1 gap-10 pl-6 pr-0 pt-16 md:grid-cols-[1fr_1fr_140px] md:gap-10 md:pt-20"
       >
         {/* LEFT: about */}
-        <div className="flex flex-col">
+        <div className="flex flex-col md:pl-4">
           <img
             src={portrait}
             alt="Portrait of Selin Karaca"
-            className="aspect-[4/5] w-full max-w-[340px] object-cover"
+            className="aspect-[4/5] w-full max-w-[200px] object-cover"
           />
-          <h1 className="mt-8 font-serif-display text-5xl leading-[0.95] md:text-6xl">
+          <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
             selin <span className="font-serif-italic font-light">karaca</span>
           </h1>
-          <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-foreground/85">
-            hi, i'm selin! i live in nyc and study computer science at columbia with
-            minors in <span className="font-serif-italic">applied math</span> and{" "}
-            <span className="font-serif-italic">entrepreneurship & innovation</span>.
-            i'm excited to meet people who love building things — products, tech,
-            communities, art — so don't hesitate to reach out.
+          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-foreground/85">
+            hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
           </p>
-          <p className="mt-6 text-[15px] text-muted-foreground">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
             <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
-          </p>
-
-          <div className="mt-12">
-            <SectionHeading>find me elsewhere</SectionHeading>
-            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[17px] text-foreground/85">
-              <ExtLink href="https://www.linkedin.com/in/selinkaraca/">linkedin</ExtLink>
-              <ExtLink href="https://www.instagram.com/selinkaraca/">instagram</ExtLink>
-              <ExtLink href="https://cris.engineering.columbia.edu/">cris lab</ExtLink>
-            </div>
+            <ExtLink href="https://www.linkedin.com/in/selinkaraca/">linkedin</ExtLink>
           </div>
         </div>
 
         {/* MIDDLE: things i like spending my time on */}
-        <div id="time">
-          <SectionHeading>things i like spending my time on</SectionHeading>
-          <div className="mt-8">
+        <div id="time" className="md:pl-2">
+          <SectionHeading>where my time goes</SectionHeading>
+          <div className="mt-6">
             <NumberedList
               items={[
                 <>
@@ -150,13 +143,12 @@ const Index = () => {
                   and serving as a CAIAC Technical AI Safety Fellow
                 </>,
                 <>
-                  dancing — latin & ballroom and choreographing for{" "}
+                  dancing latin & ballroom and choreographing for{" "}
                   <span className="font-serif-italic">orchesis</span>, columbia's largest
                   performance club
                 </>,
                 <>
-                  creating <ExtLink href="#">podcasts</ExtLink> especially around women in
-                  tech
+                  making <ExtLink href="#">podcasts</ExtLink> on women in tech
                 </>,
                 <>
                   finding ways to make a real dent in this world through{" "}
@@ -168,16 +160,18 @@ const Index = () => {
           </div>
         </div>
 
-        {/* RIGHT: stacked square photos */}
-        <div className="hidden flex-col gap-3 md:flex">
-          <img src={sideDanceWhite} alt="" className="aspect-square w-full object-cover" />
-          <img src={sideDanceSolo} alt="" className="aspect-square w-full object-cover" />
-          <img src={sideLibrary} alt="" className="aspect-square w-full object-cover" />
+        {/* RIGHT: full-height photo strip, flush to edge */}
+        <div className="hidden h-full grid-rows-6 gap-1 md:grid">
+          <img src={sideLights} alt="" className="h-full w-full object-cover" />
+          <img src={sideWillow} alt="" className="h-full w-full object-cover" />
+          <img src={sideArchitecture} alt="" className="h-full w-full object-cover" />
+          <img src={sideFountain} alt="" className="h-full w-full object-cover" />
+          <img src={sideSunsetBeach} alt="" className="h-full w-full object-cover" />
+          <img src={sidePainting} alt="" className="h-full w-full object-cover" />
         </div>
       </motion.section>
 
       <div className="mx-auto max-w-5xl px-6">
-
         {/* RESEARCH */}
         <motion.section
           id="research"
@@ -185,28 +179,34 @@ const Index = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
+          className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 pt-4 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
         >
           <SectionHeading>research</SectionHeading>
-          <div className="space-y-6">
-            <p className="text-[17px] leading-relaxed text-foreground/85">
-              i think the interesting question is usually{" "}
-              <span className="font-serif-italic">why</span>, not{" "}
-              <span className="font-serif-italic">what</span> — which is why i keep
-              ending up in research.
-            </p>
-            <p className="text-[17px] leading-relaxed text-foreground/85">
-              currently at the{" "}
+          <div className="space-y-5">
+            <p className="text-[16px] leading-relaxed text-foreground/85">
+              i'm a researcher at the{" "}
               <ExtLink href="https://cris.engineering.columbia.edu/">
                 Complex Resilience Intelligence Systems Lab
               </ExtLink>{" "}
-              at columbia, asking where pattern-matching ends and{" "}
-              <span className="font-serif-italic">understanding</span> begins in large
-              language models.
+              at columbia, where i study how large language models move from surface-level
+              pattern-matching toward something closer to{" "}
+              <span className="font-serif-italic">semantic understanding</span>.
             </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[17px] text-foreground/85">
+            <p className="text-[16px] leading-relaxed text-foreground/85">
+              my current project probes how this capacity emerges{" "}
+              <span className="font-serif-italic">across scale</span> — comparing model
+              families (LLaMA, Qwen, Mistral) at different parameter counts using
+              representational-similarity analysis, probing classifiers, and targeted
+              behavioral tests on compositional and counterfactual reasoning.
+            </p>
+            <p className="text-[16px] leading-relaxed text-foreground/85">
+              the goal isn't just better benchmarks — it's a clearer answer to{" "}
+              <span className="font-serif-italic">when</span> a model stops mimicking
+              meaning and starts representing it, which matters a lot for how we evaluate
+              and trust these systems.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
               <ExtLink href="#">read the report (pdf)</ExtLink>
-              <ExtLink href="https://cris.engineering.columbia.edu/">cris lab</ExtLink>
               <ExtLink href="#">github repo</ExtLink>
             </div>
           </div>
@@ -219,7 +219,7 @@ const Index = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-28 grid scroll-mt-32 grid-cols-1 gap-10 pt-8 md:grid-cols-[minmax(220px,280px)_1fr_minmax(160px,200px)] md:gap-12"
+          className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 pt-4 md:grid-cols-[minmax(220px,280px)_1fr_minmax(160px,200px)] md:gap-12"
         >
           <SectionHeading>what i've explored</SectionHeading>
           <NumberedList
@@ -250,7 +250,9 @@ const Index = () => {
           />
           <div className="hidden flex-col gap-3 md:flex">
             <img src={sideCitadel} alt="" className="aspect-square w-full object-cover" />
-            <img src={sideDanceGroup} alt="" className="aspect-square w-full object-cover" />
+            <img src={sideSkyline} alt="" className="aspect-square w-full object-cover" />
+            <img src={sideMet} alt="" className="aspect-square w-full object-cover" />
+            <img src={sideSunsetCity} alt="" className="aspect-square w-full object-cover" />
           </div>
         </motion.section>
       </div>
