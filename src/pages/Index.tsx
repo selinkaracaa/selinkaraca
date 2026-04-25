@@ -67,7 +67,7 @@ const Index = () => {
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
           <a href="#research" className="link-underline-light">research</a>
-          <a href="#explored" className="link-underline-light">explored</a>
+          <a href="#explored" className="link-underline-light">experience</a>
         </nav>
         <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
       </header>
@@ -211,7 +211,7 @@ const Index = () => {
             viewport={{ once: true, margin: "-80px" }}
             className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pb-16 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
           >
-            <SectionHeading>what i've explored</SectionHeading>
+            <SectionHeading>experiences along the way</SectionHeading>
             <NumberedList
               items={[
                 <>
