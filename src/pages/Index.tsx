@@ -151,7 +151,7 @@ const Index = () => {
                       <span className="font-serif-italic">Columbia Orchesis</span>
                     </>,
                     <>
-                      making <ExtLink href="#">podcasts</ExtLink> on women in tech
+                      making <ExtLink href="#">podcasts</ExtLink> {"\n"} especially on women in tech with diverse and inspiring groups
                     </>,
                     <>
                       finding ways to make a real dent in this world through{" "}
