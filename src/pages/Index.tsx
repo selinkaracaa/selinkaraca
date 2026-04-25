@@ -61,8 +61,8 @@ const Index = () => {
     <main className="min-h-screen bg-background text-foreground">
       {/* Fixed top bar overlaying hero */}
       <header className="fixed left-0 right-0 top-0 z-50 flex items-start justify-between px-6 pt-6 mix-blend-difference">
-        <a href="#top" className="font-serif-italic text-base lowercase text-white">
-          selin karaca
+        <a href="#top" className="font-serif-italic text-base text-white">
+          Selin Karaca
         </a>
         <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
           <a href="#about" className="link-underline-light">about</a>
@@ -111,10 +111,10 @@ const Index = () => {
                 className="aspect-[4/5] w-full max-w-[200px] object-cover"
               />
               <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
-                selin <span className="font-serif-italic font-light">karaca</span>
+                Selin <span className="font-serif-italic font-light">Karaca</span>
               </h1>
               <p className="mt-5 max-w-[280px] text-[16px] leading-relaxed text-foreground/85">
-                hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
+                hi, i'm Selin! i live in nyc and study computer science at Columbia Engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. I'm excited to meet people who love building things: products, tech, communities, art<br />so don't hesitate to reach out!!
               </p>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
                 <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
@@ -148,8 +148,7 @@ const Index = () => {
                     </>,
                     <>
                       dancing latin & ballroom and choreographing for{" "}
-                      <span className="font-serif-italic">orchesis</span>, columbia's largest
-                      performance club
+                      <span className="font-serif-italic">Columbia Orchesis</span>
                     </>,
                     <>
                       making <ExtLink href="#">podcasts</ExtLink> on women in tech
@@ -177,23 +176,23 @@ const Index = () => {
             <SectionHeading>research</SectionHeading>
             <div className="space-y-5">
               <p className="text-[16px] leading-relaxed text-foreground/85">
-                i'm a researcher at the{" "}
+                I'm a researcher at the{" "}
                 <ExtLink href="https://cris.engineering.columbia.edu/">
                   Complex Resilience Intelligence Systems Lab
                 </ExtLink>{" "}
-                at columbia, where i study how large language models move from surface-level
+                <br /> at Columbia, where i study how large language models move from surface-level
                 pattern-matching toward something closer to{" "}
                 <span className="font-serif-italic">semantic understanding</span>.
               </p>
               <p className="text-[16px] leading-relaxed text-foreground/85">
-                my current project probes how this capacity emerges{" "}
-                <span className="font-serif-italic">across scale</span> — comparing model
+                My current project probes how this capacity emerges{" "}
+                <span className="font-serif-italic">across scale</span>&nbsp;, comparing model
                 families (LLaMA, Qwen, Mistral) at different parameter counts using
                 representational-similarity analysis, probing classifiers, and targeted
                 behavioral tests on compositional and counterfactual reasoning.
               </p>
               <p className="text-[16px] leading-relaxed text-foreground/85">
-                the goal isn't just better benchmarks — it's a clearer answer to{" "}
+                The goal isn't just better benchmarks, it's a clearer answer to{" "}
                 <span className="font-serif-italic">when</span> a model stops mimicking
                 meaning and starts representing it, which matters a lot for how we evaluate
                 and trust these systems.
@@ -219,7 +218,7 @@ const Index = () => {
               items={[
                 <>
                   a week inside <span className="font-serif-italic">Citadel Securities</span>'
-                  Women's Ignite program — running live trading simulations and breaking
+                  Women's Ignite program, running live trading simulations and breaking
                   down every decision afterward with quant traders
                 </>,
                 <>
@@ -234,10 +233,9 @@ const Index = () => {
                   alongside ADOS clinicians at Istanbul University Cerrahpaşa
                 </>,
                 <>
-                  product management at{" "}
-                  <span className="font-serif-italic">Efilli</span>, a sustainability
-                  software startup — turning messy user feedback into something a team
-                  could actually ship
+                  software engineering and product management at{" "}
+                  <span className="font-serif-italic">Efilli</span>, a cookie consent platform
+                  startup! (where I got to design delicious cookies on Figma)
                 </>,
               ]}
             />
@@ -260,7 +258,7 @@ const Index = () => {
       </div>
 
       <footer className="mx-auto mt-16 flex max-w-5xl items-center justify-between border-t border-border px-6 py-6 text-xs lowercase tracking-wider text-muted-foreground">
-        <span>© {new Date().getFullYear()} selin karaca</span>
+        <span>© {new Date().getFullYear()} Selin Karaca</span>
         <span className="font-serif-italic">new york</span>
       </footer>
     </main>
