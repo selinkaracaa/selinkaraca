@@ -245,7 +245,7 @@ const Index = () => {
         </div>
 
         {/* RIGHT: one continuous photo strip from below hero to footer */}
-        <aside className="hidden auto-rows-fr grid-flow-row gap-1 md:grid">
+        <aside className="hidden auto-rows-fr grid-flow-row gap-1 pt-1 md:grid">
           <img src={sideLights} alt="" className="h-full w-full object-cover" />
           <img src={sideWillow} alt="" className="h-full w-full object-cover" />
           <img src={sideArchitecture} alt="" className="h-full w-full object-cover" />
