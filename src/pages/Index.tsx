@@ -124,7 +124,7 @@ const Index = () => {
 
             {/* MIDDLE: things i like spending my time on */}
             <div id="time">
-              <SectionHeading>where my time goes</SectionHeading>
+              <SectionHeading>what i am pursuing</SectionHeading>
               <div className="mt-6">
                 <NumberedList
                   items={[
