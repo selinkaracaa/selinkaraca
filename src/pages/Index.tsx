@@ -184,7 +184,7 @@ const Index = () => {
               </p>
               <p className="text-[16px] leading-relaxed text-foreground/85">
                 My current project probes how this capacity emerges{" "}
-                <span className="font-serif-italic">across scale</span>&nbsp;, comparing model
+                <span className="font-serif-italic">across scale</span>, comparing model
                 families (LLaMA, Qwen, Mistral) at different parameter counts using
                 representational-similarity analysis, probing classifiers, and targeted
                 behavioral tests on compositional and counterfactual reasoning.
