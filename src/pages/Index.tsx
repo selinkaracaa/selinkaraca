@@ -90,171 +90,173 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT + TIME — content left/middle, full-height photo strip flush right */}
-      <motion.section
-        id="about"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        className="relative grid scroll-mt-20 grid-cols-1 gap-10 pl-6 pr-0 pt-16 md:grid-cols-[1fr_1fr_140px] md:gap-10 md:pt-20"
-      >
-        {/* LEFT: about */}
-        <div className="flex flex-col md:pl-4">
-          <img
-            src={portrait}
-            alt="Portrait of Selin Karaca"
-            className="aspect-[4/5] w-full max-w-[200px] object-cover"
-          />
-          <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
-            selin <span className="font-serif-italic font-light">karaca</span>
-          </h1>
-          <p className="mt-5 max-w-md text-[14px] leading-relaxed text-foreground/85">
-            hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
-            <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
-            <ExtLink href="https://www.linkedin.com/in/selinkaraca/">linkedin</ExtLink>
-          </div>
-        </div>
+      {/* CONTENT WRAPPER — left/middle content with one continuous right photo strip */}
+      <div className="md:grid md:grid-cols-[1fr_140px]">
+        {/* LEFT/MIDDLE COLUMN — all sections stacked */}
+        <div>
+          {/* ABOUT + TIME */}
+          <motion.section
+            id="about"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-16 md:grid-cols-2 md:gap-10 md:pt-12"
+          >
+            {/* LEFT: about */}
+            <div className="flex flex-col md:pl-4">
+              <img
+                src={portrait}
+                alt="Portrait of Selin Karaca"
+                className="aspect-[4/5] w-full max-w-[200px] object-cover"
+              />
+              <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
+                selin <span className="font-serif-italic font-light">karaca</span>
+              </h1>
+              <p className="mt-5 max-w-md text-[14px] leading-relaxed text-foreground/85">
+                hi, i'm selin! i live in nyc and study computer science at columbia engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. i'm excited to meet people who love building things — products, tech, communities, art — so don't hesitate to reach out.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
+                <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
+                <ExtLink href="https://www.linkedin.com/in/selinkaraca/">linkedin</ExtLink>
+              </div>
+            </div>
 
-        {/* MIDDLE: things i like spending my time on */}
-        <div id="time" className="md:pl-2">
-          <SectionHeading>where my time goes</SectionHeading>
-          <div className="mt-6">
+            {/* MIDDLE: things i like spending my time on */}
+            <div id="time" className="md:pl-2">
+              <SectionHeading>where my time goes</SectionHeading>
+              <div className="mt-6">
+                <NumberedList
+                  items={[
+                    <>
+                      research at the{" "}
+                      <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
+                      on how large language models develop{" "}
+                      <span className="font-serif-italic">semantic understanding</span> as they
+                      scale across model families
+                    </>,
+                    <>
+                      building communities at <span className="font-serif-italic">ADI</span>,{" "}
+                      <span className="font-serif-italic">Women in Computer Science</span>,{" "}
+                      <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
+                      <span className="font-serif-italic">Columbia Turkish Students Association</span>
+                    </>,
+                    <>
+                      TA-ing{" "}
+                      <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
+                      and serving as a CAIAC Technical AI Safety Fellow
+                    </>,
+                    <>
+                      dancing latin & ballroom and choreographing for{" "}
+                      <span className="font-serif-italic">orchesis</span>, columbia's largest
+                      performance club
+                    </>,
+                    <>
+                      making <ExtLink href="#">podcasts</ExtLink> on women in tech
+                    </>,
+                    <>
+                      finding ways to make a real dent in this world through{" "}
+                      <span className="font-serif-italic">mission-driven</span> research,
+                      startups, and investment
+                    </>,
+                  ]}
+                />
+              </div>
+            </div>
+          </motion.section>
+
+          {/* RESEARCH */}
+          <motion.section
+            id="research"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
+          >
+            <SectionHeading>research</SectionHeading>
+            <div className="space-y-5">
+              <p className="text-[16px] leading-relaxed text-foreground/85">
+                i'm a researcher at the{" "}
+                <ExtLink href="https://cris.engineering.columbia.edu/">
+                  Complex Resilience Intelligence Systems Lab
+                </ExtLink>{" "}
+                at columbia, where i study how large language models move from surface-level
+                pattern-matching toward something closer to{" "}
+                <span className="font-serif-italic">semantic understanding</span>.
+              </p>
+              <p className="text-[16px] leading-relaxed text-foreground/85">
+                my current project probes how this capacity emerges{" "}
+                <span className="font-serif-italic">across scale</span> — comparing model
+                families (LLaMA, Qwen, Mistral) at different parameter counts using
+                representational-similarity analysis, probing classifiers, and targeted
+                behavioral tests on compositional and counterfactual reasoning.
+              </p>
+              <p className="text-[16px] leading-relaxed text-foreground/85">
+                the goal isn't just better benchmarks — it's a clearer answer to{" "}
+                <span className="font-serif-italic">when</span> a model stops mimicking
+                meaning and starts representing it, which matters a lot for how we evaluate
+                and trust these systems.
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
+                <ExtLink href="#">read the report (pdf)</ExtLink>
+                <ExtLink href="#">github repo</ExtLink>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* EXPLORED */}
+          <motion.section
+            id="explored"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pb-16 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
+          >
+            <SectionHeading>what i've explored</SectionHeading>
             <NumberedList
               items={[
                 <>
-                  research at the{" "}
-                  <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
-                  on how large language models develop{" "}
-                  <span className="font-serif-italic">semantic understanding</span> as they
-                  scale across model families
+                  a week inside <span className="font-serif-italic">Citadel Securities</span>'
+                  Women's Ignite program — running live trading simulations and breaking
+                  down every decision afterward with quant traders
                 </>,
                 <>
-                  building communities at <span className="font-serif-italic">ADI</span>,{" "}
-                  <span className="font-serif-italic">Women in Computer Science</span>,{" "}
-                  <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
-                  <span className="font-serif-italic">Columbia Turkish Students Association</span>
+                  building an AR/VR{" "}
+                  <span className="font-serif-italic">breathing-regulation game</span> at
+                  Koç University, blending sensor fusion, computer vision, and a little bit
+                  of mindfulness
                 </>,
                 <>
-                  TA-ing{" "}
-                  <span className="font-serif-italic">Fundamentals of Computer Systems</span>{" "}
-                  and serving as a CAIAC Technical AI Safety Fellow
+                  deep learning models for{" "}
+                  <span className="font-serif-italic">early autism diagnosis</span>{" "}
+                  alongside ADOS clinicians at Istanbul University Cerrahpaşa
                 </>,
                 <>
-                  dancing latin & ballroom and choreographing for{" "}
-                  <span className="font-serif-italic">orchesis</span>, columbia's largest
-                  performance club
-                </>,
-                <>
-                  making <ExtLink href="#">podcasts</ExtLink> on women in tech
-                </>,
-                <>
-                  finding ways to make a real dent in this world through{" "}
-                  <span className="font-serif-italic">mission-driven</span> research,
-                  startups, and investment
+                  product management at{" "}
+                  <span className="font-serif-italic">Efilli</span>, a sustainability
+                  software startup — turning messy user feedback into something a team
+                  could actually ship
                 </>,
               ]}
             />
-          </div>
+          </motion.section>
         </div>
 
-        {/* RIGHT: full-height photo strip, flush to edge */}
-        <div className="hidden h-full grid-rows-6 gap-1 md:grid">
+        {/* RIGHT: one continuous photo strip from below hero to footer */}
+        <aside className="hidden auto-rows-fr grid-flow-row gap-1 md:grid">
           <img src={sideLights} alt="" className="h-full w-full object-cover" />
           <img src={sideWillow} alt="" className="h-full w-full object-cover" />
           <img src={sideArchitecture} alt="" className="h-full w-full object-cover" />
           <img src={sideFountain} alt="" className="h-full w-full object-cover" />
           <img src={sideSunsetBeach} alt="" className="h-full w-full object-cover" />
           <img src={sidePainting} alt="" className="h-full w-full object-cover" />
-        </div>
-      </motion.section>
-
-      <div className="mx-auto max-w-5xl px-6">
-        {/* RESEARCH */}
-        <motion.section
-          id="research"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 pt-4 md:grid-cols-[minmax(260px,340px)_1fr] md:gap-16"
-        >
-          <SectionHeading>research</SectionHeading>
-          <div className="space-y-5">
-            <p className="text-[16px] leading-relaxed text-foreground/85">
-              i'm a researcher at the{" "}
-              <ExtLink href="https://cris.engineering.columbia.edu/">
-                Complex Resilience Intelligence Systems Lab
-              </ExtLink>{" "}
-              at columbia, where i study how large language models move from surface-level
-              pattern-matching toward something closer to{" "}
-              <span className="font-serif-italic">semantic understanding</span>.
-            </p>
-            <p className="text-[16px] leading-relaxed text-foreground/85">
-              my current project probes how this capacity emerges{" "}
-              <span className="font-serif-italic">across scale</span> — comparing model
-              families (LLaMA, Qwen, Mistral) at different parameter counts using
-              representational-similarity analysis, probing classifiers, and targeted
-              behavioral tests on compositional and counterfactual reasoning.
-            </p>
-            <p className="text-[16px] leading-relaxed text-foreground/85">
-              the goal isn't just better benchmarks — it's a clearer answer to{" "}
-              <span className="font-serif-italic">when</span> a model stops mimicking
-              meaning and starts representing it, which matters a lot for how we evaluate
-              and trust these systems.
-            </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
-              <ExtLink href="#">read the report (pdf)</ExtLink>
-              <ExtLink href="#">github repo</ExtLink>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* EXPLORED */}
-        <motion.section
-          id="explored"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 pt-4 md:grid-cols-[minmax(220px,280px)_1fr_minmax(160px,200px)] md:gap-12"
-        >
-          <SectionHeading>what i've explored</SectionHeading>
-          <NumberedList
-            items={[
-              <>
-                a week inside <span className="font-serif-italic">Citadel Securities</span>'
-                Women's Ignite program — running live trading simulations and breaking
-                down every decision afterward with quant traders
-              </>,
-              <>
-                building an AR/VR{" "}
-                <span className="font-serif-italic">breathing-regulation game</span> at
-                Koç University, blending sensor fusion, computer vision, and a little bit
-                of mindfulness
-              </>,
-              <>
-                deep learning models for{" "}
-                <span className="font-serif-italic">early autism diagnosis</span>{" "}
-                alongside ADOS clinicians at Istanbul University Cerrahpaşa
-              </>,
-              <>
-                product management at{" "}
-                <span className="font-serif-italic">Efilli</span>, a sustainability
-                software startup — turning messy user feedback into something a team
-                could actually ship
-              </>,
-            ]}
-          />
-          <div className="hidden flex-col gap-3 md:flex">
-            <img src={sideCitadel} alt="" className="aspect-square w-full object-cover" />
-            <img src={sideSkyline} alt="" className="aspect-square w-full object-cover" />
-            <img src={sideMet} alt="" className="aspect-square w-full object-cover" />
-            <img src={sideSunsetCity} alt="" className="aspect-square w-full object-cover" />
-          </div>
-        </motion.section>
+          <img src={sideCitadel} alt="" className="h-full w-full object-cover" />
+          <img src={sideSkyline} alt="" className="h-full w-full object-cover" />
+          <img src={sideMet} alt="" className="h-full w-full object-cover" />
+          <img src={sideSunsetCity} alt="" className="h-full w-full object-cover" />
+        </aside>
       </div>
 
       <footer className="mx-auto mt-16 flex max-w-5xl items-center justify-between border-t border-border px-6 py-6 text-xs lowercase tracking-wider text-muted-foreground">
