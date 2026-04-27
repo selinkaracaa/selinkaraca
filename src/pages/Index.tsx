@@ -145,12 +145,15 @@ const Index = () => {
                       creating collaborative spaces for learning and teaching as a Teaching assistant for Fundamentals of Computer Systems, Discrete Mathematics and CAIAC Technical AI Safety Fellow
                     </>,
                     <>
-                      dancing latin & ballroom and choreographing for{" "}
-                      <span className="font-serif-italic">Columbia Orchesis</span>
+                      <ExtLink href="https://www.youtube.com/@selinkaracaaa">dancing latin & ballroom</ExtLink> and choreographing for{" "}
+                      <ExtLink href="https://www.youtube.com/@CUorchesis"><span className="font-serif-italic">Columbia Orchesis</span></ExtLink>
                     </>,
                     <>
-                      making <ExtLink href="#">podcasts</ExtLink>
-                      {"\n"} especially on women in tech with diverse and inspiring groups: Reign Of Chains, the WiCS Network, A Pinch of Inspiration from Girls In Tech{" "}
+                      making podcasts
+                      {"\n"} especially on women in tech with diverse and inspiring groups:{" "}
+                      <ExtLink href="#">Reign Of Chains</ExtLink>,{" "}
+                      <ExtLink href="#">the WiCS Network</ExtLink>,{" "}
+                      <ExtLink href="#">A Pinch of Inspiration from Girls In Tech</ExtLink>
                     </>,
                     <>
                       finding ways to make a real dent in this world through{" "}
