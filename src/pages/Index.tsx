@@ -233,14 +233,15 @@ const Index = () => {
                   .
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The idea that's pulling me in: turn experimental data into an{" "}
-                  <span className="font-serif-italic">image</span>, and let a vision model
-                  guess the shape of the law hiding inside it.
+                  The approach is unusual: experimental data gets encoded as an{" "}
+                  <span className="font-serif-italic">image</span>, and a vision model
+                  learns to predict which mathematical operators most likely shape the
+                  underlying law.
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  I love that it reframes discovery as something you can almost{" "}
-                  <span className="font-serif-italic">see</span>, and hints at a future
-                  where AI doesn't just predict, it proposes.
+                  What stays with me is the reframing, discovery as something you can
+                  almost <span className="font-serif-italic">see</span>, and a hint at AI
+                  that doesn't just predict, but proposes.
                 </p>
               </div>
             </div>
