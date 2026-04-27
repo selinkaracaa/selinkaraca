@@ -133,7 +133,11 @@ const Index = () => {
                       <ExtLink href="https://cris.cheme.columbia.edu/">CRIS Lab</ExtLink>{" "}
                       on how large language models develop{" "}
                       <span className="font-serif-italic">semantic understanding</span> as they
-                      scale across model families
+                      scale across model families, and at the{" "}
+                      <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">PRAISE Lab</ExtLink>{" "}
+                      on{" "}
+                      <span className="font-serif-italic">automatic symbolic law discovery</span>{" "}
+                      using computer vision to recover scientific equations from data
                     </>,
                     <>
                       building communities at <span className="font-serif-italic">ADI</span>,{" "}
@@ -220,25 +224,39 @@ const Index = () => {
                   <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
                     PRAISE Lab
                   </ExtLink>{" "}
-                  at Columbia, where i'll be working on{" "}
-                  <span className="font-serif-italic">
-                    Automatic Symbolic Law Discovery: A Computer Vision Approach
-                  </span>
+                  at Columbia, working with Prof. Ansaf Salleb-Aouissi and Prof. Nakul
+                  Verma on{" "}
+                  <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/project-law.html">
+                    <span className="font-serif-italic">
+                      Automatic Symbolic Law Discovery: A Computer Vision Approach
+                    </span>
+                  </ExtLink>
                   .
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The project asks whether vision models can do more than recognize
-                  objects, can they watch a physical system unfold and recover the{" "}
-                  <span className="font-serif-italic">symbolic laws</span> that govern it?
-                  We're combining computer vision with symbolic regression to extract
-                  interpretable equations directly from raw video, rather than from
-                  hand-engineered state variables.
+                  Discovering scientific laws from data is hard because the space of
+                  possible mathematical relationships, variables, and operators is
+                  effectively infinite. The project borrows ideas from computer vision to
+                  cut through that search: experimental data is{" "}
+                  <span className="font-serif-italic">encoded as an image</span> with
+                  super-resolution, fed through a deep network pipeline, and used to
+                  predict which symbolic operators are most likely to appear in the true
+                  law.
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  If it works, it points toward a way of doing science where models don't
-                  just predict outcomes but propose the{" "}
-                  <span className="font-serif-italic">underlying rules</span>, a small step
-                  toward AI that contributes to discovery rather than just automation.
+                  Those predicted operator importances then{" "}
+                  <span className="font-serif-italic">prior</span> the symbolic search,
+                  dramatically shrinking an exponential problem. On simulated and
+                  physics/math benchmarks with up to ten variables, the approach reaches
+                  ~91% accuracy and 0.96 AUC, outperforming prior methods on fit,
+                  discovery rate, and formula succinctness.
+                </p>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  The discovered equations act as{" "}
+                  <span className="font-serif-italic">first drafts of scientific laws</span>{" "}
+                  — useful for hypothesis building and for understanding the structure
+                  underlying complex systems. It's a small step toward AI that contributes
+                  to discovery rather than just automation.
                 </p>
               </div>
             </div>
