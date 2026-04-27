@@ -199,6 +199,18 @@ const Index = () => {
                 meaning and starts representing it, which matters a lot for how we evaluate
                 and trust these systems.
               </p>
+              <p className="text-[16px] leading-relaxed text-foreground/85">
+                I've also recently joined the{" "}
+                <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
+                  PRAISE Lab
+                </ExtLink>{" "}
+                at Columbia, where i'll be working on{" "}
+                <span className="font-serif-italic">
+                  Automatic Symbolic Law Discovery: A Computer Vision Approach
+                </span>
+                , exploring how vision models can recover symbolic physical laws from raw
+                visual data.
+              </p>
               <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
                 <ExtLink href="#">read the report (pdf)</ExtLink>
                 <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
