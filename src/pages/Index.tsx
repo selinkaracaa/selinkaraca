@@ -176,44 +176,70 @@ const Index = () => {
             className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
           >
             <SectionHeading>research</SectionHeading>
-            <div className="space-y-5">
-              <p className="text-[16px] leading-relaxed text-foreground/85">
-                I'm a researcher at the{" "}
-                <ExtLink href="https://cris.cheme.columbia.edu/">
-                  Complex Resilience Intelligence Systems Lab
-                </ExtLink>{" "}
-                <br /> at Columbia, where i study how large language models move from surface-level
-                pattern-matching toward something closer to{" "}
-                <span className="font-serif-italic">semantic understanding</span>.
-              </p>
-              <p className="text-[16px] leading-relaxed text-foreground/85">
-                My current project probes how this capacity emerges{" "}
-                <span className="font-serif-italic">across scale</span>, comparing model
-                families (LLaMA, Qwen, Mistral) at different parameter counts using
-                representational-similarity analysis, probing classifiers, and targeted
-                behavioral tests on compositional and counterfactual reasoning.
-              </p>
-              <p className="text-[16px] leading-relaxed text-foreground/85">
-                The goal isn't just better benchmarks, it's a clearer answer to{" "}
-                <span className="font-serif-italic">when</span> a model stops mimicking
-                meaning and starts representing it, which matters a lot for how we evaluate
-                and trust these systems.
-              </p>
-              <p className="text-[16px] leading-relaxed text-foreground/85">
-                I've also recently joined the{" "}
-                <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
-                  PRAISE Lab
-                </ExtLink>{" "}
-                at Columbia, where i'll be working on{" "}
-                <span className="font-serif-italic">
-                  Automatic Symbolic Law Discovery: A Computer Vision Approach
-                </span>
-                , exploring how vision models can recover symbolic physical laws from raw
-                visual data.
-              </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
-                <ExtLink href="#">read the report (pdf)</ExtLink>
-                <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
+            <div className="space-y-12">
+              {/* CRIS Lab */}
+              <div className="space-y-5">
+                <h3 className="font-serif-italic text-xl text-foreground">
+                  CRIS Lab — semantic understanding in LLMs
+                </h3>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  I'm a researcher at the{" "}
+                  <ExtLink href="https://cris.cheme.columbia.edu/">
+                    Complex Resilience Intelligence Systems Lab
+                  </ExtLink>{" "}
+                  at Columbia, where i study how large language models move from
+                  surface-level pattern-matching toward something closer to{" "}
+                  <span className="font-serif-italic">semantic understanding</span>.
+                </p>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  My current project probes how this capacity emerges{" "}
+                  <span className="font-serif-italic">across scale</span>, comparing model
+                  families (LLaMA, Qwen, Mistral) at different parameter counts using
+                  representational-similarity analysis, probing classifiers, and targeted
+                  behavioral tests on compositional and counterfactual reasoning.
+                </p>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  The goal isn't just better benchmarks, it's a clearer answer to{" "}
+                  <span className="font-serif-italic">when</span> a model stops mimicking
+                  meaning and starts representing it, which matters a lot for how we
+                  evaluate and trust these systems.
+                </p>
+                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-[16px] text-foreground/85">
+                  <ExtLink href="#">read the report (pdf)</ExtLink>
+                  <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
+                </div>
+              </div>
+
+              {/* PRAISE Lab */}
+              <div className="space-y-5">
+                <h3 className="font-serif-italic text-xl text-foreground">
+                  PRAISE Lab — symbolic law discovery from vision
+                </h3>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  I've also recently joined the{" "}
+                  <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
+                    PRAISE Lab
+                  </ExtLink>{" "}
+                  at Columbia, where i'll be working on{" "}
+                  <span className="font-serif-italic">
+                    Automatic Symbolic Law Discovery: A Computer Vision Approach
+                  </span>
+                  .
+                </p>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  The project asks whether vision models can do more than recognize
+                  objects, can they watch a physical system unfold and recover the{" "}
+                  <span className="font-serif-italic">symbolic laws</span> that govern it?
+                  We're combining computer vision with symbolic regression to extract
+                  interpretable equations directly from raw video, rather than from
+                  hand-engineered state variables.
+                </p>
+                <p className="text-[16px] leading-relaxed text-foreground/85">
+                  If it works, it points toward a way of doing science where models don't
+                  just predict outcomes but propose the{" "}
+                  <span className="font-serif-italic">underlying rules</span>, a small step
+                  toward AI that contributes to discovery rather than just automation.
+                </p>
               </div>
             </div>
           </motion.section>
