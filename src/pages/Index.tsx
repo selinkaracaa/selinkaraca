@@ -224,39 +224,23 @@ const Index = () => {
                   <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
                     PRAISE Lab
                   </ExtLink>{" "}
-                  at Columbia, working with Prof. Ansaf Salleb-Aouissi and Prof. Nakul
-                  Verma on{" "}
+                  at Columbia, working on{" "}
                   <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/project-law.html">
                     <span className="font-serif-italic">
-                      Automatic Symbolic Law Discovery: A Computer Vision Approach
+                      Automatic Symbolic Law Discovery
                     </span>
                   </ExtLink>
                   .
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  Discovering scientific laws from data is hard because the space of
-                  possible mathematical relationships, variables, and operators is
-                  effectively infinite. The project borrows ideas from computer vision to
-                  cut through that search: experimental data is{" "}
-                  <span className="font-serif-italic">encoded as an image</span> with
-                  super-resolution, fed through a deep network pipeline, and used to
-                  predict which symbolic operators are most likely to appear in the true
-                  law.
+                  The idea that's pulling me in: turn experimental data into an{" "}
+                  <span className="font-serif-italic">image</span>, and let a vision model
+                  guess the shape of the law hiding inside it.
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  Those predicted operator importances then{" "}
-                  <span className="font-serif-italic">prior</span> the symbolic search,
-                  dramatically shrinking an exponential problem. On simulated and
-                  physics/math benchmarks with up to ten variables, the approach reaches
-                  ~91% accuracy and 0.96 AUC, outperforming prior methods on fit,
-                  discovery rate, and formula succinctness.
-                </p>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The discovered equations act as{" "}
-                  <span className="font-serif-italic">first drafts of scientific laws</span>{" "}
-                  — useful for hypothesis building and for understanding the structure
-                  underlying complex systems. It's a small step toward AI that contributes
-                  to discovery rather than just automation.
+                  I love that it reframes discovery as something you can almost{" "}
+                  <span className="font-serif-italic">see</span>, and hints at a future
+                  where AI doesn't just predict, it proposes.
                 </p>
               </div>
             </div>
