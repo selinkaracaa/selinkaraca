@@ -142,14 +142,15 @@ const Index = () => {
                       <span className="font-serif-italic">Columbia Turkish Students Association</span>
                     </>,
                     <>
-                      creating collaborative spaces for learning and teaching as a Teaching assistant for  Fundamentals of Computer Systems and CAIAC Technical AI Safety Fellow
+                      creating collaborative spaces for learning and teaching as a Teaching assistant for Fundamentals of Computer Systems, Discrete Mathematics and CAIAC Technical AI Safety Fellow
                     </>,
                     <>
                       dancing latin & ballroom and choreographing for{" "}
                       <span className="font-serif-italic">Columbia Orchesis</span>
                     </>,
                     <>
-                      making <ExtLink href="#">podcasts</ExtLink> {"\n"} especially on women in tech with diverse and inspiring groups
+                      making <ExtLink href="#">podcasts</ExtLink>
+                      {"\n"} especially on women in tech with diverse and inspiring groups: Reign Of Chains, the WiCS Network, A Pinch of Inspiration from Girls In Tech{" "}
                     </>,
                     <>
                       finding ways to make a real dent in this world through{" "}
