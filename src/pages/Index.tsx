@@ -130,7 +130,7 @@ const Index = () => {
                   items={[
                     <>
                       research at the{" "}
-                      <ExtLink href="https://cris.engineering.columbia.edu/">CRIS Lab</ExtLink>{" "}
+                      <ExtLink href="https://cris.cheme.columbia.edu/">CRIS Lab</ExtLink>{" "}
                       on how large language models develop{" "}
                       <span className="font-serif-italic">semantic understanding</span> as they
                       scale across model families
@@ -151,9 +151,9 @@ const Index = () => {
                     <>
                       making podcasts
                       {"\n"} especially on women in tech with diverse and inspiring groups:{" "}
-                      <ExtLink href="#">Reign Of Chains</ExtLink>,{" "}
-                      <ExtLink href="#">the WiCS Network</ExtLink>,{" "}
-                      <ExtLink href="#">A Pinch of Inspiration from Girls In Tech</ExtLink>
+                      <ExtLink href="https://open.spotify.com/show/0ECKwyX3XOFl5wEtKWWdpZ?si=e347f7fa4db64c63">Reign Of Chains</ExtLink>{" "}
+                      and{" "}
+                      <ExtLink href="https://open.spotify.com/show/5tZbbhiqsr3acOScglDnfq?si=bc1ec5ecf8764d02">the WiCS Network</ExtLink>
                     </>,
                     <>
                       finding ways to make a real dent in this world through{" "}
@@ -179,7 +179,7 @@ const Index = () => {
             <div className="space-y-5">
               <p className="text-[16px] leading-relaxed text-foreground/85">
                 I'm a researcher at the{" "}
-                <ExtLink href="https://cris.engineering.columbia.edu/">
+                <ExtLink href="https://cris.cheme.columbia.edu/">
                   Complex Resilience Intelligence Systems Lab
                 </ExtLink>{" "}
                 <br /> at Columbia, where i study how large language models move from surface-level
@@ -201,7 +201,7 @@ const Index = () => {
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-[16px] text-foreground/85">
                 <ExtLink href="#">read the report (pdf)</ExtLink>
-                <ExtLink href="#">github repo</ExtLink>
+                <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
               </div>
             </div>
           </motion.section>
