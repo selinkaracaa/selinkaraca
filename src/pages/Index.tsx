@@ -133,7 +133,11 @@ const Index = () => {
                       <ExtLink href="https://cris.cheme.columbia.edu/">CRIS Lab</ExtLink>{" "}
                       on how large language models develop{" "}
                       <span className="font-serif-italic">semantic understanding</span> as they
-                      scale across model families
+                      scale across model families, and at the{" "}
+                      <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">PRAISE Lab</ExtLink>{" "}
+                      on{" "}
+                      <span className="font-serif-italic">automatic symbolic law discovery</span>{" "}
+                      using computer vision to recover scientific equations from data
                     </>,
                     <>
                       building communities at <span className="font-serif-italic">ADI</span>,{" "}
