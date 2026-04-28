@@ -294,17 +294,17 @@ const Index = () => {
         </div>
 
         {/* RIGHT: one continuous photo strip from below hero to footer */}
-        <aside className="hidden auto-rows-fr grid-flow-row gap-1 pt-1 md:grid">
-          <img src={sideLights} alt="" className="h-full w-full object-cover" />
-          <img src={sideWillow} alt="" className="h-full w-full object-cover" />
-          <img src={sideArchitecture} alt="" className="h-full w-full object-cover" />
-          <img src={sideFountain} alt="" className="h-full w-full object-cover" />
-          <img src={sideSunsetBeach} alt="" className="h-full w-full object-cover" />
-          <img src={sidePainting} alt="" className="h-full w-full object-cover" />
-          <img src={sideCitadel} alt="" className="h-full w-full object-cover" />
-          <img src={sideSkyline} alt="" className="h-full w-full object-cover" />
-          <img src={sideMet} alt="" className="h-full w-full object-cover" />
-          <img src={sideSunsetCity} alt="" className="h-full w-full object-cover" />
+        <aside className="hidden md:flex flex-col gap-1 pt-1">
+          <img src={sideLights} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideWillow} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideArchitecture} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideFountain} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideSunsetBeach} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sidePainting} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideCitadel} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideSkyline} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideMet} alt="" className="flex-1 min-h-0 w-full object-cover" />
+          <img src={sideSunsetCity} alt="" className="flex-1 min-h-0 w-full object-cover" />
         </aside>
       </div>
 
