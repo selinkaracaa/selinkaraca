@@ -217,7 +217,7 @@ const Index = () => {
               {/* PRAISE Lab */}
               <div className="space-y-5">
                 <h3 className="font-serif-italic text-xl text-foreground">
-                  PRAISE Lab — symbolic law discovery from vision
+                  PRAISE Lab — symbolic law discovery with computer vision
                 </h3>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
                   I've recently joined the{" "}
