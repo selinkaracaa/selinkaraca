@@ -269,8 +269,8 @@ const Index = () => {
                 <>
                   a week at <span className="font-serif-italic">Microsoft</span> through
                   their <span className="font-serif-italic">Girls in AI</span> program,
-                  building with Azure AI alongside engineers and other students from
-                  across Europe
+                  working on sustainability solutions with Azure image recognition
+                  alongside people sharing different visions of what AI could become
                 </>,
                 <>
                   building an AR/VR{" "}
