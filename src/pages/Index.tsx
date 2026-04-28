@@ -155,7 +155,7 @@ const Index = () => {
                     <>
                       making podcasts
                       {"\n"} especially on women in tech with diverse and inspiring groups:{" "}
-                      <ExtLink href="https://open.spotify.com/show/0ECKwyX3XOFl5wEtKWWdpZ?si=e347f7fa4db64c63">Reign Of Chains</ExtLink>{" "}
+                      <ExtLink href="https://open.spotify.com/show/0Z2mQG5grq8SU8f4G2u8fe?si=d43780fcdb734602">Reign Of Chains</ExtLink>{" "}
                       and{" "}
                       <ExtLink href="https://open.spotify.com/show/5tZbbhiqsr3acOScglDnfq?si=bc1ec5ecf8764d02">the WiCS Network</ExtLink>
                     </>,
@@ -198,9 +198,9 @@ const Index = () => {
                 <p className="text-[16px] leading-relaxed text-foreground/85">
                   My current project probes how this capacity emerges{" "}
                   <span className="font-serif-italic">across scale</span>, comparing model
-                  families (LLaMA, Qwen, Mistral) at different parameter counts using
-                  representational-similarity analysis, probing classifiers, and targeted
-                  behavioral tests on compositional and counterfactual reasoning.
+                  families (OpenAI, Qwen, Pythia, Cerebras) at different parameter counts
+                  using representational-similarity analysis, probing classifiers, and
+                  targeted behavioral tests on compositional and counterfactual reasoning.
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
                   The goal isn't just better benchmarks, it's a clearer answer to{" "}
@@ -220,9 +220,10 @@ const Index = () => {
                   PRAISE Lab — symbolic law discovery from vision
                 </h3>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  I've also recently joined the{" "}
+                  I've recently joined the{" "}
                   <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
-                    PRAISE Lab
+                    Practice and Research in Artificial Intelligence for Science and
+                    Education
                   </ExtLink>{" "}
                   at Columbia, working on{" "}
                   <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/project-law.html">
@@ -233,15 +234,16 @@ const Index = () => {
                   .
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The approach is unusual: experimental data gets encoded as an{" "}
-                  <span className="font-serif-italic">image</span>, and a vision model
-                  learns to predict which mathematical operators most likely shape the
-                  underlying law.
+                  The novelty of the approach lies in (1) encoding the input data as an{" "}
+                  <span className="font-serif-italic">image</span> with super-resolution,
+                  (2) developing an appropriate deep network pipeline, and (3) predicting
+                  the importance of each mathematical operator from the relationship image.
                 </p>
                 <p className="text-[16px] leading-relaxed text-foreground/85">
-                  What stays with me is the reframing, discovery as something you can
-                  almost <span className="font-serif-italic">see</span>, and a hint at AI
-                  that doesn't just predict, but proposes.
+                  What I find compelling is the reframing of discovery as a{" "}
+                  <span className="font-serif-italic">visual</span> problem, treating an
+                  equation as a shape the model can learn to recognize before it ever
+                  writes it down.
                 </p>
               </div>
             </div>
@@ -263,6 +265,12 @@ const Index = () => {
                   a week inside <span className="font-serif-italic">Citadel Securities</span>'
                   Women's Ignite program, running live trading simulations and breaking
                   down every decision afterward with quant traders
+                </>,
+                <>
+                  a week at <span className="font-serif-italic">Microsoft</span> through
+                  their <span className="font-serif-italic">Girls in AI</span> program,
+                  building with Azure AI alongside engineers and other students from
+                  across Europe
                 </>,
                 <>
                   building an AR/VR{" "}
