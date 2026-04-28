@@ -267,10 +267,10 @@ const Index = () => {
                   down every decision afterward with quant traders
                 </>,
                 <>
-                  a week at <span className="font-serif-italic">Microsoft</span> for
+                  a week at <span className="font-serif-italic">Microsoft</span> through
                   their <span className="font-serif-italic">Girls in AI</span> program,
-                  prototyping a sustainability tool with Azure image recognition
-                  alongside girls who each had a different idea of what AI could be for
+                  working on sustainability solutions with Azure image recognition
+                  alongside people who each saw something different in what AI could become
                 </>,
                 <>
                   building an AR/VR{" "}
