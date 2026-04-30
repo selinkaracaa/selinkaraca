@@ -150,7 +150,7 @@ const Index = () => {
                     </>,
                     <>
                       <ExtLink href="https://www.youtube.com/@selinkaracaaa">dancing latin & ballroom</ExtLink> and choreographing for{" "}
-                      <ExtLink href="https://www.youtube.com/@CUorchesis"><span className="font-serif-italic">Columbia Orchesis</span></ExtLink>
+                      <ExtLink href="https://www.youtube.com/watch?v=ZvNva2_8x-I"><span className="font-serif-italic">Columbia Orchesis</span></ExtLink>
                     </>,
                     <>
                       making podcasts
