@@ -69,7 +69,7 @@ const Index = () => {
           <a href="#research" className="link-underline-light">research</a>
           <a href="#explored" className="link-underline-light">experience</a>
         </nav>
-        <span className="font-serif-italic text-xs lowercase text-white/80">scroll</span>
+        <span aria-hidden />
       </header>
 
       {/* HERO — clean 2x2 grid */}
