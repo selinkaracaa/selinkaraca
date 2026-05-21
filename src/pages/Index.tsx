@@ -209,7 +209,7 @@ const Index = () => {
                   evaluate and trust these systems.
                 </p>
                 <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-[16px] text-foreground/85">
-                  <ExtLink href="https://drive.google.com/file/d/1KccHpFARaxVPJjjqCGLnPkOIRVzrYWZd/view">read the report (pdf)</ExtLink>
+                  <ExtLink href="/crislabspring2026.pdf">read the report (pdf)</ExtLink>
                   <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
                 </div>
               </div>
