@@ -210,7 +210,7 @@ const Index = () => {
                 </p>
                 <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-[16px] text-foreground/85">
                   <ExtLink href="/crislabspring2026.pdf">read the report (pdf)</ExtLink>
-                  <ExtLink href="https://github.com/CRIS-Lab-2025">github repo</ExtLink>
+                  <ExtLink href="https://github.com/selinkaracaa/Book_Database_Analysis">github repo</ExtLink>
                 </div>
               </div>
 
