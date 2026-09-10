@@ -13,12 +13,7 @@ const CrisLab = () => {
   return (
     <ProjectLayout
       project={bySlug("/research/cris-lab")!}
-      links={
-        <>
-          <ExtLink href="/crislabspring2026.pdf">read the report (pdf)</ExtLink>
-          <ExtLink href="https://github.com/selinkaracaa/Book_Database_Analysis">github</ExtLink>
-        </>
-      }
+      links={<ExtLink href="/crislabspring2026.pdf">read the report (pdf)</ExtLink>}
       highlights={[
         { value: "500", label: "public-domain books" },
         { value: "19", label: "base models, 3 families" },

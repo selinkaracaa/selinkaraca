@@ -18,6 +18,9 @@ export default {
         serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
       },
       colors: {
+        /* the brand colour, so bg-ink / border-ink/40 / hover:text-ink all work */
+        ink: "hsl(var(--ink) / <alpha-value>)",
+        surface: "hsl(var(--surface))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

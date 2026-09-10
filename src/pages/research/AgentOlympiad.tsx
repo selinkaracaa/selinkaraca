@@ -1,10 +1,9 @@
-import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import ProjectLayout, { H, P } from "@/components/ProjectLayout";
 import { bySlug } from "@/data/projects";
 
 const AgentOlympiad = () => (
   <ProjectLayout
     project={bySlug("/research/agent-olympiad")!}
-    links={<ExtLink href="https://github.com/selinkaracaa/agent-olympiad">github</ExtLink>}
     lead={
       <>
         We are deploying multi-agent systems considerably faster than we can evaluate them. The

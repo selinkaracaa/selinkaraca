@@ -1,4 +1,4 @@
-import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import ProjectLayout, { H, P } from "@/components/ProjectLayout";
 import Figure from "@/components/Figure";
 import Photo from "@/components/Photo";
 import { bySlug } from "@/data/projects";
@@ -6,7 +6,6 @@ import { bySlug } from "@/data/projects";
 const Todi = () => (
   <ProjectLayout
     project={bySlug("/work/todi")!}
-    links={<ExtLink href="https://todi.com.tr/">todi.com.tr</ExtLink>}
     highlights={[
       { value: "8", label: "cognitive modules" },
       { value: "10,000+", label: "exercises" },

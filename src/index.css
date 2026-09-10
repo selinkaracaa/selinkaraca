@@ -6,15 +6,15 @@
 
 @layer base {
   :root {
-    /* warm paper ground, so panels and photographs sit ON something */
-    --background: 36 26% 95%;
-    --foreground: 20 14% 11%;
+    /* light neutral ground; photographs and panels sit on top of it */
+    --background: 30 8% 94%;
+    --foreground: 0 0% 11%;
 
-    /* raised surface — cards and figures sit above the paper */
-    --surface: 40 40% 99%;
+    /* raised surface — cards and figures sit above the ground */
+    --surface: 0 0% 100%;
 
-    --card: 40 40% 99%;
-    --card-foreground: 20 14% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
@@ -25,8 +25,8 @@
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 36 18% 91%;
-    --muted-foreground: 26 8% 38%;
+    --muted: 30 8% 89%;
+    --muted-foreground: 20 4% 38%;
 
     --accent: 0 0% 10%;
     --accent-foreground: 0 0% 100%;
@@ -34,14 +34,14 @@
     --destructive: 0 65% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 34 18% 84%;
-    --input: 34 18% 84%;
-    --ring: 20 14% 11%;
+    --border: 28 8% 84%;
+    --input: 28 8% 84%;
+    --ring: 0 0% 11%;
 
     --radius: 0.25rem;
 
-    /* single accent — a warm ink pulled from the sunset photography */
-    --ink: 14 74% 46%;
+    /* the brand colour — a vivid red pulled straight from the stage photograph */
+    --ink: 6 84% 50%;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 10%;
@@ -91,8 +91,8 @@
     background: hsl(var(--surface));
     border: 1px solid hsl(var(--border));
     box-shadow:
-      0 1px 2px hsl(20 14% 11% / 0.04),
-      0 8px 24px -12px hsl(20 14% 11% / 0.1);
+      0 1px 2px hsl(0 0% 0% / 0.05),
+      0 8px 24px -12px hsl(0 0% 0% / 0.09);
   }
   /* interactive version — the whole card is a link */
   .surface-link {
@@ -105,8 +105,49 @@
     transform: translateY(-3px);
     border-color: hsl(var(--ink) / 0.45);
     box-shadow:
-      0 2px 4px hsl(20 14% 11% / 0.05),
-      0 18px 40px -16px hsl(20 14% 11% / 0.2);
+      0 2px 4px hsl(0 0% 0% / 0.06),
+      0 18px 40px -16px hsl(0 0% 0% / 0.16);
+  }
+  /* bold geometric sans — the logotype, nav, and anything that should read loud */
+  .font-ui {
+    font-family: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .logotype {
+    font-family: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: hsl(var(--ink));
+  }
+  /* pill button, like a call to action */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.7rem 1.6rem;
+    font-family: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    background: hsl(var(--ink));
+    color: #fff;
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s ease,
+      background 0.3s ease;
+  }
+  .pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px -10px hsl(var(--ink) / 0.7);
+  }
+  .pill-quiet {
+    background: hsl(var(--ink) / 0.1);
+    color: hsl(var(--ink));
+  }
+  .pill-quiet:hover {
+    background: hsl(var(--ink) / 0.16);
+    box-shadow: none;
   }
   /* small monospace meta label — section labels, captions, chart keys */
   .font-mono-label {
@@ -130,9 +171,6 @@
     line-height: 1.45;
     color: hsl(var(--muted-foreground));
     white-space: nowrap;
-  }
-  .text-ink {
-    color: hsl(var(--ink));
   }
   /* section marker: 01 — label */
   .marker {
