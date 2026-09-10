@@ -218,7 +218,6 @@ const STRIP: Frame[] = [
     w: "w-[216px] sm:w-[276px]",
   },
   { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[190px] sm:w-[243px]" },
-  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[138px] sm:w-[164px]" },
   { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[216px] sm:w-[276px]" },
   { name: "mosaic-library", alt: "In the library", w: "w-[190px] sm:w-[243px]" },
 ];
@@ -226,11 +225,12 @@ const STRIP: Frame[] = [
 /** the second strip — the making, the stage and the city */
 const STRIP_TWO: Frame[] = [
   { name: "side-dance-group", alt: "Orchesis on stage", w: "w-[197px] sm:w-[250px]" },
+  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[190px] sm:w-[243px]" },
   { name: "side-dance-white", alt: "Solo choreography", w: "w-[150px] sm:w-[178px]" },
-  { name: "snap-dance", alt: "Performance night", w: "w-[216px] sm:w-[276px]" },
-  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[197px] sm:w-[250px]" },
   { name: "side-met", alt: "At the Met", w: "w-[150px] sm:w-[178px]" },
+  { name: "snap-dance", alt: "Performance night", w: "w-[216px] sm:w-[276px]" },
   { name: "snap-sunset", alt: "New York at sunset", w: "w-[216px] sm:w-[276px]" },
+  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[138px] sm:w-[164px]" },
   { name: "side-fountain", alt: "A fountain in the city", w: "w-[150px] sm:w-[178px]" },
 ];
 
