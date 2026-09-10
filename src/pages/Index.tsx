@@ -194,8 +194,8 @@ const PhotoStrip = ({
             <Photo
               name={f.name}
               alt={copy === 0 ? f.alt : ""}
-              sizes="(max-width: 640px) 60vw, 420px"
-              className="h-[300px] w-full object-cover sm:h-[380px]"
+              sizes="(max-width: 640px) 45vw, 280px"
+              className="h-[190px] w-full object-cover sm:h-[250px]"
               priority={eager && copy === 0}
             />
           </div>
@@ -206,32 +206,32 @@ const PhotoStrip = ({
 );
 
 const STRIP: Frame[] = [
-  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[230px] sm:w-[270px]" },
+  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[150px] sm:w-[178px]" },
   {
     name: "side-citadel",
     alt: "Citadel Securities Ignite Women's Trading Program",
-    w: "w-[330px] sm:w-[420px]",
+    w: "w-[216px] sm:w-[276px]",
   },
   {
     name: "strip-ycombinator",
     alt: "Y Combinator Startup School 2026",
-    w: "w-[330px] sm:w-[420px]",
+    w: "w-[216px] sm:w-[276px]",
   },
-  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[290px] sm:w-[370px]" },
-  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[210px] sm:w-[250px]" },
-  { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[330px] sm:w-[420px]" },
-  { name: "mosaic-library", alt: "In the library", w: "w-[290px] sm:w-[370px]" },
+  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[190px] sm:w-[243px]" },
+  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[138px] sm:w-[164px]" },
+  { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[216px] sm:w-[276px]" },
+  { name: "mosaic-library", alt: "In the library", w: "w-[190px] sm:w-[243px]" },
 ];
 
 /** the second strip — the making, the stage and the city */
 const STRIP_TWO: Frame[] = [
-  { name: "side-dance-group", alt: "Orchesis on stage", w: "w-[300px] sm:w-[380px]" },
-  { name: "side-dance-white", alt: "Solo choreography", w: "w-[230px] sm:w-[270px]" },
-  { name: "snap-dance", alt: "Performance night", w: "w-[330px] sm:w-[420px]" },
-  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[300px] sm:w-[380px]" },
-  { name: "side-met", alt: "At the Met", w: "w-[230px] sm:w-[270px]" },
-  { name: "snap-sunset", alt: "New York at sunset", w: "w-[330px] sm:w-[420px]" },
-  { name: "side-fountain", alt: "A fountain in the city", w: "w-[230px] sm:w-[270px]" },
+  { name: "side-dance-group", alt: "Orchesis on stage", w: "w-[197px] sm:w-[250px]" },
+  { name: "side-dance-white", alt: "Solo choreography", w: "w-[150px] sm:w-[178px]" },
+  { name: "snap-dance", alt: "Performance night", w: "w-[216px] sm:w-[276px]" },
+  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[197px] sm:w-[250px]" },
+  { name: "side-met", alt: "At the Met", w: "w-[150px] sm:w-[178px]" },
+  { name: "snap-sunset", alt: "New York at sunset", w: "w-[216px] sm:w-[276px]" },
+  { name: "side-fountain", alt: "A fountain in the city", w: "w-[150px] sm:w-[178px]" },
 ];
 
 /* ================================================================== page */
@@ -263,7 +263,7 @@ const Index = () => {
       </header>
 
       {/* ========================================================== strip */}
-      <section id="top" className="pb-4 pt-6">
+      <section id="top" className="pb-3 pt-4">
         <PhotoStrip frames={STRIP} eager />
       </section>
 
