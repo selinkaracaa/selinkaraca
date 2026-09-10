@@ -1,90 +1,57 @@
-import ArticleLayout, { ExtLink, H, P, Pull } from "@/components/ArticleLayout";
-import Figure from "@/components/Figure";
-import RubricHeatmap from "@/components/RubricHeatmap";
+import { Link } from "react-router-dom";
+import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import { bySlug } from "@/data/projects";
 
 const Savanah = () => (
-  <ArticleLayout
-    kicker="work · savanah.ai"
-    title={
-      <>
-        The model already knows how fabric folds. The{" "}
-        <span className="font-serif-italic font-light">workflow</span> suppresses it.
-      </>
-    }
-    meta="savanah.ai · ai personalization intern · jun 2026 —"
-    tools={["python", "diffusion", "controlnet", "embeddings", "umap", "hdbscan", "a/b testing"]}
+  <ProjectLayout
+    project={bySlug("/work/savanah")!}
     links={
       <ExtLink href="https://github.com/selinkaracaa/pattern-benchmarking">
         the benchmarking study
       </ExtLink>
     }
+    lead={
+      <>
+        Two pieces of work at an early-stage AI commerce company: an evaluation study that changed
+        which engineering path the team should take, and a personalization system that didn't exist
+        before.
+      </>
+    }
   >
+    <H>the evaluation study</H>
     <P>
-      Savanah is an early-stage AI commerce company, and i've worked on two things there: an
-      evaluation study that changed which engineering path the team should take, and a
-      personalization system that didn't exist before.
-    </P>
-
-    <H>the pattern realism study</H>
-    <P>
-      The question sounds narrow and turns out not to be. When you apply a printed pattern to a
-      garment image with an AI tool, the print behaves like a sticker — motifs stay whole and
-      circular across a pleat, and only get darker in shadow. Real printed textile doesn't do that.
-      Fabric folds physically interrupt the print: flowers get cut off at gathers, roses lose their
-      shape across a drape. Customers can't articulate this, but they can see it, and it's most of
-      why AI-generated garment images look wrong.
-    </P>
-    <P>
-      I built a rubric — fold interruption, scale, garment preservation, shading integration,
-      artifact rate, each scored 1–5 — and ran <span className="font-serif-italic">twelve outputs
-      across seven tools</span>: Savanah's own pattern tool, Gemini, ControlNet, virtual try-on
-      models like IDM-VTON and OOTDiffusion, and fashion-vertical products.
-    </P>
-    <P>
-      Every tool that preserved the garment's geometry produced flat, sticker-like application.
-      Prompt engineering had <span className="font-serif-italic">zero</span> effect — three
-      escalating prompts on the same input produced pixel-identical results, which is the cleanest
-      possible evidence that the mechanism, not the text, determines the output.
-    </P>
-
-    <Figure caption="Twelve outputs, seven tools, five criteria. Read the fold-interruption column top to bottom: it is 1 out of 5 almost everywhere. The one exception, Gemini output 6, scores 4 — and scores 1 on garment preservation. Nothing solves both.">
-      <RubricHeatmap />
-    </Figure>
-
-    <Pull>
-      Then a free-generation prompt, with no garment to preserve, produced exactly the fold
-      behavior every other tool failed at. The knowledge was there the whole time.
-    </Pull>
-
-    <P>
-      That reframed the problem entirely. The team's assumption had been that the model needed to
-      be taught fold physics, which pointed at LoRA fine-tuning — expensive, slow, uncertain. But
-      if the model can already render fold-interrupted fabric when it generates freely, the failure
-      is that pattern-application workflows constrain it to match a flat reference image and
-      suppress the behavior it would otherwise produce.
-    </P>
-    <P>
-      So the recommendation changed from "fine-tune" to "design a workflow that lets the model
-      express what it already knows" — a depth-map UV warp, or a generate-then-composite pipeline
-      that produces the fold-interrupted texture first and then warps it onto the garment. Neither
-      needs fine-tuning. Both use a proved building block.
+      The first was a benchmark of how AI tools apply printed patterns to garments — a rubric
+      across seven tools, and a finding that redirected the team away from fine-tuning. It has a
+      page of its own:{" "}
+      <Link to="/projects/pattern-realism" className="link-underline">
+        pattern realism
+      </Link>
+      .
     </P>
 
     <H>the personalization system</H>
     <P>
-      The second piece: the company's first personalization framework, mapping customer behavior
+      The second piece: the company's first personalization framework, mapping customer behaviour
       and profile signals to storefront visuals that adapt to who is looking at them. I specified
-      an unsupervised segmentation pipeline — behavioral embeddings, then UMAP, then HDBSCAN — so
+      an unsupervised segmentation pipeline — behavioural embeddings, then UMAP, then HDBSCAN — so
       the customer cohorts come out of the data rather than out of somebody's intuition about who
       the customer is.
     </P>
     <P>
       I also defined what the pilot needs to collect and the A/B test that will tell us whether any
-      of it worked: click-through, add-to-cart rate, and conversion lift. That last part is the
-      one i'd defend hardest. A personalization system with no measurement plan is a system that
-      will be declared successful regardless of what it does.
+      of it worked: click-through, add-to-cart rate, and conversion lift. That last part is the one
+      i'd defend hardest. A personalization system with no measurement plan is a system that will
+      be declared successful regardless of what it does.
     </P>
-  </ArticleLayout>
+
+    <H>what i took from it</H>
+    <P>
+      Both pieces are the same habit in different clothes: before building the thing, work out what
+      would count as evidence that it worked. The study did it for a generation pipeline, the
+      framework does it for a recommendation surface, and in both cases the measurement design was
+      more contested — and more useful — than the implementation.
+    </P>
+  </ProjectLayout>
 );
 
 export default Savanah;

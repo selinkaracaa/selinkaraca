@@ -11,7 +11,7 @@ import PraiseLab from "./pages/research/PraiseLab.tsx";
 import Todi from "./pages/work/Todi.tsx";
 import Savanah from "./pages/work/Savanah.tsx";
 import Teaching from "./pages/work/Teaching.tsx";
-import Efilli from "./pages/work/Efilli.tsx";
+import PatternRealism from "./pages/projects/PatternRealism.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/work/todi" element={<Todi />} />
           <Route path="/work/savanah" element={<Savanah />} />
           <Route path="/work/teaching" element={<Teaching />} />
-          <Route path="/work/efilli" element={<Efilli />} />
+          <Route path="/projects/pattern-realism" element={<PatternRealism />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

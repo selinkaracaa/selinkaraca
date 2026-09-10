@@ -1,34 +1,23 @@
-import ArticleLayout, { ExtLink, H, P, Pull } from "@/components/ArticleLayout";
-import Figure from "@/components/Figure";
-import { OlympiadPipeline } from "@/components/Diagrams";
+import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import { bySlug } from "@/data/projects";
 
 const AgentOlympiad = () => (
-  <ArticleLayout
-    kicker="research · DAPLab"
-    title={
+  <ProjectLayout
+    project={bySlug("/research/agent-olympiad")!}
+    links={<ExtLink href="https://github.com/selinkaracaa/agent-olympiad">github</ExtLink>}
+    lead={
       <>
-        Can a group of models actually reason together, or only{" "}
-        <span className="font-serif-italic font-light">sound like it</span>?
+        We are deploying multi-agent systems considerably faster than we can evaluate them. The
+        standard way of scoring one is to check whether the final answer matches a key — which
+        tells you nothing about whether the group reasoned, and nothing at all about where it went
+        wrong when it fails.
       </>
-    }
-    meta="Data Analytics and Processing Lab, Columbia · jun 2026 — · working toward ICLR"
-    tools={["python", "llm eval", "benchmarks", "rubrics", "data pipelines"]}
-    links={
-      <ExtLink href="https://github.com/selinkaracaa/agent-olympiad">github</ExtLink>
     }
   >
     <P>
-      We are deploying multi-agent systems considerably faster than we can evaluate them. Put
-      several language models in a room, let them pass messages, and something comes out that looks
-      like collaboration — but the standard way of scoring it is to check whether the final answer
-      matches a key. That tells you almost nothing about whether the group reasoned, and nothing at
-      all about where it went wrong when it fails.
-    </P>
-
-    <Pull>
       A benchmark that only checks the final answer can't tell a lucky guess from a correct
-      argument — and for multi-agent work, the argument is the thing you care about.
-    </Pull>
+      argument. For multi-agent work, the argument is the thing you care about.
+    </P>
 
     <H>why olympiad problems</H>
     <P>
@@ -51,7 +40,7 @@ const AgentOlympiad = () => (
       problems, official solutions, and scoring rubrics arrive as PDFs and web pages in wildly
       inconsistent formats; they come out the other end as structured records where each problem
       carries its statement, its reference solution, and its rubric decomposed into scorable
-      criteria.
+      criteria. That normalisation is what makes rubric-calibrated judging possible at all.
     </P>
     <P>
       The unglamorous half is consistency and traceability. Every record has to be attributable back
@@ -60,10 +49,6 @@ const AgentOlympiad = () => (
       be regenerated is an anecdote.
     </P>
 
-    <Figure caption="Contest materials arrive as PDFs and web pages in inconsistent formats. My pipeline parses, aligns and normalises them into records where each problem carries its statement, reference solution, and rubric decomposed into scorable criteria — which is what makes rubric-calibrated judging possible at all.">
-      <OlympiadPipeline />
-    </Figure>
-
     <H>where it's going</H>
     <P>
       The benchmark scores teams of agents on these problems under contest-like conditions, with the
@@ -71,7 +56,7 @@ const AgentOlympiad = () => (
       whether a team solved the problem but how its reasoning was structured and where it broke. We
       are working toward a submission to ICLR.
     </P>
-  </ArticleLayout>
+  </ProjectLayout>
 );
 
 export default AgentOlympiad;

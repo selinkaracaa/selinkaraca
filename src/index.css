@@ -6,11 +6,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    /* warm paper ground, so panels and photographs sit ON something */
+    --background: 36 26% 95%;
+    --foreground: 20 14% 11%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    /* raised surface — cards and figures sit above the paper */
+    --surface: 40 40% 99%;
+
+    --card: 40 40% 99%;
+    --card-foreground: 20 14% 11%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
@@ -21,8 +25,8 @@
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 36 18% 91%;
+    --muted-foreground: 26 8% 38%;
 
     --accent: 0 0% 10%;
     --accent-foreground: 0 0% 100%;
@@ -30,9 +34,9 @@
     --destructive: 0 65% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 0 0% 10%;
+    --border: 34 18% 84%;
+    --input: 34 18% 84%;
+    --ring: 20 14% 11%;
 
     --radius: 0.25rem;
 
@@ -81,6 +85,28 @@
     font-family: "Fraunces", ui-serif, Georgia, serif;
     font-style: italic;
     font-weight: 300;
+  }
+  /* a raised panel on the paper ground — cards, figures, fact blocks */
+  .surface {
+    background: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+    box-shadow:
+      0 1px 2px hsl(20 14% 11% / 0.04),
+      0 8px 24px -12px hsl(20 14% 11% / 0.1);
+  }
+  /* interactive version — the whole card is a link */
+  .surface-link {
+    transition:
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+  }
+  .surface-link:hover {
+    transform: translateY(-3px);
+    border-color: hsl(var(--ink) / 0.45);
+    box-shadow:
+      0 2px 4px hsl(20 14% 11% / 0.05),
+      0 18px 40px -16px hsl(20 14% 11% / 0.2);
   }
   /* small monospace meta label — section labels, captions, chart keys */
   .font-mono-label {
