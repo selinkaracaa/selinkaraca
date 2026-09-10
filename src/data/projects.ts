@@ -146,11 +146,41 @@ export const EXPERIENCE: Experience[] = [
     slug: "/work/teaching",
   },
   {
+    period: "2026",
+    org: "CAIAC",
+    role: "technical AI safety fellow",
+    note: "Columbia AI Alignment Club's technical fellowship.",
+  },
+  {
+    period: "2025",
+    org: "Citadel Securities",
+    role: "Women's Ignite program",
+    note: "A week of live trading simulations, each decision pulled apart afterwards with quant traders.",
+  },
+  {
+    period: "2025",
+    org: "Microsoft",
+    role: "Girls in AI program",
+    note: "A week building sustainability solutions on Azure image recognition.",
+  },
+  {
     period: "summer 2025",
     org: "Cool Digital",
     role: "software & product intern",
-    note: "Consent-banner interfaces in JS, Vue and React, shipped to live client sites.",
+    note: "Consent-banner interfaces in JS, Vue and React, shipped to live client sites. Designed the site and its cookies in Figma.",
     href: "https://efilli.com/",
+  },
+  {
+    period: "2024",
+    org: "Ko\u00e7 University",
+    role: "research",
+    note: "An AR/VR breathing-regulation game \u2014 sensor fusion, computer vision, and a little mindfulness.",
+  },
+  {
+    period: "2024",
+    org: "Istanbul University Cerrahpa\u015fa",
+    role: "research",
+    note: "Deep learning for early autism diagnosis, alongside ADOS clinicians.",
   },
 ];
 
@@ -221,6 +251,14 @@ export const neighbours = (slug: string) => {
   return { prev: at(i - 1), next: at(i + 1) };
 };
 
+/** Student communities i help run. */
+export const COMMUNITIES: { name: string; role: string; href?: string }[] = [
+  { name: "ADI", role: "Application Development Initiative" },
+  { name: "Women in Computer Science", role: "Columbia WiCS" },
+  { name: "Girls Who Code", role: "mentor" },
+  { name: "Turkish Students Association Global", role: "head of corporate relations" },
+];
+
 /** Things outside the labs. Stated plainly — no adjectives, no pitch. */
 export const INVOLVEMENTS: { name: string; role: string; href?: string }[] = [
   {
@@ -237,9 +275,5 @@ export const INVOLVEMENTS: { name: string; role: string; href?: string }[] = [
     name: "the WiCS Network",
     role: "podcast on women in tech",
     href: "https://open.spotify.com/show/5tZbbhiqsr3acOScglDnfq?si=bc1ec5ecf8764d02",
-  },
-  {
-    name: "Turkish Students Association Global",
-    role: "head of corporate relations",
   },
 ];

@@ -1,6 +1,10 @@
 {
-  "hero-portrait": [480, 770],
+  "mosaic-portrait": [420, 770],
+  "mosaic-campus": [480, 960],
+  "mosaic-dance": [480, 960],
+  "mosaic-library": [420, 821],
   "portrait": [240, 400, 560],
+  "side-dance-solo": [560, 1170],
   "todi-hero": [640, 1024, 1600],
   "todi-modules": [640, 1024, 1600]
 }
