@@ -240,7 +240,7 @@ const PhotoStrip = ({
               <Photo
                 name={f.name}
                 alt={copy === 0 ? f.alt : ""}
-                sizes="(max-width: 640px) 45vw, 280px"
+                sizes="(max-width: 640px) 55vw, 340px"
                 className="h-[190px] w-full object-cover sm:h-[250px]"
                 priority={eager && copy === 0}
               />
@@ -253,7 +253,7 @@ const PhotoStrip = ({
 };
 
 const STRIP: Frame[] = [
-  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[150px] sm:w-[178px]" },
+  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[205px] sm:w-[268px]" },
   {
     name: "side-citadel",
     alt: "Citadel Securities Ignite Women's Trading Program",
@@ -264,7 +264,7 @@ const STRIP: Frame[] = [
     alt: "Y Combinator Startup School 2026",
     w: "w-[216px] sm:w-[276px]",
   },
-  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[190px] sm:w-[243px]" },
+  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[252px] sm:w-[334px]" },
   { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[216px] sm:w-[276px]" },
   { name: "mosaic-library", alt: "In the library", w: "w-[190px] sm:w-[243px]" },
 ];
