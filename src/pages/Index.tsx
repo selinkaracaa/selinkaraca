@@ -1,29 +1,50 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
-import heroTL from "@/assets/hero-tl.jpg";
-import heroTR from "@/assets/hero-tr.jpg";
-import heroBL from "@/assets/hero-bl.jpg";
-import heroBR from "@/assets/hero-br.jpg";
-import sideCitadel from "@/assets/side-citadel.jpg";
-import sideLights from "@/assets/side-lights.jpg";
-import sideArchitecture from "@/assets/side-architecture.jpg";
-import sidePainting from "@/assets/side-painting.jpg";
-import sideSunsetBeach from "@/assets/side-sunset-beach.jpg";
-import sideFountain from "@/assets/side-fountain.jpg";
-import sideSkyline from "@/assets/side-skyline.jpg";
-import sideMet from "@/assets/side-met.jpg";
-import sideSunsetCity from "@/assets/side-sunset-city.jpg";
-import sideWillow from "@/assets/side-willow.jpg";
+import { ArrowUpRight, ArrowRight, Mail, Check, Copy } from "lucide-react";
+import Photo from "@/components/Photo";
+import {
+  byGroup,
+  COMMUNITIES,
+  EXPERIENCE,
+  DANCE,
+  PODCASTS,
+  type Project,
+} from "@/data/projects";
+
+/* ------------------------------------------------------------------ motion */
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 18 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
+
+const Reveal = ({
+  children,
+  className,
+  id,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+}) => (
+  <motion.section
+    id={id}
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, margin: "-70px" }}
+    className={className}
+  >
+    {children}
+  </motion.section>
+);
+
+/* -------------------------------------------------------------- primitives */
 
 const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a
@@ -37,280 +58,382 @@ const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }
   </a>
 );
 
-const NumberedList = ({ items }: { items: React.ReactNode[] }) => (
-  <ol className="space-y-6">
-    {items.map((item, i) => (
-      <li key={i} className="grid grid-cols-[2.5rem_1fr] gap-4">
-        <span className="font-serif-italic text-sm text-muted-foreground pt-1">
-          {String(i + 1).padStart(2, "0")}
-        </span>
-        <p className="text-[15px] leading-relaxed text-foreground/85">{item}</p>
-      </li>
-    ))}
-  </ol>
+/** big centred heading in the brand colour — the spine of the page */
+const Heading = ({ children, sub }: { children: string; sub?: string }) => (
+  <div className="mb-10 text-center">
+    <h2 className="font-serif-display text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1] tracking-[-0.03em] text-ink">
+      {children}
+    </h2>
+    {sub && (
+      <p className="mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.6] text-foreground/70">
+        {sub}
+      </p>
+    )}
+  </div>
 );
 
-const SectionHeading = ({ children, id }: { children: React.ReactNode; id?: string }) => (
-  <h2 id={id} className="font-serif-italic text-2xl text-foreground md:text-3xl">
-    {children}
-  </h2>
+const KindTag = ({ kind }: { kind?: string }) =>
+  kind ? (
+    <span
+      className={`font-mono-label rounded-full border px-2 py-[2px] ${
+        kind === "research" ? "border-ink/40 text-ink" : "border-border text-muted-foreground"
+      }`}
+    >
+      {kind}
+    </span>
+  ) : null;
+
+const Card = ({ p }: { p: Project }) => (
+  <Link to={p.slug} className="surface surface-link group flex flex-col rounded-2xl p-6">
+    <div className="flex items-start justify-between gap-3">
+      <h3 className="font-ui text-[1.15rem] font-semibold leading-tight">{p.name}</h3>
+      <KindTag kind={p.kind} />
+    </div>
+    <p className="mt-3 flex-1 text-[15px] leading-[1.55] text-foreground/75">{p.descriptor}</p>
+    {p.headline && <p className="stat-num mt-6 text-[1.45rem]">{p.headline}</p>}
+    <div className="mt-5 flex items-center justify-between gap-3 border-t border-border pt-4">
+      <span className="font-mono-label">{p.period}</span>
+      <ArrowRight
+        className="h-4 w-4 shrink-0 -translate-x-1 text-ink opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+        aria-hidden
+      />
+    </div>
+  </Link>
 );
+
+const EMAIL = "sk5103@columbia.edu";
+
+/**
+ * mailto: silently does nothing on machines with no mail client configured,
+ * so the address is always visible and always copyable as well as linked.
+ */
+const EmailButton = ({ dark = false }: { dark?: boolean }) => {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      const el = document.createElement("textarea");
+      el.value = EMAIL;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      el.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <a href={`mailto:${EMAIL}`} className={`pill ${dark ? "!bg-white !text-[hsl(var(--ink))]" : ""}`}>
+        <Mail className="h-4 w-4" aria-hidden />
+        {EMAIL}
+      </a>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={copied ? "email address copied" : "copy email address"}
+        className={`pill !px-3 ${dark ? "!bg-white/15 !text-white" : "pill-quiet"}`}
+      >
+        {copied ? <Check className="h-4 w-4" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
+        <span className="sr-only sm:not-sr-only">{copied ? "copied" : "copy"}</span>
+      </button>
+    </span>
+  );
+};
+
+const ListPanel = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: { name: string; role: string; href?: string }[];
+}) => (
+  <div className="surface rounded-2xl p-7">
+    <p className="font-ui text-[1.05rem] font-semibold">{title}</p>
+    <ul className="mt-4 divide-y divide-border">
+      {items.map((i) => (
+        <li key={i.name} className="py-3">
+          <span className="block text-[15px]">
+            {i.href ? <ExtLink href={i.href}>{i.name}</ExtLink> : i.name}
+          </span>
+          <span className="font-mono-label mt-1 block">{i.role}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+/** the hero filmstrip — real photographs, rolling continuously */
+type PhotoName = React.ComponentProps<typeof Photo>["name"];
+const STRIP: { name: PhotoName; alt: string; w: string }[] = [
+  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[230px] sm:w-[270px]" },
+  {
+    name: "side-citadel",
+    alt: "Citadel Securities Ignite Women's Trading Program",
+    w: "w-[330px] sm:w-[420px]",
+  },
+  {
+    name: "strip-ycombinator",
+    alt: "Y Combinator Startup School 2026",
+    w: "w-[330px] sm:w-[420px]",
+  },
+  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[290px] sm:w-[370px]" },
+  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[210px] sm:w-[250px]" },
+  {
+    name: "strip-tsa",
+    alt: "Turkish Student Association Global",
+    w: "w-[330px] sm:w-[420px]",
+  },
+  { name: "mosaic-library", alt: "In the library", w: "w-[290px] sm:w-[370px]" },
+];
+
+/* ================================================================== page */
 
 const Index = () => {
+  const work = byGroup("work");
+  const research = work.filter((p) => p.kind === "research");
+  const products = work.filter((p) => p.kind === "product");
+
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Fixed top bar overlaying hero */}
-      <header className="fixed left-0 right-0 top-0 z-50 flex items-start justify-between px-6 pt-6 mix-blend-difference">
-        <a href="#top" className="font-serif-italic text-base text-white">
-          Selin Karaca
-        </a>
-        <nav className="flex flex-col items-center gap-1 text-sm lowercase text-white/90">
-          <a href="#about" className="link-underline-light">about</a>
-          <a href="#research" className="link-underline-light">research</a>
-          <a href="#explored" className="link-underline-light">experience</a>
-        </nav>
-        <span aria-hidden />
+      {/* ============================================================ nav */}
+      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-4">
+          <a href="#top" className="logotype text-[1.35rem]">
+            Selin Karaca
+          </a>
+          <nav className="font-ui hidden gap-7 text-[14px] font-medium text-foreground/70 sm:flex">
+            {["research", "building", "experience", "beyond"].map((l) => (
+              <a key={l} href={`#${l}`} className="transition-colors hover:text-ink">
+                {l}
+              </a>
+            ))}
+          </nav>
+          <a href="#contact" className="pill pill-quiet !px-4 !py-2 !text-[13px]">
+            contact
+          </a>
+        </div>
       </header>
 
-      {/* HERO — clean 2x2 grid */}
-      <section id="top" className="w-full">
-        <div className="grid h-screen w-full grid-cols-2 grid-rows-2 gap-0">
-          <div className="overflow-hidden">
-            <img src={heroTL} alt="On the steps" className="h-full w-full object-cover" />
-          </div>
-          <div className="overflow-hidden">
-            <img src={heroTR} alt="Columbia at sunset" className="h-full w-full object-cover" />
-          </div>
-          <div className="overflow-hidden">
-            <img src={heroBL} alt="Orchesis on stage" className="h-full w-full object-cover" />
-          </div>
-          <div className="overflow-hidden">
-            <img src={heroBR} alt="In the library" className="h-full w-full object-cover" />
-          </div>
+      {/* ========================================================== strip */}
+      <section id="top" className="marquee overflow-hidden pb-4 pt-6">
+        <div className="marquee-track gap-3 sm:gap-4">
+          {[0, 1].map((copy) =>
+            STRIP.map((p) => (
+              <div
+                key={`${copy}-${p.name}`}
+                className={`${p.w} shrink-0 overflow-hidden rounded-2xl`}
+              >
+                <Photo
+                  name={p.name}
+                  alt={copy === 0 ? p.alt : ""}
+                  sizes="(max-width: 640px) 60vw, 420px"
+                  className="h-[300px] w-full object-cover sm:h-[380px]"
+                  priority={copy === 0}
+                />
+              </div>
+            )),
+          )}
         </div>
       </section>
 
-      {/* CONTENT WRAPPER — left/middle content with one continuous right photo strip */}
-      <div className="md:grid md:grid-cols-[1fr_180px]">
-        {/* LEFT/MIDDLE COLUMN — all sections stacked */}
-        <div>
-          {/* ABOUT + TIME */}
-          <motion.section
-            id="about"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-16 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12 md:pt-12"
+      {/* ========================================================== intro */}
+      <section className="mx-auto max-w-[1180px] px-6 pb-20 pt-14 text-center md:pb-28 md:pt-20">
+        <h1 className="font-serif-display text-[clamp(2.4rem,6vw,4.2rem)] leading-[0.98] tracking-[-0.035em] text-ink">
+          hi, i'm Selin!
+        </h1>
+        <p className="mx-auto mt-7 max-w-[62ch] text-[17.5px] leading-[1.62] text-foreground/85">
+          I'm a computer science student at Columbia Engineering, minoring in applied math and in
+          entrepreneurship &amp; innovation. I spend my time on machine-learning research, on
+          software that real people use, and in rooms full of people making things. If you're
+          building something, i'd love to hear about it.
+        </p>
+
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <EmailButton />
+          <a
+            href="/selin-karaca-resume.pdf"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="pill pill-quiet"
           >
-            {/* LEFT: about */}
-            <div className="flex flex-col md:pl-4">
-              <img
-                src={portrait}
-                alt="Portrait of Selin Karaca"
-                className="aspect-[4/5] w-full max-w-[200px] object-cover"
-              />
-              <h1 className="mt-5 font-serif-display text-3xl leading-[0.95] md:text-4xl">
-                Selin <span className="font-serif-italic font-light">Karaca</span>
-              </h1>
-              <p className="mt-5 max-w-[280px] text-[16px] leading-relaxed text-foreground/85">
-                hi, i'm Selin! i live in NYC and study computer science at Columbia Engineering with minors in <span className="font-serif-italic">applied math</span> and <span className="font-serif-italic">entrepreneurship & innovation</span>. I'm excited to meet people who love building things: products, tech, communities, art<br />so don't hesitate to reach out!!
-              </p>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[14px] text-foreground/85">
-                <ExtLink href="mailto:sk5103@columbia.edu">sk5103@columbia.edu</ExtLink>
-                <ExtLink href="https://www.linkedin.com/in/selinkaraca/">linkedin</ExtLink>
-              </div>
-            </div>
-
-            {/* MIDDLE: things i like spending my time on */}
-            <div id="time">
-              <SectionHeading>what i'm pursuing</SectionHeading>
-              <div className="mt-6">
-                <NumberedList
-                  items={[
-                    <>
-                      research at the{" "}
-                      <ExtLink href="https://cris.cheme.columbia.edu/">CRIS Lab</ExtLink>{" "}
-                      on how large language models develop{" "}
-                      <span className="font-serif-italic">semantic understanding</span> as they
-                      scale across model families, and at the{" "}
-                      <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">PRAISE Lab</ExtLink>{" "}
-                      on{" "}
-                      <span className="font-serif-italic">automatic symbolic law discovery</span>{" "}
-                      using computer vision to recover scientific equations from data
-                    </>,
-                    <>
-                      building communities at <span className="font-serif-italic">ADI</span>,{" "}
-                      <span className="font-serif-italic">Women in Computer Science</span>,{" "}
-                      <span className="font-serif-italic">Girls Who Code</span>, and the{" "}
-                      <span className="font-serif-italic">Columbia Turkish Students Association</span>
-                    </>,
-                    <>
-                      creating collaborative spaces for learning and teaching as a Teaching assistant for Fundamentals of Computer Systems, Discrete Mathematics and CAIAC Technical AI Safety Fellow
-                    </>,
-                    <>
-                      <ExtLink href="https://www.youtube.com/@selinkaracaaa">dancing latin & ballroom</ExtLink> and choreographing for{" "}
-                      <ExtLink href="https://www.youtube.com/watch?v=ZvNva2_8x-I"><span className="font-serif-italic">Columbia Orchesis</span></ExtLink>
-                    </>,
-                    <>
-                      making podcasts
-                      {"\n"} especially on women in tech with diverse and inspiring groups:{" "}
-                      <ExtLink href="https://open.spotify.com/show/0Z2mQG5grq8SU8f4G2u8fe?si=d43780fcdb734602">Reign Of Chains</ExtLink>{" "}
-                      and{" "}
-                      <ExtLink href="https://open.spotify.com/show/5tZbbhiqsr3acOScglDnfq?si=bc1ec5ecf8764d02">the WiCS Network</ExtLink>
-                    </>,
-                    <>
-                      finding ways to make a real dent in this world through{" "}
-                      <span className="font-serif-italic">mission-driven</span> research,
-                      startups, and investment
-                    </>,
-                  ]}
-                />
-              </div>
-            </div>
-          </motion.section>
-
-          {/* RESEARCH */}
-          <motion.section
-            id="research"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
+            resume
+          </a>
+          <a
+            href="https://github.com/selinkaracaa"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="pill pill-quiet"
           >
-            <SectionHeading>research</SectionHeading>
-            <div className="space-y-12">
-              {/* CRIS Lab */}
-              <div className="space-y-5">
-                <h3 className="font-serif-italic text-xl text-foreground">
-                  CRIS Lab — semantic understanding in LLMs
-                </h3>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  I'm a researcher at the{" "}
-                  <ExtLink href="https://cris.cheme.columbia.edu/">
-                    Complex Resilience Intelligence Systems Lab
-                  </ExtLink>{" "}
-                  at Columbia, where i study how large language models move from
-                  surface-level pattern-matching toward something closer to{" "}
-                  <span className="font-serif-italic">semantic understanding</span>.
-                </p>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  My current project probes how this capacity emerges{" "}
-                  <span className="font-serif-italic">across scale</span>, comparing model
-                  families (OpenAI, Qwen, Pythia, Cerebras) at different parameter counts
-                  using representational-similarity analysis, probing classifiers, and
-                  targeted behavioral tests on compositional and counterfactual reasoning.
-                </p>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The goal isn't just better benchmarks, it's a clearer answer to{" "}
-                  <span className="font-serif-italic">when</span> a model stops mimicking
-                  meaning and starts representing it, which matters a lot for how we
-                  evaluate and trust these systems.
-                </p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 pt-1 text-[16px] text-foreground/85">
-                  <ExtLink href="/crislabspring2026.pdf">read the report (pdf)</ExtLink>
-                  <ExtLink href="https://github.com/selinkaracaa/Book_Database_Analysis">github repo</ExtLink>
-                </div>
-              </div>
-
-              {/* PRAISE Lab */}
-              <div className="space-y-5">
-                <h3 className="font-serif-italic text-xl text-foreground">
-                  PRAISE Lab — symbolic law discovery with computer vision
-                </h3>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  I've recently joined the{" "}
-                  <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">
-                    Practice and Research in Artificial Intelligence for Science and
-                    Education
-                  </ExtLink>{" "}
-                  at Columbia, working on{" "}
-                  <ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/project-law.html">
-                    <span className="font-serif-italic">
-                      Automatic Symbolic Law Discovery
-                    </span>
-                  </ExtLink>
-                  .
-                </p>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  The novelty of the approach lies in (1) encoding the input data as an{" "}
-                  <span className="font-serif-italic">image</span> with super-resolution,
-                  (2) developing an appropriate deep network pipeline, and (3) predicting
-                  the importance of each mathematical operator from the relationship image.
-                </p>
-                <p className="text-[16px] leading-relaxed text-foreground/85">
-                  What I find compelling is the reframing of discovery as a{" "}
-                  <span className="font-serif-italic">visual</span> problem, treating an
-                  equation as a shape the model can learn to recognize before it ever
-                  writes it down.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* EXPLORED */}
-          <motion.section
-            id="explored"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            className="mt-24 grid scroll-mt-20 grid-cols-1 gap-10 px-6 pb-16 pt-4 md:grid-cols-[minmax(220px,300px)_1fr] md:gap-12"
+            github
+          </a>
+          <a
+            href="https://www.linkedin.com/in/selinkaraca/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="pill pill-quiet"
           >
-            <SectionHeading>experiences along the way</SectionHeading>
-            <NumberedList
-              items={[
-                <>
-                  a week inside <span className="font-serif-italic">Citadel Securities</span>'
-                  Women's Ignite program, running live trading simulations and breaking
-                  down every decision afterward with quant traders
-                </>,
-                <>
-                  a week at <span className="font-serif-italic">Microsoft</span> through
-                  their <span className="font-serif-italic">Girls in AI</span> program,
-                  working on sustainability solutions with Azure image recognition
-                  alongside people sharing different visions of what AI could become
-                </>,
-                <>
-                  building an AR/VR{" "}
-                  <span className="font-serif-italic">breathing-regulation game</span> at
-                  Koç University, blending sensor fusion, computer vision, and a little bit
-                  of mindfulness
-                </>,
-                <>
-                  deep learning models for{" "}
-                  <span className="font-serif-italic">early autism diagnosis</span>{" "}
-                  alongside ADOS clinicians at Istanbul University Cerrahpaşa
-                </>,
-                <>
-                  software engineering and product management at{" "}
-                  <span className="font-serif-italic">Efilli</span>, a cookie consent platform
-                  startup, where I designed websites (and delicious little cookies) on Figma
-                </>,
-              ]}
-            />
-          </motion.section>
+            linkedin
+          </a>
+        </div>
+      </section>
+
+      {/* ======================================================== research */}
+      <Reveal id="research" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
+        <Heading sub="Three labs at Columbia, all circling the same question: what has a model's representation actually captured, and can we see it from the outside?">
+          Research
+        </Heading>
+        <div className="grid gap-4 md:grid-cols-3">
+          {research.map((p) => (
+            <Card key={p.slug} p={p} />
+          ))}
+        </div>
+      </Reveal>
+
+      {/* ======================================================== building */}
+      <Reveal id="building" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
+        <Heading sub="Software that shipped, and the studies that came out of building it.">
+          Building
+        </Heading>
+        <div className="grid gap-4 md:grid-cols-2">
+          {products.map((p) => (
+            <Card key={p.slug} p={p} />
+          ))}
+        </div>
+      </Reveal>
+
+      {/* ====================================================== experience */}
+      <Reveal id="experience" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
+        <Heading sub="Internships, fellowships, research assistantships and the programmes that pulled me sideways into something new.">
+          Experience
+        </Heading>
+
+        <ul className="mx-auto max-w-[900px] overflow-hidden rounded-2xl border border-border bg-[hsl(var(--surface))]">
+          {EXPERIENCE.map((e, i) => {
+            const body = (
+              <>
+                <span className="font-mono-label shrink-0 md:w-[112px] md:pt-[5px]">
+                  {e.period}
+                </span>
+                <span className="flex-1">
+                  <span className="flex flex-wrap items-baseline gap-x-3">
+                    <span className="font-ui text-[1.05rem] font-semibold">{e.org}</span>
+                    <span className="font-ui text-[0.95rem] font-semibold text-ink">{e.role}</span>
+                  </span>
+                  <span className="mt-1.5 block max-w-[64ch] text-[14.5px] leading-[1.55] text-foreground/70">
+                    {e.note}
+                  </span>
+                </span>
+                {e.slug ? (
+                  <ArrowRight
+                    className="mt-1 hidden h-4 w-4 shrink-0 -translate-x-1 text-ink opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 md:block"
+                    aria-hidden
+                  />
+                ) : e.href ? (
+                  <ArrowUpRight
+                    className="mt-1 hidden h-4 w-4 shrink-0 text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block"
+                    aria-hidden
+                  />
+                ) : null}
+              </>
+            );
+            const row =
+              "group flex flex-col gap-1.5 px-6 py-5 transition-colors duration-300 hover:bg-ink/[0.04] md:flex-row md:gap-6";
+            return (
+              <li key={e.org} className={i ? "border-t border-border" : ""}>
+                {e.slug ? (
+                  <Link to={e.slug} className={row}>
+                    {body}
+                  </Link>
+                ) : e.href ? (
+                  <a href={e.href} target="_blank" rel="noreferrer noopener" className={row}>
+                    {body}
+                  </a>
+                ) : (
+                  <div className="flex flex-col gap-1.5 px-6 py-5 md:flex-row md:gap-6">{body}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </Reveal>
+
+      {/* ========================================================== beyond */}
+      <Reveal id="beyond" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
+        <Heading sub="I want to make a real dent in this world through mission-driven research, startups and investment — and a lot of what i learn about that comes from the people around me.">
+          Beyond the labs
+        </Heading>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <ListPanel title="communities" items={COMMUNITIES} />
+          <ListPanel title="dance" items={DANCE} />
+          <ListPanel title="podcasts" items={PODCASTS} />
         </div>
 
-        {/* RIGHT: one continuous photo strip from below hero to footer */}
-        <aside className="hidden md:flex flex-col gap-1 pt-1">
-          <img src={sideLights} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideWillow} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideArchitecture} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideFountain} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideSunsetBeach} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sidePainting} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideCitadel} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideSkyline} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideMet} alt="" className="flex-1 min-h-0 w-full object-cover" />
-          <img src={sideSunsetCity} alt="" className="flex-1 min-h-0 w-full object-cover" />
-        </aside>
-      </div>
+        <div className="mt-4 surface rounded-2xl p-7">
+          <p className="font-ui text-[1.05rem] font-semibold">toolkit</p>
+          <div className="mt-4 flex flex-wrap gap-[6px]">
+            {[
+              "python",
+              "c",
+              "c++",
+              "typescript",
+              "java",
+              "sql",
+              "pytorch",
+              "numpy",
+              "react",
+              "node",
+              "git",
+              "linux",
+            ].map((t) => (
+              <span key={t} className="tag">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
-      <footer className="mx-auto mt-16 flex max-w-5xl items-center justify-between border-t border-border px-6 py-6 text-xs lowercase tracking-wider text-muted-foreground">
-        <span>© {new Date().getFullYear()} Selin Karaca</span>
-        <span className="font-serif-italic">new york</span>
+      {/* ========================================================= contact */}
+      <Reveal id="contact" className="mx-auto max-w-[1180px] px-6 pb-20">
+        <div className="rounded-2xl bg-ink px-7 py-14 text-center text-white md:px-12 md:py-20">
+          <h2 className="mx-auto max-w-[18ch] font-serif-display text-[clamp(1.9rem,4.6vw,3.1rem)] leading-[1] tracking-[-0.03em]">
+            let's build something
+          </h2>
+          <p className="mx-auto mt-5 max-w-[50ch] text-[16.5px] leading-[1.6] text-white/85">
+            Research, products, or whatever you're making — don't hesitate to reach out!!
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <EmailButton dark />
+            <a
+              href="https://www.linkedin.com/in/selinkaraca/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="pill !bg-white/15 !text-white"
+            >
+              linkedin
+            </a>
+            <a
+              href="https://github.com/selinkaracaa"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="pill !bg-white/15 !text-white"
+            >
+              github
+            </a>
+          </div>
+        </div>
+      </Reveal>
+
+      <footer className="mx-auto flex max-w-[1180px] items-center justify-between border-t border-border px-6 py-6 font-mono-label">
+        <span>© {new Date().getFullYear()} selin karaca</span>
+        <span>new york</span>
       </footer>
     </main>
   );
