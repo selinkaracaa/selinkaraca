@@ -168,9 +168,44 @@ const ListPanel = ({
   </div>
 );
 
-/** the hero filmstrip — real photographs, rolling continuously */
+/** the filmstrips — real photographs, rolling continuously */
 type PhotoName = React.ComponentProps<typeof Photo>["name"];
-const STRIP: { name: PhotoName; alt: string; w: string }[] = [
+type Frame = { name: PhotoName; alt: string; w: string };
+
+const PhotoStrip = ({
+  frames,
+  reverse = false,
+  eager = false,
+  speed = "32s",
+}: {
+  frames: Frame[];
+  reverse?: boolean;
+  eager?: boolean;
+  speed?: string;
+}) => (
+  <div className="marquee overflow-hidden">
+    <div
+      className={`marquee-track gap-3 sm:gap-4 ${reverse ? "reverse" : ""}`}
+      style={{ animationDuration: speed }}
+    >
+      {[0, 1].map((copy) =>
+        frames.map((f) => (
+          <div key={`${copy}-${f.name}`} className={`${f.w} shrink-0 overflow-hidden rounded-2xl`}>
+            <Photo
+              name={f.name}
+              alt={copy === 0 ? f.alt : ""}
+              sizes="(max-width: 640px) 60vw, 420px"
+              className="h-[300px] w-full object-cover sm:h-[380px]"
+              priority={eager && copy === 0}
+            />
+          </div>
+        )),
+      )}
+    </div>
+  </div>
+);
+
+const STRIP: Frame[] = [
   { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[230px] sm:w-[270px]" },
   {
     name: "side-citadel",
@@ -184,12 +219,19 @@ const STRIP: { name: PhotoName; alt: string; w: string }[] = [
   },
   { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[290px] sm:w-[370px]" },
   { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[210px] sm:w-[250px]" },
-  {
-    name: "strip-tsa",
-    alt: "Turkish Student Association Global",
-    w: "w-[330px] sm:w-[420px]",
-  },
+  { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[330px] sm:w-[420px]" },
   { name: "mosaic-library", alt: "In the library", w: "w-[290px] sm:w-[370px]" },
+];
+
+/** the second strip — the making, the stage and the city */
+const STRIP_TWO: Frame[] = [
+  { name: "side-dance-group", alt: "Orchesis on stage", w: "w-[300px] sm:w-[380px]" },
+  { name: "side-dance-white", alt: "Solo choreography", w: "w-[230px] sm:w-[270px]" },
+  { name: "snap-dance", alt: "Performance night", w: "w-[330px] sm:w-[420px]" },
+  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[300px] sm:w-[380px]" },
+  { name: "side-met", alt: "At the Met", w: "w-[230px] sm:w-[270px]" },
+  { name: "snap-sunset", alt: "New York at sunset", w: "w-[330px] sm:w-[420px]" },
+  { name: "side-fountain", alt: "A fountain in the city", w: "w-[230px] sm:w-[270px]" },
 ];
 
 /* ================================================================== page */
@@ -221,25 +263,8 @@ const Index = () => {
       </header>
 
       {/* ========================================================== strip */}
-      <section id="top" className="marquee overflow-hidden pb-4 pt-6">
-        <div className="marquee-track gap-3 sm:gap-4">
-          {[0, 1].map((copy) =>
-            STRIP.map((p) => (
-              <div
-                key={`${copy}-${p.name}`}
-                className={`${p.w} shrink-0 overflow-hidden rounded-2xl`}
-              >
-                <Photo
-                  name={p.name}
-                  alt={copy === 0 ? p.alt : ""}
-                  sizes="(max-width: 640px) 60vw, 420px"
-                  className="h-[300px] w-full object-cover sm:h-[380px]"
-                  priority={copy === 0}
-                />
-              </div>
-            )),
-          )}
-        </div>
+      <section id="top" className="pb-4 pt-6">
+        <PhotoStrip frames={STRIP} eager />
       </section>
 
       {/* ========================================================== intro */}
@@ -363,10 +388,15 @@ const Index = () => {
         </ul>
       </Reveal>
 
+      {/* the second strip, running the other way, leading into the personal half */}
+      <Reveal className="pb-16 md:pb-24">
+        <PhotoStrip frames={STRIP_TWO} reverse speed="46s" />
+      </Reveal>
+
       {/* ========================================================== beyond */}
       <Reveal id="beyond" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
-        <Heading sub="Making things is only half of it. The rest is the people i make them with — running student communities, choreographing and competing, and recording conversations with women in tech.">
-          Beyond the labs
+        <Heading sub="Making things is only half of it. The other half is creative and collective — art and choreography, the student communities i help run, and the conversations i record with women in tech.">
+          Beyond the work
         </Heading>
 
         <div className="grid gap-4 md:grid-cols-3">

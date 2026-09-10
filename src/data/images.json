@@ -60,5 +60,33 @@
   "savanah-model": [
     560,
     1120
+  ],
+  "side-dance-group": [
+    480,
+    900
+  ],
+  "snap-dance": [
+    560,
+    1100
+  ],
+  "side-dance-white": [
+    480,
+    900
+  ],
+  "snap-tree-lighting": [
+    420,
+    828
+  ],
+  "side-met": [
+    420,
+    806
+  ],
+  "snap-sunset": [
+    560,
+    1100
+  ],
+  "side-fountain": [
+    420,
+    832
   ]
 }
