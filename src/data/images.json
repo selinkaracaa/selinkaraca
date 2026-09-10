@@ -1,0 +1,10 @@
+{
+  "hero-tl": [640, 960],
+  "hero-tr": [480, 768, 960],
+  "hero-bl": [480, 768, 960],
+  "side-skyline": [640, 828],
+  "side-dance-group": [768, 1170],
+  "portrait": [240, 400, 560],
+  "todi-hero": [640, 1024, 1600],
+  "todi-modules": [640, 1024, 1600]
+}
