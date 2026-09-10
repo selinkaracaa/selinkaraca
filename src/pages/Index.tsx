@@ -186,7 +186,7 @@ const PhotoStrip = ({
   <div className="marquee overflow-hidden">
     <div
       className={`marquee-track gap-3 sm:gap-4 ${reverse ? "reverse" : ""}`}
-      style={{ animationDuration: speed }}
+      style={{ "--roll": speed } as React.CSSProperties}
     >
       {[0, 1].map((copy) =>
         frames.map((f) => (
@@ -229,9 +229,7 @@ const STRIP_TWO: Frame[] = [
   { name: "side-dance-white", alt: "Solo choreography", w: "w-[150px] sm:w-[178px]" },
   { name: "side-met", alt: "At the Met", w: "w-[150px] sm:w-[178px]" },
   { name: "snap-dance", alt: "Performance night", w: "w-[216px] sm:w-[276px]" },
-  { name: "snap-sunset", alt: "New York at sunset", w: "w-[216px] sm:w-[276px]" },
   { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[138px] sm:w-[164px]" },
-  { name: "side-fountain", alt: "A fountain in the city", w: "w-[150px] sm:w-[178px]" },
 ];
 
 /* ================================================================== page */

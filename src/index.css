@@ -113,7 +113,11 @@
   .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee-roll 32s linear infinite;
+    animation: marquee-roll var(--roll, 32s) linear infinite;
+  }
+  /* hovering a strip speeds it up rather than stopping it */
+  .marquee:hover .marquee-track {
+    animation-duration: calc(var(--roll, 32s) / 2.5);
   }
   /* the second strip runs the other way */
   .marquee-track.reverse {
