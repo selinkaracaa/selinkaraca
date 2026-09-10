@@ -109,6 +109,7 @@ const ProjectLayout = ({
                 {project.artifact && (
                   <SourceLink href={project.artifact.href}>{project.artifact.label}</SourceLink>
                 )}
+                {project.lab && <SourceLink href={project.lab.href}>{project.lab.label}</SourceLink>}
                 {links}
               </div>
             </div>

@@ -30,6 +30,8 @@ export type Project = {
   stack: string[];
   /** the artifact — shown on the card so people can go straight to it */
   artifact?: { label: string; href: string };
+  /** the lab or group this belongs to */
+  lab?: { label: string; href: string };
 };
 
 export const PROJECTS: Project[] = [
@@ -81,6 +83,7 @@ export const PROJECTS: Project[] = [
       label: "github",
       href: "https://github.com/selinkaracaa/Book_Database_Analysis",
     },
+    lab: { label: "CRIS Lab", href: "https://cris.cheme.columbia.edu/" },
   },
   {
     slug: "/research/agent-olympiad",
@@ -94,6 +97,7 @@ export const PROJECTS: Project[] = [
     status: "working toward ICLR",
     stack: ["python", "llm eval", "benchmarks", "rubrics", "data pipelines"],
     artifact: { label: "github", href: "https://github.com/selinkaracaa/agent-olympiad" },
+    lab: { label: "DAPLab", href: "https://daplab.cs.columbia.edu/" },
   },
   {
     slug: "/research/praise-lab",
@@ -165,7 +169,7 @@ export const EXPERIENCE: Experience[] = [
     note: "A week of live trading simulations, each decision pulled apart afterwards with quant traders.",
   },
   {
-    period: "summer 2025",
+    period: "2025",
     org: "Cool Digital",
     role: "Software & Product Management Intern",
     note: "Consent-banner interfaces in JavaScript, Vue and React, shipped to live client sites.",
@@ -235,11 +239,15 @@ export const neighbours = (slug: string) => {
 
 /** Student communities i help run. */
 export const COMMUNITIES: { name: string; role: string; href?: string }[] = [
-  { name: "ADI", role: "Application Development Initiative" },
-  { name: "Women in Computer Science", role: "Columbia WiCS" },
-  { name: "Girls Who Code", role: "community pillar" },
-  { name: "Columbia Turkish Students Association", role: "member" },
-  { name: "Turkish Students Association Global", role: "head of corporate relations" },
+  { name: "ADI", role: "community pillar" },
+  { name: "Women in Computer Science", role: "event coordinator, podcast team" },
+  { name: "Girls Who Code", role: "engagement committee" },
+  { name: "Columbia Turkish Students Association", role: "vice president of policy" },
+  {
+    name: "Turkish Students Association Global",
+    role: "head of corporate relations",
+    href: "https://tsaglobal.org/",
+  },
 ];
 
 /** Things outside the labs. Stated plainly — no adjectives, no pitch. */
@@ -249,7 +257,11 @@ export const DANCE: { name: string; role: string; href?: string }[] = [
     role: "Columbia's largest performance club",
     href: "https://www.youtube.com/watch?v=ZvNva2_8x-I",
   },
-  { name: "Latin & ballroom", role: "my own choreography" },
+  {
+    name: "Latin & ballroom",
+    role: "Turkish national athlete",
+    href: "https://www.youtube.com/@selinkaracaaa",
+  },
 ];
 
 export const PODCASTS: { name: string; role: string; href?: string }[] = [

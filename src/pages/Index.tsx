@@ -323,7 +323,7 @@ const Index = () => {
                 <span className="flex-1">
                   <span className="flex flex-wrap items-baseline gap-x-3">
                     <span className="font-ui text-[1.05rem] font-semibold">{e.org}</span>
-                    <span className="font-mono-label">{e.role}</span>
+                    <span className="font-ui text-[0.95rem] font-semibold text-ink">{e.role}</span>
                   </span>
                   <span className="mt-1.5 block max-w-[64ch] text-[14.5px] leading-[1.55] text-foreground/70">
                     {e.note}

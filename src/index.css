@@ -115,10 +115,6 @@
     width: max-content;
     animation: marquee-roll 60s linear infinite;
   }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
   @keyframes marquee-roll {
     from {
       transform: translate3d(0, 0, 0);
