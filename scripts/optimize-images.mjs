@@ -30,9 +30,12 @@ async function main() {
   const unbuildable = [];
 
   for (const [name, widths] of Object.entries(TARGETS)) {
-    const src = path.join(SRC, `${name}.jpg`);
-    if (!existsSync(src)) {
-      console.warn(`  ! missing ${src} — skipped`);
+    // phones hand you .JPG and .HEIC-converted .JPEG as often as .jpg
+    const src = [".jpg", ".JPG", ".jpeg", ".JPEG", ".png", ".PNG"]
+      .map((ext) => path.join(SRC, name + ext))
+      .find((p) => existsSync(p));
+    if (!src) {
+      console.warn(`  ! no source for "${name}" in ${SRC} — skipped`);
       continue;
     }
     before += (await stat(src)).size;

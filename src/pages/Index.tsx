@@ -253,30 +253,32 @@ const PhotoStrip = ({
 };
 
 const STRIP: Frame[] = [
-  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[205px] sm:w-[268px]" },
   {
     name: "side-citadel",
     alt: "Citadel Securities Ignite Women's Trading Program",
     w: "w-[216px] sm:w-[276px]",
   },
+  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[205px] sm:w-[268px]" },
+  { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[216px] sm:w-[276px]" },
   {
     name: "strip-ycombinator",
     alt: "Y Combinator Startup School 2026",
     w: "w-[216px] sm:w-[276px]",
   },
-  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[252px] sm:w-[334px]" },
-  { name: "strip-tsa", alt: "Turkish Student Association Global", w: "w-[216px] sm:w-[276px]" },
   { name: "mosaic-library", alt: "In the library", w: "w-[190px] sm:w-[243px]" },
+  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[252px] sm:w-[334px]" },
 ];
 
 /** the second strip — the making, the stage and the city */
 const STRIP_TWO: Frame[] = [
   { name: "side-dance-group", alt: "Orchesis on stage", w: "w-[197px] sm:w-[250px]" },
-  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[190px] sm:w-[243px]" },
+  { name: "picnic", alt: "A picnic on the Columbia lawn", w: "w-[190px] sm:w-[240px]" },
   { name: "side-dance-white", alt: "Solo choreography", w: "w-[150px] sm:w-[178px]" },
+  { name: "snap-tree-lighting", alt: "Tree lighting in New York", w: "w-[190px] sm:w-[243px]" },
+  { name: "dance-team", alt: "The dance team after a show", w: "w-[216px] sm:w-[286px]" },
   { name: "side-met", alt: "At the Met", w: "w-[150px] sm:w-[178px]" },
-  { name: "snap-dance", alt: "Performance night", w: "w-[216px] sm:w-[276px]" },
   { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[138px] sm:w-[164px]" },
+  { name: "side-architecture", alt: "Sculpture against a hard blue sky", w: "w-[150px] sm:w-[178px]" },
 ];
 
 /* ================================================================== page */
