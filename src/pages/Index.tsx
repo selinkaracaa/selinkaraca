@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Mail } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Mail, Check, Copy } from "lucide-react";
 import Photo from "@/components/Photo";
 import {
   byGroup,
   COMMUNITIES,
   EXPERIENCE,
-  INVOLVEMENTS,
+  DANCE,
+  PODCASTS,
   type Project,
 } from "@/data/projects";
 
@@ -99,18 +101,95 @@ const Card = ({ p }: { p: Project }) => (
   </Link>
 );
 
-/** the hero filmstrip — real photographs, bleeding off both edges */
+const EMAIL = "sk5103@columbia.edu";
+
+/**
+ * mailto: silently does nothing on machines with no mail client configured,
+ * so the address is always visible and always copyable as well as linked.
+ */
+const EmailButton = ({ dark = false }: { dark?: boolean }) => {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      const el = document.createElement("textarea");
+      el.value = EMAIL;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      el.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <a href={`mailto:${EMAIL}`} className={`pill ${dark ? "!bg-white !text-[hsl(var(--ink))]" : ""}`}>
+        <Mail className="h-4 w-4" aria-hidden />
+        {EMAIL}
+      </a>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={copied ? "email address copied" : "copy email address"}
+        className={`pill !px-3 ${dark ? "!bg-white/15 !text-white" : "pill-quiet"}`}
+      >
+        {copied ? <Check className="h-4 w-4" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
+        <span className="sr-only sm:not-sr-only">{copied ? "copied" : "copy"}</span>
+      </button>
+    </span>
+  );
+};
+
+const ListPanel = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: { name: string; role: string; href?: string }[];
+}) => (
+  <div className="surface rounded-2xl p-7">
+    <p className="font-ui text-[1.05rem] font-semibold">{title}</p>
+    <ul className="mt-4 divide-y divide-border">
+      {items.map((i) => (
+        <li key={i.name} className="py-3">
+          <span className="block text-[15px]">
+            {i.href ? <ExtLink href={i.href}>{i.name}</ExtLink> : i.name}
+          </span>
+          <span className="font-mono-label mt-1 block">{i.role}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+/** the hero filmstrip — real photographs, rolling continuously */
 type PhotoName = React.ComponentProps<typeof Photo>["name"];
-const STRIP: { name: PhotoName; alt: string; span: string }[] = [
-  { name: "mosaic-portrait", alt: "Selin Karaca", span: "w-[240px] sm:w-[280px]" },
+const STRIP: { name: PhotoName; alt: string; w: string }[] = [
+  { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[230px] sm:w-[270px]" },
   {
     name: "side-citadel",
     alt: "Citadel Securities Ignite Women's Trading Program",
-    span: "w-[340px] sm:w-[430px]",
+    w: "w-[330px] sm:w-[420px]",
   },
-  { name: "mosaic-campus", alt: "Columbia at sunset", span: "w-[300px] sm:w-[380px]" },
-  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", span: "w-[220px] sm:w-[260px]" },
-  { name: "mosaic-library", alt: "In the library", span: "w-[300px] sm:w-[380px]" },
+  {
+    name: "strip-ycombinator",
+    alt: "Y Combinator Startup School 2026",
+    w: "w-[330px] sm:w-[420px]",
+  },
+  { name: "mosaic-campus", alt: "Columbia at sunset", w: "w-[290px] sm:w-[370px]" },
+  { name: "side-dance-solo", alt: "Dancing with Columbia Orchesis", w: "w-[210px] sm:w-[250px]" },
+  {
+    name: "strip-tsa",
+    alt: "Turkish Student Association Global",
+    w: "w-[330px] sm:w-[420px]",
+  },
+  { name: "mosaic-library", alt: "In the library", w: "w-[290px] sm:w-[370px]" },
 ];
 
 /* ================================================================== page */
@@ -142,29 +221,24 @@ const Index = () => {
       </header>
 
       {/* ========================================================== strip */}
-      <section id="top" className="overflow-hidden pb-4 pt-6">
-        <div className="flex gap-3 px-3 sm:gap-4">
-          {STRIP.map((s, i) => (
-            <motion.div
-              key={s.name}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: i * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`${s.span} shrink-0 overflow-hidden rounded-2xl`}
-            >
-              <Photo
-                name={s.name}
-                alt={s.alt}
-                sizes="(max-width: 640px) 60vw, 430px"
-                className="h-[300px] w-full object-cover sm:h-[380px]"
-                priority={i < 3}
-              />
-            </motion.div>
-          ))}
+      <section id="top" className="marquee overflow-hidden pb-4 pt-6">
+        <div className="marquee-track gap-3 sm:gap-4">
+          {[0, 1].map((copy) =>
+            STRIP.map((p) => (
+              <div
+                key={`${copy}-${p.name}`}
+                className={`${p.w} shrink-0 overflow-hidden rounded-2xl`}
+              >
+                <Photo
+                  name={p.name}
+                  alt={copy === 0 ? p.alt : ""}
+                  sizes="(max-width: 640px) 60vw, 420px"
+                  className="h-[300px] w-full object-cover sm:h-[380px]"
+                  priority={copy === 0}
+                />
+              </div>
+            )),
+          )}
         </div>
       </section>
 
@@ -181,10 +255,7 @@ const Index = () => {
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <a href="mailto:sk5103@columbia.edu" className="pill">
-            <Mail className="h-4 w-4" aria-hidden />
-            get in touch
-          </a>
+          <EmailButton />
           <a
             href="/selin-karaca-resume.pdf"
             target="_blank"
@@ -298,38 +369,10 @@ const Index = () => {
           Beyond the labs
         </Heading>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="surface rounded-2xl p-7">
-            <p className="font-ui text-[1.05rem] font-semibold">communities i help run</p>
-            <ul className="mt-4 divide-y divide-border">
-              {COMMUNITIES.map((c) => (
-                <li
-                  key={c.name}
-                  className="flex flex-col gap-0.5 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-                >
-                  <span className="text-[15px]">{c.name}</span>
-                  <span className="font-mono-label sm:text-right">{c.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="surface rounded-2xl p-7">
-            <p className="font-ui text-[1.05rem] font-semibold">dance and podcasts</p>
-            <ul className="mt-4 divide-y divide-border">
-              {INVOLVEMENTS.map((i) => (
-                <li
-                  key={i.name}
-                  className="flex flex-col gap-0.5 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-                >
-                  <span className="text-[15px]">
-                    {i.href ? <ExtLink href={i.href}>{i.name}</ExtLink> : i.name}
-                  </span>
-                  <span className="font-mono-label sm:text-right">{i.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <ListPanel title="communities" items={COMMUNITIES} />
+          <ListPanel title="dance" items={DANCE} />
+          <ListPanel title="podcasts" items={PODCASTS} />
         </div>
 
         <div className="mt-4 surface rounded-2xl p-7">
@@ -367,13 +410,7 @@ const Index = () => {
             Research, products, or whatever you're making — don't hesitate to reach out!!
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="mailto:sk5103@columbia.edu"
-              className="pill !bg-white !text-[hsl(var(--ink))]"
-            >
-              <Mail className="h-4 w-4" aria-hidden />
-              sk5103@columbia.edu
-            </a>
+            <EmailButton dark />
             <a
               href="https://www.linkedin.com/in/selinkaraca/"
               target="_blank"

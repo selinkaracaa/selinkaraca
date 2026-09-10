@@ -68,13 +68,13 @@ export const PROJECTS: Project[] = [
     slug: "/research/cris-lab",
     name: "CRIS Lab",
     descriptor:
-      "Measuring when a language model's embeddings start treating a book as one object",
+      "Locating the scale at which a language model's embeddings start encoding document identity",
     group: "work",
     kind: "research",
     org: "Complex Resilient Intelligent Systems Lab, Columbia",
     role: "researcher",
     period: "jan 2026 —",
-    headline: "500 books · 19 models",
+    headline: "28× in one scale step",
     status: "manuscript in preparation",
     stack: ["pytorch", "bertopic", "embeddings", "hdbscan", "gpu cluster"],
     artifact: {
@@ -115,6 +115,7 @@ export const PROJECTS: Project[] = [
 /* ------------------------------------------------------------- experience */
 
 export type Experience = {
+  /** empty string renders no date — for things without a meaningful year */
   period: string;
   org: string;
   role: string;
@@ -134,53 +135,47 @@ export const EXPERIENCE: Experience[] = [
   {
     period: "jun 2026 —",
     org: "Savanah.ai",
-    role: "AI personalization intern",
-    note: "Pattern-realism evaluation; the company's first personalization framework.",
+    role: "AI Product Intern",
+    note: "Pattern-realism benchmarking, and the company's first personalization framework.",
     slug: "/work/savanah",
+    href: "https://savanah.ai/",
   },
   {
-    period: "jan 2026 —",
+    period: "2026",
+    org: "Y Combinator",
+    role: "Startup School",
+    note: "",
+  },
+  {
+    period: "2026 —",
     org: "Columbia Engineering",
-    role: "teaching assistant",
-    note: "Computer systems and discrete maths, 300+ students a term.",
-    slug: "/work/teaching",
+    role: "Teaching Assistant",
+    note: "Fundamentals of Computer Systems and Discrete Mathematics — 300+ students a term.",
   },
   {
     period: "2026",
     org: "CAIAC",
-    role: "technical AI safety fellow",
+    role: "Technical AI Safety Fellow",
     note: "Columbia AI Alignment Club's technical fellowship.",
   },
   {
     period: "2025",
     org: "Citadel Securities",
-    role: "Women's Ignite program",
+    role: "Ignite Women's Trading Program",
     note: "A week of live trading simulations, each decision pulled apart afterwards with quant traders.",
-  },
-  {
-    period: "2025",
-    org: "Microsoft",
-    role: "Girls in AI program",
-    note: "A week building sustainability solutions on Azure image recognition.",
   },
   {
     period: "summer 2025",
     org: "Cool Digital",
-    role: "software & product intern",
-    note: "Consent-banner interfaces in JS, Vue and React, shipped to live client sites. Designed the site and its cookies in Figma.",
+    role: "Software & Product Management Intern",
+    note: "Consent-banner interfaces in JavaScript, Vue and React, shipped to live client sites.",
     href: "https://efilli.com/",
   },
   {
-    period: "2024",
-    org: "Ko\u00e7 University",
-    role: "research",
-    note: "An AR/VR breathing-regulation game \u2014 sensor fusion, computer vision, and a little mindfulness.",
-  },
-  {
-    period: "2024",
-    org: "Istanbul University Cerrahpa\u015fa",
-    role: "research",
-    note: "Deep learning for early autism diagnosis, alongside ADOS clinicians.",
+    period: "",
+    org: "Microsoft",
+    role: "Girls in AI Program",
+    note: "Sustainability solutions built on Azure image recognition.",
   },
 ];
 
@@ -192,23 +187,12 @@ export const ROLE_PAGES: Project[] = [
   {
     slug: "/work/savanah",
     name: "Savanah.ai",
-    descriptor: "AI personalization at an early-stage commerce company",
+    descriptor: "AI product work at an early-stage commerce company",
     group: "experience",
     org: "savanah.ai",
-    role: "ai personalization intern",
+    role: "AI Product Intern",
     period: "jun 2026 —",
     stack: ["python", "diffusion", "controlnet", "umap", "hdbscan", "a/b testing"],
-  },
-  {
-    slug: "/work/teaching",
-    name: "Columbia Engineering",
-    descriptor: "Teaching assistant for computer systems and discrete mathematics",
-    group: "experience",
-    org: "Columbia Engineering",
-    role: "teaching assistant",
-    period: "jan 2026 —",
-    headline: "300+ students a term",
-    stack: ["c", "systems", "computer architecture", "discrete math"],
   },
 ];
 
@@ -228,7 +212,6 @@ const NAV_ORDER = [
   "/research/agent-olympiad",
   "/research/praise-lab",
   "/work/savanah",
-  "/work/teaching",
 ];
 
 export const NAV_TITLES: Record<string, string> = {
@@ -238,7 +221,6 @@ export const NAV_TITLES: Record<string, string> = {
   "/research/agent-olympiad": "Agent Olympiad",
   "/research/praise-lab": "PRAISE Lab",
   "/work/savanah": "Savanah.ai",
-  "/work/teaching": "Columbia Engineering",
 };
 
 export const neighbours = (slug: string) => {
@@ -255,25 +237,30 @@ export const neighbours = (slug: string) => {
 export const COMMUNITIES: { name: string; role: string; href?: string }[] = [
   { name: "ADI", role: "Application Development Initiative" },
   { name: "Women in Computer Science", role: "Columbia WiCS" },
-  { name: "Girls Who Code", role: "mentor" },
+  { name: "Girls Who Code", role: "community pillar" },
+  { name: "Columbia Turkish Students Association", role: "member" },
   { name: "Turkish Students Association Global", role: "head of corporate relations" },
 ];
 
 /** Things outside the labs. Stated plainly — no adjectives, no pitch. */
-export const INVOLVEMENTS: { name: string; role: string; href?: string }[] = [
+export const DANCE: { name: string; role: string; href?: string }[] = [
   {
     name: "Columbia Orchesis",
-    role: "latin and ballroom, choreography",
+    role: "Columbia's largest performance club",
     href: "https://www.youtube.com/watch?v=ZvNva2_8x-I",
   },
+  { name: "Latin & ballroom", role: "my own choreography" },
+];
+
+export const PODCASTS: { name: string; role: string; href?: string }[] = [
   {
     name: "Reign of Chains",
-    role: "podcast on women in tech",
+    role: "on women in tech",
     href: "https://open.spotify.com/show/0Z2mQG5grq8SU8f4G2u8fe?si=d43780fcdb734602",
   },
   {
     name: "the WiCS Network",
-    role: "podcast on women in tech",
+    role: "on women in tech",
     href: "https://open.spotify.com/show/5tZbbhiqsr3acOScglDnfq?si=bc1ec5ecf8764d02",
   },
 ];

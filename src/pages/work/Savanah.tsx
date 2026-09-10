@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
-import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import ProjectLayout, { SourceLink, H, P } from "@/components/ProjectLayout";
 import { bySlug } from "@/data/projects";
 
 const Savanah = () => (
   <ProjectLayout
     project={bySlug("/work/savanah")!}
     links={
-      <ExtLink href="https://github.com/selinkaracaa/pattern-benchmarking">
-        the benchmarking study
-      </ExtLink>
+      <>
+        <SourceLink href="https://savanah.ai/">savanah.ai</SourceLink>
+        <SourceLink href="https://github.com/selinkaracaa/pattern-benchmarking">
+          the benchmarking study
+        </SourceLink>
+      </>
     }
     lead={
       <>
@@ -42,14 +45,6 @@ const Savanah = () => (
       of it worked: click-through, add-to-cart rate, and conversion lift. That last part is the one
       i'd defend hardest. A personalization system with no measurement plan is a system that will
       be declared successful regardless of what it does.
-    </P>
-
-    <H>what i took from it</H>
-    <P>
-      Both pieces are the same habit in different clothes: before building the thing, work out what
-      would count as evidence that it worked. The study did it for a generation pipeline, the
-      framework does it for a recommendation surface, and in both cases the measurement design was
-      more contested — and more useful — than the implementation.
     </P>
   </ProjectLayout>
 );

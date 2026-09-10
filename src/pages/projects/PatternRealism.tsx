@@ -10,28 +10,26 @@ const PatternRealism = () => (
     highlights={[
       { value: "7", label: "tools benchmarked" },
       { value: "12", label: "outputs scored" },
-      { value: "5", label: "rubric criteria, 1–5" },
+      { value: "5", label: "criteria, scored 1–5" },
     ]}
     lead={
       <>
-        When you apply a printed pattern to a garment image with an AI tool, the print behaves like
-        a sticker — motifs stay whole across a pleat and only get darker in shadow. Real printed
-        textile doesn't do that.
+        AI tools apply a printed pattern to a garment as a flat overlay with shading on top. On real
+        fabric, folds physically interrupt the print — motifs get cut off at gathers, roses lose
+        their shape across a pleat.
       </>
     }
   >
-    <P>
-      Fabric folds physically interrupt the print: flowers get cut off at gathers, roses lose their
-      shape across a drape. Customers can't articulate this, but they can see it, and it's most of
-      why AI-generated garment images look wrong.
-    </P>
-
     <H>the rubric</H>
     <P>
-      I built a scoring rubric — fold interruption, scale, garment preservation, shading
-      integration, artifact rate, each scored 1–5 — and ran{" "}
-      <span className="font-serif-italic">twelve outputs across seven tools</span>: Savanah's own
-      pattern tool, Gemini, ControlNet, virtual try-on models like IDM-VTON and OOTDiffusion, and
+      I defined five criteria, each scored 1–5: fold interruption (motifs visibly cut or compressed
+      at folds, versus roses always complete and merely darkened), scale, garment preservation,
+      shading integration, and artifact rate.
+    </P>
+    <P>
+      I ran twelve outputs across seven tools against a fixed set of inputs — a flat-lay dress, a
+      rose pattern swatch, and a model wearing the plain dress — covering Savanah's own pattern
+      tool, Gemini, ControlNet, virtual try-on models including IDM-VTON and OOTDiffusion, and
       fashion-vertical products.
     </P>
 
@@ -39,34 +37,31 @@ const PatternRealism = () => (
       <RubricHeatmap />
     </Figure>
 
-    <H>what it found</H>
+    <H>what the runs showed</H>
     <P>
       Every tool that preserved the garment's geometry produced flat, sticker-like application.
-      Prompt engineering had <span className="font-serif-italic">zero</span> effect — three
-      escalating prompts on the same input produced pixel-identical results, which is the cleanest
-      possible evidence that the mechanism, not the text, determines the output.
+      Savanah's own tool scored 1/5 on fold interruption while scoring 5/5 on garment preservation
+      and artifact rate.
     </P>
     <P>
-      Then a free-generation prompt, with no garment to preserve, produced exactly the fold
-      behaviour every other tool failed at. The knowledge was there the whole time.
+      Three prompts of escalating detail on the same input — from "put this flower pattern onto the
+      dress" up to "motifs should be visibly cut off, compressed, or bent" — produced identical
+      outputs, scoring identically on all five criteria. Prompt engineering has no effect on fold
+      behaviour; the mechanism determines the output.
+    </P>
+    <P>
+      A free-generation prompt, with no garment to preserve, produced the fold-interrupted behaviour
+      every image-conditioned tool failed at.
     </P>
 
-    <H>why that changed the roadmap</H>
+    <H>what i recommended</H>
     <P>
-      The team's assumption had been that the model needed to be taught fold physics, which pointed
-      at LoRA fine-tuning — expensive, slow, uncertain. But if the model can already render
-      fold-interrupted fabric when it generates freely, the failure is that pattern-application
-      workflows constrain it to match a flat reference image and suppress the behaviour it would
-      otherwise produce.
+      Two workflow routes that need no fine-tuning: a depth-map UV warp, or a generate-then-
+      composite pipeline that produces the fold-interrupted texture first and warps it onto the
+      garment afterwards.
     </P>
     <P>
-      So the recommendation changed from "fine-tune" to "design a workflow that lets the model
-      express what it already knows" — a depth-map UV warp, or a generate-then-composite pipeline
-      that produces the fold-interrupted texture first and then warps it onto the garment. Neither
-      needs fine-tuning. Both use a proved building block.
-    </P>
-    <P>
-      This came out of my work at{" "}
+      From my work at{" "}
       <Link to="/work/savanah" className="link-underline">
         Savanah.ai
       </Link>

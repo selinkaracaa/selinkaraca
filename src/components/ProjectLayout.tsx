@@ -3,6 +3,19 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { neighbours, type Project } from "@/data/projects";
 
+/** the loud version — used for repos, reports and live sites */
+export const SourceLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer noopener"
+    className="group inline-flex items-center gap-2 rounded-full border border-ink/35 bg-ink/[0.07] px-4 py-2 font-ui text-[13px] font-semibold text-ink transition-all duration-300 hover:bg-ink hover:text-white"
+  >
+    {children}
+    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+  </a>
+);
+
 export const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a
     href={href}
@@ -91,10 +104,10 @@ const ProjectLayout = ({
           {project.status && <Fact label="status">{project.status}</Fact>}
           <Fact label="stack">{project.stack.join(" · ")}</Fact>
           {(links || project.artifact) && (
-            <div className="border-t border-border pt-3 md:col-span-2">
-              <div className="flex flex-wrap gap-x-7 gap-y-2 text-[15px]">
+            <div className="border-t border-border pt-4 md:col-span-2">
+              <div className="flex flex-wrap gap-2">
                 {project.artifact && (
-                  <ExtLink href={project.artifact.href}>{project.artifact.label}</ExtLink>
+                  <SourceLink href={project.artifact.href}>{project.artifact.label}</SourceLink>
                 )}
                 {links}
               </div>

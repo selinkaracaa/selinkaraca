@@ -1,10 +1,10 @@
-import ProjectLayout, { ExtLink, H, P } from "@/components/ProjectLayout";
+import ProjectLayout, { SourceLink, H, P } from "@/components/ProjectLayout";
 import { bySlug } from "@/data/projects";
 
 const PraiseLab = () => (
   <ProjectLayout
     project={bySlug("/research/praise-lab")!}
-    links={<ExtLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">the lab</ExtLink>}
+    links={<SourceLink href="https://www.cs.columbia.edu/~ansaf/praise/index.html">the lab</SourceLink>}
     lead={
       <>
         Symbolic regression — recovering the equation behind a set of measurements — is usually

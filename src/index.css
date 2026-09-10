@@ -108,6 +108,33 @@
       0 2px 4px hsl(0 0% 0% / 0.06),
       0 18px 40px -16px hsl(0 0% 0% / 0.16);
   }
+  /* the hero filmstrip, rolling continuously; the track holds two copies of
+     the same photographs, so translating it exactly -50% loops seamlessly */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-roll 60s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee-roll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+    .marquee {
+      overflow-x: auto;
+    }
+  }
   /* bold geometric sans — the logotype, nav, and anything that should read loud */
   .font-ui {
     font-family: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;

@@ -60,18 +60,6 @@ const Todi = () => (
       alternatives. Those are the things that decide whether a child with a reading difficulty can
       operate the interface at all.
     </P>
-    <P>
-      It's the first codebase i worked on where the users were not people like me, could not be
-      asked to try again, and would simply stop using it if a flow confused them.
-    </P>
-
-    <H>what it taught me</H>
-    <P>
-      Personalization is a data problem long before it's a UI problem — if the assessment doesn't
-      measure the right things, no amount of adaptive logic downstream will save it. And shipping to
-      real users changes which bugs matter: a rendering glitch nobody hits is not a bug; a confusing
-      empty state on day one is a catastrophe.
-    </P>
   </ProjectLayout>
 );
 
