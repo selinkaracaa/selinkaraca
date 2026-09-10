@@ -365,7 +365,7 @@ const Index = () => {
 
       {/* ========================================================== beyond */}
       <Reveal id="beyond" className="mx-auto max-w-[1180px] px-6 pb-20 md:pb-28">
-        <Heading sub="I want to make a real dent in this world through mission-driven research, startups and investment — and a lot of what i learn about that comes from the people around me.">
+        <Heading sub="Making things is only half of it. The rest is the people i make them with — running student communities, choreographing and competing, and recording conversations with women in tech.">
           Beyond the labs
         </Heading>
 

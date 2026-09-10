@@ -113,7 +113,7 @@
   .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee-roll 60s linear infinite;
+    animation: marquee-roll 32s linear infinite;
   }
   @keyframes marquee-roll {
     from {

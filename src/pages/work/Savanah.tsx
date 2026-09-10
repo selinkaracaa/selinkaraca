@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import ProjectLayout, { SourceLink, H, P } from "@/components/ProjectLayout";
+import Figure from "@/components/Figure";
+import Photo from "@/components/Photo";
 import { bySlug } from "@/data/projects";
 
 const Savanah = () => (
@@ -31,6 +33,23 @@ const Savanah = () => (
       </Link>
       .
     </P>
+
+    <Figure caption="What the product does: a flat-lay garment becomes an on-model image. Getting the fabric to behave correctly in that second image is what the benchmarking study measures. Images from savanah.ai.">
+      <div className="grid grid-cols-2 gap-3">
+        <Photo
+          name="savanah-flatlay"
+          alt="A flat-lay garment photograph"
+          sizes="(max-width:768px) 50vw, 320px"
+          className="w-full bg-white object-contain"
+        />
+        <Photo
+          name="savanah-model"
+          alt="The same garment generated on a model"
+          sizes="(max-width:768px) 50vw, 320px"
+          className="w-full bg-white object-contain"
+        />
+      </div>
+    </Figure>
 
     <H>the personalization system</H>
     <P>

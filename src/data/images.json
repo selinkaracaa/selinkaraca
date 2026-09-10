@@ -1,13 +1,64 @@
 {
-  "mosaic-portrait": [420, 770],
-  "mosaic-campus": [480, 960],
-  "mosaic-dance": [480, 960],
-  "mosaic-library": [420, 821],
-  "side-citadel": [560, 960, 1400],
-  "side-dance-solo": [480, 900],
-  "strip-ycombinator": [560, 1024, 1600],
-  "strip-tsa": [560, 1024, 1600],
-  "portrait": [240, 400, 560],
-  "todi-hero": [640, 1024, 1600],
-  "todi-modules": [640, 1024, 1600]
+  "mosaic-portrait": [
+    420,
+    770
+  ],
+  "mosaic-campus": [
+    480,
+    960
+  ],
+  "mosaic-dance": [
+    480,
+    960
+  ],
+  "mosaic-library": [
+    420,
+    821
+  ],
+  "side-citadel": [
+    560,
+    960,
+    1400
+  ],
+  "side-dance-solo": [
+    480,
+    900
+  ],
+  "strip-ycombinator": [
+    560,
+    1024,
+    1600
+  ],
+  "strip-tsa": [
+    560,
+    1024,
+    1600
+  ],
+  "portrait": [
+    240,
+    400,
+    560
+  ],
+  "todi-hero": [
+    640,
+    1024,
+    1600
+  ],
+  "todi-modules": [
+    640,
+    1024,
+    1600
+  ],
+  "praise-pipeline": [
+    640,
+    916
+  ],
+  "savanah-flatlay": [
+    440,
+    880
+  ],
+  "savanah-model": [
+    560,
+    1120
+  ]
 }

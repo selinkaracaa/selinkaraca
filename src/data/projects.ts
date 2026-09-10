@@ -76,7 +76,6 @@ export const PROJECTS: Project[] = [
     org: "Complex Resilient Intelligent Systems Lab, Columbia",
     role: "researcher",
     period: "jan 2026 —",
-    headline: "28× in one scale step",
     status: "manuscript in preparation",
     stack: ["pytorch", "bertopic", "embeddings", "hdbscan", "gpu cluster"],
     artifact: {
@@ -239,7 +238,7 @@ export const neighbours = (slug: string) => {
 
 /** Student communities i help run. */
 export const COMMUNITIES: { name: string; role: string; href?: string }[] = [
-  { name: "ADI", role: "community pillar" },
+  { name: "Application Development Initiative", role: "community pillar" },
   { name: "Women in Computer Science", role: "event coordinator, podcast team" },
   { name: "Girls Who Code", role: "engagement committee" },
   { name: "Columbia Turkish Students Association", role: "vice president of policy" },

@@ -1,4 +1,6 @@
 import ProjectLayout, { SourceLink, H, P } from "@/components/ProjectLayout";
+import Figure from "@/components/Figure";
+import Photo from "@/components/Photo";
 import { bySlug } from "@/data/projects";
 
 const PraiseLab = () => (
@@ -32,6 +34,15 @@ const PraiseLab = () => (
       can learn those silhouettes, it can narrow the search radically before any symbolic machinery
       runs.
     </P>
+
+    <Figure caption="The pipeline: measurements are encoded as an image, refined by a super-resolution ResNet, and read by a deep CNN that predicts the importance of each mathematical operator. Figure from the lab's project page.">
+      <Photo
+        name="praise-pipeline"
+        alt="Data encoded as an image, passed through a super-resolution encoder and a CNN decoder that predicts operator importance"
+        sizes="(max-width:768px) 100vw, 900px"
+        className="w-full bg-white"
+      />
+    </Figure>
 
     <H>why it's interesting</H>
     <P>
