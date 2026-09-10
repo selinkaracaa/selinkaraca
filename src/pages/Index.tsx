@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Mail, Check, Copy } from "lucide-react";
@@ -172,38 +172,85 @@ const ListPanel = ({
 type PhotoName = React.ComponentProps<typeof Photo>["name"];
 type Frame = { name: PhotoName; alt: string; w: string };
 
+/**
+ * The rolling strips.
+ *
+ * Driven by requestAnimationFrame rather than a CSS animation: changing a CSS
+ * `animation-duration` mid-flight makes the browser recompute position from
+ * elapsed time, which visibly jumps. Here speed is a value we ease toward, so
+ * hovering accelerates smoothly and releasing decelerates the same way.
+ */
 const PhotoStrip = ({
   frames,
   reverse = false,
   eager = false,
-  speed = "32s",
+  /** pixels per second */
+  speed = 62,
 }: {
   frames: Frame[];
   reverse?: boolean;
   eager?: boolean;
-  speed?: string;
-}) => (
-  <div className="marquee overflow-hidden">
+  speed?: number;
+}) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const hovered = useRef(false);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const dir = reverse ? -1 : 1;
+    let raf = 0;
+    let last = performance.now();
+    let pos = 0;
+    let velocity = speed;
+
+    const tick = (now: number) => {
+      const dt = Math.min(now - last, 64) / 1000;
+      last = now;
+
+      const target = hovered.current ? speed * 2.5 : speed;
+      // exponential ease — no discontinuity when the target changes
+      velocity += (target - velocity) * Math.min(1, dt * 4);
+
+      // the track holds two identical copies, so half its width is one loop
+      const loop = el.scrollWidth / 2;
+      if (loop > 0) {
+        pos = (((pos + dir * velocity * dt) % loop) + loop) % loop;
+        el.style.transform = `translate3d(${-pos}px, 0, 0)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reverse, speed]);
+
+  return (
     <div
-      className={`marquee-track gap-3 sm:gap-4 ${reverse ? "reverse" : ""}`}
-      style={{ "--roll": speed } as React.CSSProperties}
+      className="strip-scroll overflow-hidden"
+      onMouseEnter={() => (hovered.current = true)}
+      onMouseLeave={() => (hovered.current = false)}
     >
-      {[0, 1].map((copy) =>
-        frames.map((f) => (
-          <div key={`${copy}-${f.name}`} className={`${f.w} shrink-0 overflow-hidden rounded-2xl`}>
-            <Photo
-              name={f.name}
-              alt={copy === 0 ? f.alt : ""}
-              sizes="(max-width: 640px) 45vw, 280px"
-              className="h-[190px] w-full object-cover sm:h-[250px]"
-              priority={eager && copy === 0}
-            />
-          </div>
-        )),
-      )}
+      <div ref={trackRef} className="flex w-max gap-3 will-change-transform sm:gap-4">
+        {[0, 1].map((copy) =>
+          frames.map((f) => (
+            <div key={`${copy}-${f.name}`} className={`${f.w} shrink-0 overflow-hidden rounded-2xl`}>
+              <Photo
+                name={f.name}
+                alt={copy === 0 ? f.alt : ""}
+                sizes="(max-width: 640px) 45vw, 280px"
+                className="h-[190px] w-full object-cover sm:h-[250px]"
+                priority={eager && copy === 0}
+              />
+            </div>
+          )),
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const STRIP: Frame[] = [
   { name: "mosaic-portrait", alt: "Selin Karaca", w: "w-[150px] sm:w-[178px]" },
@@ -388,7 +435,7 @@ const Index = () => {
 
       {/* the second strip, running the other way, leading into the personal half */}
       <Reveal className="pb-16 md:pb-24">
-        <PhotoStrip frames={STRIP_TWO} reverse speed="46s" />
+        <PhotoStrip frames={STRIP_TWO} reverse speed={44} />
       </Reveal>
 
       {/* ========================================================== beyond */}

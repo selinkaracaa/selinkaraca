@@ -108,34 +108,10 @@
       0 2px 4px hsl(0 0% 0% / 0.06),
       0 18px 40px -16px hsl(0 0% 0% / 0.16);
   }
-  /* the hero filmstrip, rolling continuously; the track holds two copies of
-     the same photographs, so translating it exactly -50% loops seamlessly */
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee-roll var(--roll, 32s) linear infinite;
-  }
-  /* hovering a strip speeds it up rather than stopping it */
-  .marquee:hover .marquee-track {
-    animation-duration: calc(var(--roll, 32s) / 2.5);
-  }
-  /* the second strip runs the other way */
-  .marquee-track.reverse {
-    animation-direction: reverse;
-  }
-  @keyframes marquee-roll {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
+  /* Strips are driven by requestAnimationFrame in PhotoStrip. With reduced
+     motion they never move, so let them scroll by hand instead. */
   @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none;
-    }
-    .marquee {
+    .strip-scroll {
       overflow-x: auto;
     }
   }
